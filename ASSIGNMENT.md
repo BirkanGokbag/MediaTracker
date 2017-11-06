@@ -37,14 +37,26 @@ Your presentation should describethe features from an end-user perspective, but 
 <li>10% Balanced work load</li>
 Graders will determine the work load balance of your group work by using Git and Github repository analytics and documentation.In order to receive the full 10% of this portion of your grade, your team must show to the graders that work was equally balanced between the team members. Thus, your team must make a conscious effort to show Git and Github activity by all team members.In addition, your team must clearly document individual contributions in your documentation (see below) throughout thedevelopment of your solution. Activity that indicates only one or two members submitting work will result in a reduction in points.
 
-<pre><code>If team members develop source code in a <a href="http://en.wikipedia.org/wiki/Pair_programming">Pair Programming</a>scenario then documentation must clearly indicate only contributions from team member(s) who <em>substantially</em> contributed to the source code. Making minor changes to code or suggestions while watching someone else write code does not count as <em>substantial</em> contributions and this team member should not be indicated as a contributor. If one team member contributed more than the other team member in the pair, then your documentation must clearly indicate this. Thus, if a team membersimply watched the other team member program or contributed very little, then do not indicate this team member as acontributor to the source code in your documentation.</pre></code>
+<pre><code>If team members develop source code in a <a href="http://en.wikipedia.org/wiki/Pair_programming">Pair Programming</a>scenario
+then documentation must clearly indicate only contributions from team member(s) who <em>substantially</em> contributed to the source
+code. Making minor changes to code or suggestions while watching someone else write code does not count as <em>substantial</em>
+contributions and this team member should not be indicated as a contributor. If one team member contributed more than the other team
+member in the pair, then your documentation must clearly indicate this. Thus, if a team membersimply watched the other team member
+program or contributed very little, then do not indicate this team member as acontributor to the source code in your
+documentation.</pre></code>
 
 <li>5% Documentation</li>
 Your team must document your solution well. Ensure that documentation is consistent across all source code.
 
-<pre><code>At the top of each file you must indicate which team member created the file and the date of creation. Whenever a team member edits a file to add functionality or perform debugging that team member must add their name at the top of the file and indicate the date of their changes and a single line description of their changes. The top of the file must also contain a short paragraph that provides an overall description of the contents of the file, e.g. what problem you are solving.</pre></code>
+<pre><code>At the top of each file you must indicate which team member created the file and the date of creation. Whenever a team member
+edits a file to add functionality or perform debugging that team member must add their name at the top of the file and indicate the date
+of their changes and a single line description of their changes. The top of the file must also contain a short paragraph that provides
+an overall description of the contents of the file, e.g. what problem you are solving.</pre></code>
 
-<pre><code>Each module (e.g. Ruby function) must indicate the name of the team member that created that function and the date. Each team member that edits the module must add their name to the list of authors and indicate the date of their changes and as well as a single line description of their changes. In addition, each module must have at least a single line comment that describes the functionality of the module.</pre></code>
+<pre><code>Each module (e.g. Ruby function) must indicate the name of the team member that created that function and the date. Each team
+member that edits the module must add their name to the list of authors and indicate the date of their changes and as well as a single
+line description of their changes. In addition, each module must have at least a single line comment that describes the functionality of
+the module.</pre></code>
 
 Use single line commenting where appropriate but not excessive.
 
@@ -54,6 +66,7 @@ At a minimum, your team must provide the graders with a description of your test
 <li>2% <em>readme</em> file (see below)</li>Provide a readme text file that 1) states your team name and members, 2) chosen managers, 3) describes the organization and structure of your code, 4) describes how the graders will execute your application, and 5) clearly indicates which team member contributed to each part of the solution (<em>only indicate here work that made it to the finalsubmission</em>). Clearly indicate which team members performed testing and to which portions of the solutions. Providing a short or uninformative readmefile will result in considerable point reduction.
 </ul>
 <hr />
+
 ## Submission
 <em>Individual submission</em>: Download a peer evaluation form from yourCarmen account, print out the form, and fill out with a pen. Complete this form individually only, i.e. not as a group.Submit this form during the Final Exam. Please staple, if needed! 
 
