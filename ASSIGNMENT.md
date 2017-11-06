@@ -7,12 +7,12 @@ Complete chapters 2, 3, 5, and 6 of the textbook ("Ruby On Rails Tutorial"), Thi
 Everyone in the group **MUST** complete this part of the project **BEFORE** starting the final project. Collaboration is permitted and encouraged! You do not need to submit anything for this part of the project, but completing it as soon as possible is highly recommended as it will help in completing the second part (i.e. the final project, below).
 
 ## Final Project (Group Assignment)
-<ol>
+<ul>
 <li>Your team must meet face-to-face each week with all team members present on the agreed upon day and time your team members indicated to me in your Project #1 submission. </li>
 <li>Your team should have additional face-to-face meetings. You should also determine additional channels of communication with team members since you will need to integrate your work with others. </li>
 <li> Your team should plan and allocate time to integrate your work well before the deadline. I suggest that the team work with the overall project manager to set team deadlines early so that all team members know the status of everyone's work. Create a schedule that all team members can agree to adhere to and work to achieve towards. </li>
 <li>Use your team's private repository on Github to help manage the development of your team's solution. We will provide this private repository for your team in our GitHub organization called cse3901-osu-2017au.</li>
-</ol>
+</ul>
 Your team will design, develop, and document a web application using Ruby on Rails for the project idea that was approved by the instructor.
 
 Choose project managers playing the same roles as we defined in previous projects, i.e. overall, documentation, and testing.
