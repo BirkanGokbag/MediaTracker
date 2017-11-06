@@ -2,7 +2,7 @@
 
 ## Individual Assignment (Ruby on Rails Tutorial)
 
-Complete chapters 2, 3, 5, and 6 of the textbook ("Ruby On Rails Tutorial"), Third Edition. Ideally, you would try the main bits of chapters 7 and 8 too, if time permits.
+Complete chapters 2, 3, 5, and 6 of the textbook ("Ruby On Rails Tutorial"), Third Edition. Ideally, you would try the main bits of chapters 7 and 8 too, if time permits. You must also study all of the lecture notes on MVC and Rails presented in class.
 
 Everyone in the group **MUST** complete this part of the project **BEFORE** starting the final project. Collaboration is permitted and encouraged! You do not need to submit anything for this part of the project, but completing it as soon as possible is highly recommended as it will help in completing the second part (i.e. the final project, below).
 
@@ -28,7 +28,9 @@ You must test and document your solution well. I suggest using a Ruby testing fr
 ## Grading
 
 * 68% Implementation
-Your work (well **documented** and **tested** source code) will be retrieved by the graders from your team's Git repository on Github under the course's organization cse3901-osu-2015au. All team member's work must eventually be merged into a final committed version in the private repository.
+Your work (well **documented** and **tested** source code) will be retrieved by the graders from your team's Git repository on Github under the course's organization cse3901-osu-2017au. All team member's work must eventually be merged into a final committed version in the private repository.
+
+Use this link to view [guidelines](http://web.cse.ohio-state.edu/~shareef.1/3901.au17/labs/GradingGuidelines.pdf) when your group is formulating its solution. Though, this is not the finalized grading template that the graders will use.
 
 * 10% Presentation
 Your presentation should describe the features from an end-user perspective, but should focus on the technical details of the design of your application from an implementer's perspective (database schemas, architecture, etc).
