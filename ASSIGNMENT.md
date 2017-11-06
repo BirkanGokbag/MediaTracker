@@ -6,20 +6,24 @@ Complete chapters 2, 3, 5, and 6 of the textbook ("Ruby On Rails Tutorial"), Thi
 
 Everyone in the group **MUST** complete this part of the project **BEFORE** starting the final project. Collaboration is permitted and encouraged! You do not need to submit anything for this part of the project, but completing it as soon as possible is highly recommended as it will help in completing the second part (i.e. the final project, below).
 
-## Group Assignment (Final Project)
-
+## Final Project (Group Assignment)
+<ol>
+<li>Your team must meet face-to-face each week with all team members present on the agreed upon day and time your team members indicated to me in your Project #1 submission. </li>
+<li>Your team should have additional face-to-face meetings. You should also determine additional channels of communication with team members since you will need to integrate your work with others. </li>
+<li> Your team should plan and allocate time to integrate your work well before the deadline. I suggest that the team work with the overall project manager to set team deadlines early so that all team members know the status of everyone's work. Create a schedule that all team members can agree to adhere to and work to achieve towards. </li>
+<li>Use your team's private repository on Github to help manage the development of your team's solution. We will provide this private repository for your team in our GitHub organization called cse3901-osu-2017au.</li>
+</ol>
 Your team will design, develop, and document a web application using Ruby on Rails for the project idea that was approved by the instructor.
 
 Choose project managers playing the same roles as we defined in previous projects, i.e. overall, documentation, and testing.
 
-**ALL team members are required to write Ruby/Rails code** that is submitted in the final solution. **All team members are required to write some portion of the controller.** Your solution must have a strong model component with a database that contains multiple tables and relationships between them.
+**ALL team members are required to write Ruby/Rails code** that is submitted in the final solution. **All team members are required to write some portion of the controller** where the workload here is divided evenly. Your solution must have a strong model component with a database that contains multiple tables and relationships between them.
 
 Your solution **must be equally partitioned** between the team members (you will indicate this partitioning in your well documented code and readme file - see below). Your final grade will be based on how well you equally partition this work.
 
 In addition, you should use as many technologies and frameworks as you like to help you develop your web application. Though, remember that your solution must be a Rails implementation. You may find that you want to use some of the technologies and frameworks you learned about in the Tech Task 1 talks. Clearly state in your readme file about all of the technologies and frameworks in your Final Project presentation as this will greatly help with receiving a high score on this assignment.
 
-
-You must test and document your solution well. I suggest using a Ruby testing framework such as Minitest or RSpec.
+You must test and document your solution well. I suggest using a Ruby testing framework such as JUnit or RSpec.
 
 ## Grading
 
