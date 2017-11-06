@@ -37,7 +37,7 @@ Your presentation should describethe features from an end-user perspective, but 
 <li>10% Balanced work load</li>
 Graders will determine the work load balance of your group work by using Git and Github repository analytics and documentation.In order to receive the full 10% of this portion of your grade, your team must show to the graders that work was equally balanced between the team members. Thus, your team must make a conscious effort to show Git and Github activity by all team members.In addition, your team must clearly document individual contributions in your documentation (see below) throughout thedevelopment of your solution. Activity that indicates only one or two members submitting work will result in a reduction in points.
 
-<pre><code>If team members develop source code in a <a href="http://en.wikipedia.org/wiki/Pair_programming">Pair Programming</a>scenario
+<pre><code>If team members develop source code in a <a href="http://en.wikipedia.org/wiki/Pair_programming">Pair Programming</a> scenario
 then documentation must clearly indicate only contributions from team member(s) who <em>substantially</em> contributed to the source
 code. Making minor changes to code or suggestions while watching someone else write code does not count as <em>substantial</em>
 contributions and this team member should not be indicated as a contributor. If one team member contributed more than the other team
