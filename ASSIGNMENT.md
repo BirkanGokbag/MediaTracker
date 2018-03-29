@@ -1,5 +1,7 @@
 # Project 6: Ruby on Rails Project
 
+See the course website for the complete description of the assignment.
+
 ## Individual Assignment (Ruby on Rails Tutorial)
 
 Complete chapters 2, 3, 5, and 6 of the textbook ("Ruby On Rails Tutorial"), Third Edition. Ideally, you would try the main bits of chapters 7 and 8 too, if time permits. You must also study all of the lecture notes on MVC and Rails presented in class.
@@ -11,7 +13,7 @@ Everyone in the group **MUST** complete this part of the project **BEFORE** star
 <li>Your team must meet face-to-face each week with all team members present on the agreed upon day and time your team members indicated to me in your Project #1 submission. </li>
 <li>Your team should have additional face-to-face meetings. You should also determine additional channels of communication with team members since you will need to integrate your work with others. </li>
 <li> Your team should plan and allocate time to integrate your work well before the deadline. I suggest that the team work with the overall project manager to set team deadlines early so that all team members know the status of everyone's work. Create a schedule that all team members can agree to adhere to and work to achieve towards. </li>
-<li>Use your team's private repository on Github to help manage the development of your team's solution. We will provide this private repository for your team in our GitHub organization called cse3901-osu-2017au.</li>
+<li>Use your team's private repository on Github to help manage the development of your team's solution. We will provide this private repository for your team in our GitHub organization called cse3901-osu-2018sp.</li>
 </ul>
 Your team will design, develop, and document a web application using Ruby on Rails for the project idea that was approved by the instructor.
 
@@ -27,7 +29,7 @@ You must test and document your solution well. I suggest using a Ruby testing fr
 
 ## Grading
 <ul><li>68% Implementation</li>
-Your work (well <strong>documented</strong> and <strong>tested</strong> source code) will be retrieved by the graders from your team's Git repository on Github under the course's organization cse3901-osu-2017au. All team member's work must eventually be merged into a final committed version in the private repository.
+Your work (well <strong>documented</strong> and <strong>tested</strong> source code) will be retrieved by the graders from your team's Git repository on Github under the course's organization cse3901-osu-2018sp. All team member's work must eventually be merged into a final committed version in the private repository.
 
 Use this link to view <a href="GradingGuidelines.pdf">guidelines</a> when your group is formulating its solution. Though, this is notthe finalized grading template that the graders will use.
 
@@ -70,7 +72,7 @@ At a minimum, your team must provide the graders with a description of your test
 ## Submission
 <em>Individual submission</em>: Download a peer evaluation form from yourCarmen account, print out the form, and fill out with a pen. Complete this form individually only, i.e. not as a group.Submit this form during the Final Exam. Please staple, if needed! 
 
-<em>Group submission</em>: The graders will retrieve your work (<em>readme</em> plus your solution) from your team's Github private repository provided for you under the course's organization cse3901-osu-2017au. All team member's work must eventually be merged into a final committed version in Git. The <em>readme</em>  contains the names of each project manager and states what each team member <em>specifically</em> contributed to the final submission. <em>For the latter, only report on contributions that made it into to the final solution</em>. Clearly indicate which team members performed testing and to which portions of the solutions. Also include any instructions to the grader as to how to execute the code.
+<em>Group submission</em>: The graders will retrieve your work (<em>readme</em> plus your solution) from your team's Github private repository provided for you under the course's organization cse3901-osu-2018sp. All team member's work must eventually be merged into a final committed version in Git. The <em>readme</em>  contains the names of each project manager and states what each team member <em>specifically</em> contributed to the final submission. <em>For the latter, only report on contributions that made it into to the final solution</em>. Clearly indicate which team members performed testing and to which portions of the solutions. Also include any instructions to the grader as to how to execute the code.
 
 You will submit your project by simplycreating a git <em>tag</em> called "submission" and then pushingthis new tag to your shared repository. (A tag is basicallyan immutable branch.)
 
