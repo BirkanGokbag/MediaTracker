@@ -1,6 +1,6 @@
 # Project 6: Ruby on Rails Project
 
-See the course website for the complete description of the assignment.
+SEE THE COMPLETE ASSIGNMENT DESCRIPTION ON THE COURSE WEB PAGE. This is only a summary!
 
 ## Individual Assignment (Ruby on Rails Tutorial)
 
@@ -13,7 +13,7 @@ Everyone in the group **MUST** complete this part of the project **BEFORE** star
 <li>Your team must meet face-to-face each week with all team members present on the agreed upon day and time your team members indicated to me in your Project #1 submission. </li>
 <li>Your team should have additional face-to-face meetings. You should also determine additional channels of communication with team members since you will need to integrate your work with others. </li>
 <li> Your team should plan and allocate time to integrate your work well before the deadline. I suggest that the team work with the overall project manager to set team deadlines early so that all team members know the status of everyone's work. Create a schedule that all team members can agree to adhere to and work to achieve towards. </li>
-<li>Use your team's private repository on Github to help manage the development of your team's solution. We will provide this private repository for your team in our GitHub organization called cse3901-osu-2018su.</li>
+<li>Use your team's private repository on Github to help manage the development of your team's solution. We will provide this private repository for your team in our GitHub organization called cse3901-osu-2018au.</li>
 </ul>
 Your team will design, develop, and document a web application using Ruby on Rails for the project idea that was approved by the instructor.
 
@@ -29,7 +29,7 @@ You must test and document your solution well. I suggest using a Ruby testing fr
 
 ## Grading
 <ul><li>68% Implementation</li>
-Your work (well <strong>documented</strong> and <strong>tested</strong> source code) will be retrieved by the graders from your team's Git repository on Github under the course's organization cse3901-osu-2018su. All team member's work must eventually be merged into a final committed version in the private repository.
+Your work (well <strong>documented</strong> and <strong>tested</strong> source code) will be retrieved by the graders from your team's Git repository on Github under the course's organization cse3901-osu-2018au. All team member's work must eventually be merged into a final committed version in the private repository.
 
 Use this link to view <a href="GradingGuidelines.pdf">guidelines</a> when your group is formulating its solution. Though, this is notthe finalized grading template that the graders will use.
 
