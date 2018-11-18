@@ -1,10 +1,11 @@
+<div id="deviseForms">
+
 <h2>Sign up Dawg</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
-
-  <div class="field">
+   <div class="field">
     <p><%= f.label :username %><br />
     <%= f.text_field :username, autofocus: true %></p>
   </div>
@@ -12,6 +13,21 @@
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+   <div class="field">
+    <p><%= f.label :first_name %><br />
+    <%= f.text_field :first_name, autofocus: true %></p>
+  </div>
+  
+  <div class="field">
+    <p><%= f.label :last_name %><br />
+    <%= f.text_field :last_name, autofocus: true %></p>
+  </div>
+
+  <div class="field">
+    <p><%= f.label :gender %><br />
+    <%= f.select :gender, [['Female'],['Male'],['Other']] %></p>
   </div>
 
   <div class="field">
@@ -33,6 +49,10 @@
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
+
+
 <% end %>
 
 <%= render "devise/shared/links" %>
+
+</div>
