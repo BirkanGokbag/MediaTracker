@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181119222127) do
+ActiveRecord::Schema.define(version: 20181119225558) do
 
   create_table "books", force: :cascade do |t|
     t.string "author"
@@ -30,8 +30,8 @@ ActiveRecord::Schema.define(version: 20181119222127) do
   end
 
   create_table "followers", force: :cascade do |t|
-    t.string "user"
-    t.string "fTarget"
+    t.integer "user"
+    t.integer "fTarget"
   end
 
   create_table "general_medias", force: :cascade do |t|
