@@ -7,4 +7,6 @@ class User < ApplicationRecord
 
   validates :username, uniqueness: true
 
+  self.primary_key = :username
+
 end

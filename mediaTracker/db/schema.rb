@@ -10,7 +10,67 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181118204348) do
+ActiveRecord::Schema.define(version: 20181119213101) do
+
+  create_table "books", force: :cascade do |t|
+    t.string "author"
+  end
+
+  create_table "custom_media_entries", force: :cascade do |t|
+    t.string "key"
+    t.string "value"
+  end
+
+  create_table "custom_medias", force: :cascade do |t|
+    t.string "type"
+  end
+
+  create_table "followers", force: :cascade do |t|
+  end
+
+  create_table "general_medias", force: :cascade do |t|
+    t.string "name"
+  end
+
+  create_table "history_logs", force: :cascade do |t|
+    t.string "historyMessage"
+  end
+
+  create_table "magazines", force: :cascade do |t|
+    t.integer "issue"
+  end
+
+  create_table "movies", force: :cascade do |t|
+    t.string "director"
+  end
+
+  create_table "musics", force: :cascade do |t|
+    t.string "artist"
+    t.string "album"
+  end
+
+  create_table "personal_media_parameters", force: :cascade do |t|
+    t.integer "score"
+    t.string "currentStatus"
+    t.boolean "favorite"
+    t.text "comments"
+    t.string "source"
+    t.integer "replay"
+  end
+
+  create_table "preferences", force: :cascade do |t|
+    t.binary "wallpaper"
+    t.integer "fontSize"
+    t.string "font"
+    t.binary "profilePicture"
+    t.boolean "privacy"
+    t.string "fontColor"
+  end
+
+  create_table "tv_shows", force: :cascade do |t|
+    t.integer "numberOfSeasons"
+    t.integer "totalEpisodes"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -28,6 +88,11 @@ ActiveRecord::Schema.define(version: 20181118204348) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
+  end
+
+  create_table "video_games", force: :cascade do |t|
+    t.string "studio"
+    t.string "system"
   end
 
 end
