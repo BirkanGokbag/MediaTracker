@@ -9,4 +9,7 @@ class User < ApplicationRecord
 
   self.primary_key = :username
 
+
+  #Set up table association
+  has_one :preference, dependent: :destroy
 end

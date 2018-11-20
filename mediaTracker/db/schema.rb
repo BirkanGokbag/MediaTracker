@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181119225558) do
+ActiveRecord::Schema.define(version: 20181120042552) do
 
   create_table "books", force: :cascade do |t|
     t.string "author"
@@ -36,11 +36,15 @@ ActiveRecord::Schema.define(version: 20181119225558) do
 
   create_table "general_medias", force: :cascade do |t|
     t.string "name"
+    t.date "created_at"
+    t.date "updated_at"
   end
 
   create_table "history_logs", force: :cascade do |t|
     t.string "historyMessage"
     t.integer "users_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.index ["users_id"], name: "index_history_logs_on_users_id"
   end
 
@@ -72,6 +76,8 @@ ActiveRecord::Schema.define(version: 20181119225558) do
     t.integer "replay"
     t.integer "users_id"
     t.integer "general_medias_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.index ["general_medias_id"], name: "index_personal_media_parameters_on_general_medias_id"
     t.index ["users_id"], name: "index_personal_media_parameters_on_users_id"
   end
