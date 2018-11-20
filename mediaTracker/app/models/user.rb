@@ -12,4 +12,5 @@ class User < ApplicationRecord
 
   #Set up table association
   has_one :preference, dependent: :destroy
+  has_many :history_logs, dependent: :destroy
 end
