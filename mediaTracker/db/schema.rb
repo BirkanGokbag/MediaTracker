@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20181120042552) do
 
   create_table "general_medias", force: :cascade do |t|
     t.string "name"
+    t.datetime "timeStamp"
     t.date "created_at"
     t.date "updated_at"
   end
@@ -113,6 +114,9 @@ ActiveRecord::Schema.define(version: 20181120042552) do
     t.string "last_name"
     t.string "gender"
     t.datetime "last_log_on"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
   create_table "video_games", force: :cascade do |t|
