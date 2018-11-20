@@ -1,0 +1,2 @@
+class CustomMediaEntry < ApplicationRecord
+end

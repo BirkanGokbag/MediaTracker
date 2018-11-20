@@ -1,0 +1,32 @@
+<%= form_with(model: tv_show, local: true) do |form| %>
+  <% if tv_show.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(tv_show.errors.count, "error") %> prohibited this tv_show from being saved:</h2>
+
+      <ul>
+      <% tv_show.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :numberOfSeasons %>
+    <%= form.number_field :numberOfSeasons, id: :tv_show_numberOfSeasons %>
+  </div>
+
+  <div class="field">
+    <%= form.label :totalEpisodes %>
+    <%= form.number_field :totalEpisodes, id: :tv_show_totalEpisodes %>
+  </div>
+
+  <div class="field">
+    <%= form.label :general_medias_id %>
+    <%= form.text_field :general_medias_id, id: :tv_show_general_medias_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

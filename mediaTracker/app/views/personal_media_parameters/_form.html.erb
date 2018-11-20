@@ -1,0 +1,57 @@
+<%= form_with(model: personal_media_parameter, local: true) do |form| %>
+  <% if personal_media_parameter.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(personal_media_parameter.errors.count, "error") %> prohibited this personal_media_parameter from being saved:</h2>
+
+      <ul>
+      <% personal_media_parameter.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :score %>
+    <%= form.number_field :score, id: :personal_media_parameter_score %>
+  </div>
+
+  <div class="field">
+    <%= form.label :currentStatus %>
+    <%= form.text_field :currentStatus, id: :personal_media_parameter_currentStatus %>
+  </div>
+
+  <div class="field">
+    <%= form.label :favorite %>
+    <%= form.check_box :favorite, id: :personal_media_parameter_favorite %>
+  </div>
+
+  <div class="field">
+    <%= form.label :comments %>
+    <%= form.text_area :comments, id: :personal_media_parameter_comments %>
+  </div>
+
+  <div class="field">
+    <%= form.label :source %>
+    <%= form.text_field :source, id: :personal_media_parameter_source %>
+  </div>
+
+  <div class="field">
+    <%= form.label :replay %>
+    <%= form.number_field :replay, id: :personal_media_parameter_replay %>
+  </div>
+
+  <div class="field">
+    <%= form.label :users_id %>
+    <%= form.text_field :users_id, id: :personal_media_parameter_users_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :general_medias_id %>
+    <%= form.text_field :general_medias_id, id: :personal_media_parameter_general_medias_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

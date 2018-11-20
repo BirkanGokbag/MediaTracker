@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Custom Media Entries</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Key</th>
+      <th>Value</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @custom_media_entries.each do |custom_media_entry| %>
+      <tr>
+        <td><%= custom_media_entry.key %></td>
+        <td><%= custom_media_entry.value %></td>
+        <td><%= link_to 'Show', custom_media_entry %></td>
+        <td><%= link_to 'Edit', edit_custom_media_entry_path(custom_media_entry) %></td>
+        <td><%= link_to 'Destroy', custom_media_entry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Custom Media Entry', new_custom_media_entry_path %>

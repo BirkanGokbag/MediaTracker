@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Historymessage:</strong>
+  <%= @history_log.historyMessage %>
+</p>
+
+<p>
+  <strong>Users:</strong>
+  <%= @history_log.users %>
+</p>
+
+<%= link_to 'Edit', edit_history_log_path(@history_log) %> |
+<%= link_to 'Back', history_logs_path %>

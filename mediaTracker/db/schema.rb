@@ -94,8 +94,7 @@ ActiveRecord::Schema.define(version: 20181119225558) do
     t.index ["general_medias_id"], name: "index_tv_shows_on_general_medias_id"
   end
 
-  create_table "users", primary_key: "username", id: :string, force: :cascade do |t|
-    t.integer "id", null: false
+  create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -103,11 +102,11 @@ ActiveRecord::Schema.define(version: 20181119225558) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "username"
     t.string "first_name"
     t.string "last_name"
     t.string "gender"
     t.datetime "last_log_on"
-    t.index ["username"], name: "sqlite_autoindex_users_1", unique: true
   end
 
   create_table "video_games", force: :cascade do |t|

@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>General Media</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @general_media.each do |general_medium| %>
+      <tr>
+        <td><%= general_medium.name %></td>
+        <td><%= link_to 'Show', general_medium %></td>
+        <td><%= link_to 'Edit', edit_general_medium_path(general_medium) %></td>
+        <td><%= link_to 'Destroy', general_medium, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New General Medium', new_general_medium_path %>

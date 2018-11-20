@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Issue:</strong>
+  <%= @magazine.issue %>
+</p>
+
+<p>
+  <strong>General medias:</strong>
+  <%= @magazine.general_medias %>
+</p>
+
+<%= link_to 'Edit', edit_magazine_path(@magazine) %> |
+<%= link_to 'Back', magazines_path %>

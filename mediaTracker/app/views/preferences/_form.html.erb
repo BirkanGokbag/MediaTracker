@@ -1,0 +1,52 @@
+<%= form_with(model: preference, local: true) do |form| %>
+  <% if preference.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(preference.errors.count, "error") %> prohibited this preference from being saved:</h2>
+
+      <ul>
+      <% preference.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :wallpaper %>
+    <%= form.text_field :wallpaper, id: :preference_wallpaper %>
+  </div>
+
+  <div class="field">
+    <%= form.label :fontSize %>
+    <%= form.number_field :fontSize, id: :preference_fontSize %>
+  </div>
+
+  <div class="field">
+    <%= form.label :font %>
+    <%= form.text_field :font, id: :preference_font %>
+  </div>
+
+  <div class="field">
+    <%= form.label :profilePicture %>
+    <%= form.text_field :profilePicture, id: :preference_profilePicture %>
+  </div>
+
+  <div class="field">
+    <%= form.label :privacy %>
+    <%= form.check_box :privacy, id: :preference_privacy %>
+  </div>
+
+  <div class="field">
+    <%= form.label :fontColor %>
+    <%= form.text_field :fontColor, id: :preference_fontColor %>
+  </div>
+
+  <div class="field">
+    <%= form.label :users_id %>
+    <%= form.text_field :users_id, id: :preference_users_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

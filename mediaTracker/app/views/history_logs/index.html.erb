@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>History Logs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Historymessage</th>
+      <th>Users</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @history_logs.each do |history_log| %>
+      <tr>
+        <td><%= history_log.historyMessage %></td>
+        <td><%= history_log.users %></td>
+        <td><%= link_to 'Show', history_log %></td>
+        <td><%= link_to 'Edit', edit_history_log_path(history_log) %></td>
+        <td><%= link_to 'Destroy', history_log, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New History Log', new_history_log_path %>

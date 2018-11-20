@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Numberofseasons:</strong>
+  <%= @tv_show.numberOfSeasons %>
+</p>
+
+<p>
+  <strong>Totalepisodes:</strong>
+  <%= @tv_show.totalEpisodes %>
+</p>
+
+<p>
+  <strong>General medias:</strong>
+  <%= @tv_show.general_medias %>
+</p>
+
+<%= link_to 'Edit', edit_tv_show_path(@tv_show) %> |
+<%= link_to 'Back', tv_shows_path %>

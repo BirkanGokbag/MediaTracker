@@ -1,0 +1,22 @@
+<%= form_with(model: general_medium, local: true) do |form| %>
+  <% if general_medium.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(general_medium.errors.count, "error") %> prohibited this general_medium from being saved:</h2>
+
+      <ul>
+      <% general_medium.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :general_medium_name %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

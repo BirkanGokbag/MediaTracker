@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Video Games</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Studio</th>
+      <th>System</th>
+      <th>General medias</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @video_games.each do |video_game| %>
+      <tr>
+        <td><%= video_game.studio %></td>
+        <td><%= video_game.system %></td>
+        <td><%= video_game.general_medias %></td>
+        <td><%= link_to 'Show', video_game %></td>
+        <td><%= link_to 'Edit', edit_video_game_path(video_game) %></td>
+        <td><%= link_to 'Destroy', video_game, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Video Game', new_video_game_path %>

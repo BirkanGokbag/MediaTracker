@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  director: MyString
+  general_medias: one
+
+two:
+  director: MyString
+  general_medias: two

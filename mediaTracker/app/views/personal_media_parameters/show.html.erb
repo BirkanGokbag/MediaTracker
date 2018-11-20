@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Score:</strong>
+  <%= @personal_media_parameter.score %>
+</p>
+
+<p>
+  <strong>Currentstatus:</strong>
+  <%= @personal_media_parameter.currentStatus %>
+</p>
+
+<p>
+  <strong>Favorite:</strong>
+  <%= @personal_media_parameter.favorite %>
+</p>
+
+<p>
+  <strong>Comments:</strong>
+  <%= @personal_media_parameter.comments %>
+</p>
+
+<p>
+  <strong>Source:</strong>
+  <%= @personal_media_parameter.source %>
+</p>
+
+<p>
+  <strong>Replay:</strong>
+  <%= @personal_media_parameter.replay %>
+</p>
+
+<p>
+  <strong>Users:</strong>
+  <%= @personal_media_parameter.users %>
+</p>
+
+<p>
+  <strong>General medias:</strong>
+  <%= @personal_media_parameter.general_medias %>
+</p>
+
+<%= link_to 'Edit', edit_personal_media_parameter_path(@personal_media_parameter) %> |
+<%= link_to 'Back', personal_media_parameters_path %>

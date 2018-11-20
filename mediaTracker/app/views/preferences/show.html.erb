@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Wallpaper:</strong>
+  <%= @preference.wallpaper %>
+</p>
+
+<p>
+  <strong>Fontsize:</strong>
+  <%= @preference.fontSize %>
+</p>
+
+<p>
+  <strong>Font:</strong>
+  <%= @preference.font %>
+</p>
+
+<p>
+  <strong>Profilepicture:</strong>
+  <%= @preference.profilePicture %>
+</p>
+
+<p>
+  <strong>Privacy:</strong>
+  <%= @preference.privacy %>
+</p>
+
+<p>
+  <strong>Fontcolor:</strong>
+  <%= @preference.fontColor %>
+</p>
+
+<p>
+  <strong>Users:</strong>
+  <%= @preference.users %>
+</p>
+
+<%= link_to 'Edit', edit_preference_path(@preference) %> |
+<%= link_to 'Back', preferences_path %>

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  numberOfSeasons: 1
+  totalEpisodes: 1
+  general_medias: one
+
+two:
+  numberOfSeasons: 1
+  totalEpisodes: 1
+  general_medias: two

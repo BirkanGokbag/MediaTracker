@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  wallpaper: 
+  fontSize: 1
+  font: MyString
+  profilePicture: 
+  privacy: false
+  fontColor: MyString
+  users: one
+
+two:
+  wallpaper: 
+  fontSize: 1
+  font: MyString
+  profilePicture: 
+  privacy: false
+  fontColor: MyString
+  users: two

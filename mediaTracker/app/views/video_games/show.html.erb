@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Studio:</strong>
+  <%= @video_game.studio %>
+</p>
+
+<p>
+  <strong>System:</strong>
+  <%= @video_game.system %>
+</p>
+
+<p>
+  <strong>General medias:</strong>
+  <%= @video_game.general_medias %>
+</p>
+
+<%= link_to 'Edit', edit_video_game_path(@video_game) %> |
+<%= link_to 'Back', video_games_path %>

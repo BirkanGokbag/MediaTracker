@@ -1,0 +1,2 @@
+class GeneralMedium < ApplicationRecord
+end

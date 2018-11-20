@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Personal Media Parameters</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Score</th>
+      <th>Currentstatus</th>
+      <th>Favorite</th>
+      <th>Comments</th>
+      <th>Source</th>
+      <th>Replay</th>
+      <th>Users</th>
+      <th>General medias</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @personal_media_parameters.each do |personal_media_parameter| %>
+      <tr>
+        <td><%= personal_media_parameter.score %></td>
+        <td><%= personal_media_parameter.currentStatus %></td>
+        <td><%= personal_media_parameter.favorite %></td>
+        <td><%= personal_media_parameter.comments %></td>
+        <td><%= personal_media_parameter.source %></td>
+        <td><%= personal_media_parameter.replay %></td>
+        <td><%= personal_media_parameter.users %></td>
+        <td><%= personal_media_parameter.general_medias %></td>
+        <td><%= link_to 'Show', personal_media_parameter %></td>
+        <td><%= link_to 'Edit', edit_personal_media_parameter_path(personal_media_parameter) %></td>
+        <td><%= link_to 'Destroy', personal_media_parameter, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Personal Media Parameter', new_personal_media_parameter_path %>
