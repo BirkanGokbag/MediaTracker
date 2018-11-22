@@ -9,20 +9,24 @@ body{
 h1{
   padding:3%;
   color:white;
+  margin:1%;
+  font-family:Arial;
+  font-size:400%;
 }
 h3{
   background-color:#1B222F;
   color:white;
-  padding:2%;
-  margin:2%;
+  padding:2.5%;
+  margin:2.5%;
   border-radius: 0.5em;
+  font-size:150%;
 }
 #mainArea{
   vertical-align: text-top;
   display: inline-block;
   width:60%;
   background-color:#384968;
-  margin:1%;
+  margin:0.5%;
   border-radius: 0.5em;
 }
 li{
@@ -51,6 +55,6 @@ span:hover{
   display: inline-block;
   width:35%;
   background-color:#384968;
-  margin:1%;
+  margin:0.5%;
   border-radius: 0.5em;
 }
