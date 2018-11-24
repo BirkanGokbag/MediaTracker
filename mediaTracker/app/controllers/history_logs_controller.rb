@@ -1,5 +1,6 @@
 class HistoryLogsController < ApplicationController
   before_action :set_history_log, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /history_logs
   # GET /history_logs.json
@@ -14,18 +15,21 @@ class HistoryLogsController < ApplicationController
 
   # GET /history_logs/new
   def new
-    @history_log = HistoryLog.new
+    @history_log = current_user.history_logs.build
   end
 
-  # GET /history_logs/1/edit
-  def edit
-  end
 
   # POST /history_logs
   # POST /history_logs.json
   def create
-    @history_log = HistoryLog.new(history_log_params)
-
+   # @user = User.find(current_user.id)
+    #@history_log = current_user.history_logs.build(history_log_params)
+    #@history_log.users_id = current_user.id
+    @history_log = HistoryLog.new(historyMessage: history_log_params['historyMessage'], users_id: current_user.id)
+    puts @history_log.id 
+puts @history_log.historyMessage 
+puts @history_log.users_id
+    
     respond_to do |format|
       if @history_log.save
         format.html { redirect_to @history_log, notice: 'History log was successfully created.' }
@@ -37,29 +41,7 @@ class HistoryLogsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /history_logs/1
-  # PATCH/PUT /history_logs/1.json
-  def update
-    respond_to do |format|
-      if @history_log.update(history_log_params)
-        format.html { redirect_to @history_log, notice: 'History log was successfully updated.' }
-        format.json { render :show, status: :ok, location: @history_log }
-      else
-        format.html { render :edit }
-        format.json { render json: @history_log.errors, status: :unprocessable_entity }
-      end
-    end
-  end
 
-  # DELETE /history_logs/1
-  # DELETE /history_logs/1.json
-  def destroy
-    @history_log.destroy
-    respond_to do |format|
-      format.html { redirect_to history_logs_url, notice: 'History log was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
