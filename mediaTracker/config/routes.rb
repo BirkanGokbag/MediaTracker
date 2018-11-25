@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :books
   resources :video_games
   get 'static_pages/home'
-
+  get 'static_pages/addMedia'
   get 'static_pages/faq'
 
   devise_for :users

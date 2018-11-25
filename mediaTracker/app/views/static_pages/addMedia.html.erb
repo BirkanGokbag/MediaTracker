@@ -1,0 +1,209 @@
+<div id = "container">
+  <div id = "header">
+    <h1>Add Media</h1>
+  </div>
+  <div id = "main">
+    <div id = "mainArea">
+      <h3>What Media would you like to add?</h3>
+      <form>
+        <select class="form-control" id = "select_form">
+          <option disabled selected>Select An Option</option>
+          <option value="tv_form">TV Show</option>
+          <option value="music_form">Music</option>
+          <option value="movie_form">Movie</option>
+          <option value="magazine_form">Magazine</option>
+          <option value="book_form">Book</option>
+          <option value="video_game_form">Video Game</option>
+          <option value="custom_form">Custom</option>
+        </select>
+      </form>
+<!-- style = "display:none" -->
+      <form class="well form-horizontal" action="home.html" method="post" style = "display:none" name = "tv_form" id = "tv_form">
+        <label>Name of Media:</label>
+        <input type="text" placeholder = "Enter here" required>
+        <label>Enter the Score:</label>
+        <label> Score (1 to 10):</label>
+        <input type="number" min = "1" max = "10" placeholder = "1">
+        <label>Current Status:</label>
+        <input type="text" placeholder = "In Completion of This Media" required>
+        <label>Favorite:</label>
+        <input type="checkbox">
+        <label>Comments:</label>
+        <input type="text" placeholder="If you have any notes to add.">
+        <label>Source:</label>
+        <input type="text" placeholder="Enter the source of the media here">
+        <label>Replay (Are you tracking this again?):</label>
+        <input type="checkbox">
+
+        <label> Number of Seasons The Show Has:</label>
+        <input type="number" placeholder = "1" min = "1" required>
+        <label> Total Number of Episodes The Show Has:</label>
+        <input type="number" placeholder = "12" min = "1" required>
+
+        <input type="submit">
+      </form>
+      <form class="well form-horizontal" action="home.html" method="post" style = "display:none" name = "music_form" id = "music_form">
+        <label>Name of Media:</label>
+        <input type="text" placeholder = "Enter here" required>
+        <label>Enter the Score:</label>
+        <label> Score (1 to 10):</label>
+        <input type="number" min = "1" max = "10" placeholder = "1">
+        <label>Current Status:</label>
+        <input type="text" placeholder = "In Completion of This Media" required>
+        <label>Favorite:</label>
+        <input type="checkbox">
+        <label>Comments:</label>
+        <input type="text" placeholder="If you have any notes to add.">
+        <label>Source:</label>
+        <input type="text" placeholder="Enter the source of the media here">
+        <label>Replay (Are you tracking this again?):</label>
+        <input type="checkbox">
+
+        <label> Album This Song Belongs To:</label>
+        <input type="text" placeholder = "Album Name" required>
+        <label> Artist of the Song:</label>
+        <input type="text" placeholder = "Artist Name" required>
+
+        <input type="submit">
+      </form>
+      <form class="well form-horizontal" action="home.html" method="post" style = "display:none" name = "movie_form" id = "movie_form">
+        <label>Name of Media:</label>
+        <input type="text" placeholder = "Enter here" required>
+        <label>Enter the Score:</label>
+        <label> Score (1 to 10):</label>
+        <input type="number" min = "1" max = "10" placeholder = "1">
+        <label>Current Status:</label>
+        <input type="text" placeholder = "In Completion of This Media" required>
+        <label>Favorite:</label>
+        <input type="checkbox">
+        <label>Comments:</label>
+        <input type="text" placeholder="If you have any notes to add.">
+        <label>Source:</label>
+        <input type="text" placeholder="Enter the source of the media here">
+        <label>Replay (Are you tracking this again?):</label>
+        <input type="checkbox">
+
+        <label> Director:</label>
+        <input type="number" placeholder = "Director Name" required>
+
+        <input type="submit">
+      </form>
+      <form class="well form-horizontal" action="home.html" method="post" style = "display:none" name = "magazine_form" id = "magazine_form">
+        <label>Name of Media:</label>
+        <input type="text" placeholder = "Enter here" required>
+        <label>Enter the Score:</label>
+        <label> Score (1 to 10):</label>
+        <input type="number" min = "1" max = "10" placeholder = "1">
+        <label>Current Status:</label>
+        <input type="text" placeholder = "In Completion of This Media" required>
+        <label>Favorite:</label>
+        <input type="checkbox">
+        <label>Comments:</label>
+        <input type="text" placeholder="If you have any notes to add.">
+        <label>Source:</label>
+        <input type="text" placeholder="Enter the source of the media here">
+        <label>Replay (Are you tracking this again?):</label>
+        <input type="checkbox">
+
+        <label> Issue Number:</label>
+        <input type="number" placeholder = "1" min = "1" required>
+
+        <input type="submit">
+      </form>
+      <form class="well form-horizontal" action="home.html" method="post" style = "display:none" name = "book_form" id = "book_form">
+        <label>Name of Media:</label>
+        <input type="text" placeholder = "Enter here" required>
+        <label>Enter the Score:</label>
+        <label> Score (1 to 10):</label>
+        <input type="number" min = "1" max = "10" placeholder = "1">
+        <label>Current Status:</label>
+        <input type="text" placeholder = "In Completion of This Media" required>
+        <label>Favorite:</label>
+        <input type="checkbox">
+        <label>Comments:</label>
+        <input type="text" placeholder="If you have any notes to add.">
+        <label>Source:</label>
+        <input type="text" placeholder="Enter the source of the media here">
+        <label>Replay (Are you tracking this again?):</label>
+        <input type="checkbox">
+
+        <label> Author:</label>
+        <input type="text" placeholder = "Author Name" required>
+
+        <input type="submit">
+      </form>
+      <form class="well form-horizontal" action="home.html" method="post" style = "display:none" name = "video_game_form" id = "video_game_form">
+        <label>Name of Media:</label>
+        <input type="text" placeholder = "Enter here" required>
+        <label>Enter the Score:</label>
+        <label> Score (1 to 10):</label>
+        <input type="number" min = "1" max = "10" placeholder = "1">
+        <label>Current Status:</label>
+        <input type="text" placeholder = "In Completion of This Media" required>
+        <label>Favorite:</label>
+        <input type="checkbox">
+        <label>Comments:</label>
+        <input type="text" placeholder="If you have any notes to add.">
+        <label>Source:</label>
+        <input type="text" placeholder="Enter the source of the media here">
+        <label>Replay (Are you tracking this again?):</label>
+        <input type="checkbox">
+
+        <label> Studio:</label>
+        <input type="text" placeholder = "Studio Name" required>
+        <label> System:</label>
+        <input type="text" placeholder = "System Name" required>
+
+        <input type="submit">
+      </form>
+      <form class="well form-horizontal" action="home.html" method="post" style = "display:none" name = "custom_form" id = "custom_form">
+        <label> Please enter the number of custom fields would you like to add?</label>
+        <input id = "number_of_items" type="number" min = "1" max = "10" placeholder = "0">
+        <input style = "display:none" class = "1" type = "text" placeholder= "Enter Field 1">
+        <input style = "display:none" class = "1" type = "text" placeholder= "Enter Field 1 Value">
+        <input style = "display:none" class = "2" type = "text" placeholder= "Enter Field 2">
+        <input style = "display:none" class = "2" type = "text" placeholder= "Enter Field 2 Value">
+        <input style = "display:none" class = "3" type = "text" placeholder= "Enter Field 3">
+        <input style = "display:none" class = "3" type = "text" placeholder= "Enter Field 3 Value">
+        <input style = "display:none" class = "4" type = "text" placeholder= "Enter Field 4">
+        <input style = "display:none" class = "4" type = "text" placeholder= "Enter Field 4 Value">
+        <input style = "display:none"class = "5" type = "text" placeholder= "Enter Field 5">
+        <input style = "display:none" class = "5" type = "text" placeholder= "Enter Field 5 Value">
+        <input style = "display:none" class = "6" type = "text" placeholder= "Enter Field 6">
+        <input style = "display:none" class = "6" type = "text" placeholder= "Enter Field 6 Value">
+        <input style = "display:none" class = "7" type = "text" placeholder= "Enter Field 7">
+        <input style = "display:none" class = "7" type = "text" placeholder= "Enter Field 7 Value">
+        <input style = "display:none" class = "8" type = "text" placeholder= "Enter Field 8">
+        <input style = "display:none" class = "8" type = "text" placeholder= "Enter Field 8 Value">
+        <input style = "display:none" class = "9" type = "text" placeholder= "Enter Field 9">
+        <input style = "display:none" class = "9" type = "text" placeholder= "Enter Field 9 Value">
+        <input style = "display:none" class = "10" type = "text" placeholder= "Enter Field 10">
+        <input style = "display:none" class = "10" type = "text" placeholder= "Enter Field 10 Value">
+
+        <input type="submit">
+      </form>
+      <script>
+        var prev = "";
+        $("#select_form").on("change", function() {
+            //based on what is selected, only show that form
+            if (prev != 0){
+              $(prev).hide();
+            }
+            $("#" + $(this).val()).show();
+            prev = "#" + $(this).val();
+        });
+        $("#number_of_items").on("change", function() {
+            //based on what is selected, only show that form
+            var end = $(this).val();
+            var i = 0;
+            for (i = 1; i <= end; i++){
+              $("." + i).show();
+            }
+            for (i = 10; i > end; i--){
+              $("." + i).hide();
+            }
+        });
+      </script>
+    </div>
+  </div>
+</div>
