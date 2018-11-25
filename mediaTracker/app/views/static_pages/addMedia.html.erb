@@ -18,7 +18,7 @@
         </select>
       </form>
 <!-- style = "display:none" -->
-      <form class="well form-horizontal" action="home.html" method="post" style = "display:none" name = "tv_form" id = "tv_form">
+      <!-- <form class="well form-horizontal" action="/personal_media_parameters" method="post" style = "display:none" name = "tv_form" id = "tv_form">
         <label>Name of Media:</label>
         <input type="text" placeholder = "Enter here" required>
         <label>Enter the Score:</label>
@@ -29,7 +29,7 @@
         <label>Favorite:</label>
         <input type="checkbox">
         <label>Comments:</label>
-        <input type="text" placeholder="If you have any notes to add.">
+        <textarea placeholder="If you have any notes to add."></textarea>
         <label>Source:</label>
         <input type="text" placeholder="Enter the source of the media here">
         <label>Replay (Are you tracking this again?):</label>
@@ -41,8 +41,70 @@
         <input type="number" placeholder = "12" min = "1" required>
 
         <input type="submit">
-      </form>
-      <form class="well form-horizontal" action="home.html" method="post" style = "display:none" name = "music_form" id = "music_form">
+      </form> -->
+
+      <%= form_for :personal_media_parameters, :html => {:id => "tv_form", :name => "tv_form", :style => "display:none", :role => "form"} do |form| %>
+        <div class="field">
+        <%= form.label :score %>
+        <%= form.number_field :score, id: :personal_media_parameter_score %>
+        </div>
+        <div class="field">
+        <%= form.label :currentStatus %>
+        <%= form.text_field :currentStatus, id: :personal_media_parameter_currentStatus %>
+        </div>
+        <div class="field">
+        <%= form.label :favorite %>
+        <%= form.check_box :favorite, id: :personal_media_parameter_favorite %>
+        </div>
+        <div class="field">
+        <%= form.label :comments %>
+        <%= form.text_area :comments, id: :personal_media_parameter_comments %>
+        </div>
+        <div class="field">
+        <%= form.label :source %>
+        <%= form.text_field :source, id: :personal_media_parameter_source %>
+        </div>
+        <div class="field">
+        <%= form.label :replay %>
+        <%= form.number_field :replay, id: :personal_media_parameter_replay %>
+        </div>
+
+
+        <div style = "display:hidden">
+          <%= form.label :users_id %>
+          <%= form.text_field :users_id, id: :personal_media_parameter_users_id, :value => session[:current_user_id] %>
+        </div>
+        <!-- <div class = "display:hidden">
+          </%= form.label :general_medias_id %>
+          </%= form.text_field :general_medias_id, id: :personal_media_parameter_general_medias_id %>
+        </div> -->
+
+          <%= form.fields_for :tv_shows do |f| %>
+          <div class="field">
+            <%= f.label :numberOfSeasons %>
+            <%= f.number_field :numberOfSeasons, id: :tv_show_numberOfSeasons %>
+          </div>
+          <div class="field">
+            <%= f.label :totalEpisodes %>
+            <%= f.number_field :totalEpisodes, id: :tv_show_totalEpisodes %>
+          </div>
+          <!--
+          <div class="field">
+            </%= form.label :general_medias_id %>
+            </%= form.text_field :general_medias_id, id: :personal_media_parameter_general_medias_id %>
+          </div> -->
+          <% end %>
+
+        <div class="actions">
+        <%= form.submit %>
+        </div>
+
+      <% end %>
+
+
+
+
+      <!-- <form class="well form-horizontal" action="../personal_media_parameters" method="post" style = "display:none" name = "music_form" id = "music_form">
         <label>Name of Media:</label>
         <input type="text" placeholder = "Enter here" required>
         <label>Enter the Score:</label>
@@ -53,7 +115,7 @@
         <label>Favorite:</label>
         <input type="checkbox">
         <label>Comments:</label>
-        <input type="text" placeholder="If you have any notes to add.">
+        <textarea placeholder="If you have any notes to add."></textarea>
         <label>Source:</label>
         <input type="text" placeholder="Enter the source of the media here">
         <label>Replay (Are you tracking this again?):</label>
@@ -65,8 +127,67 @@
         <input type="text" placeholder = "Artist Name" required>
 
         <input type="submit">
-      </form>
-      <form class="well form-horizontal" action="home.html" method="post" style = "display:none" name = "movie_form" id = "movie_form">
+      </form>-->
+
+      <%= form_for :personal_media_parameters, :html => {:id => "music_form", :name => "music_form", :style => "display:none", :role => "form"} do |form| %>
+        <div class="field">
+        <%= form.label :score %>
+        <%= form.number_field :score, id: :personal_media_parameter_score %>
+        </div>
+        <div class="field">
+        <%= form.label :currentStatus %>
+        <%= form.text_field :currentStatus, id: :personal_media_parameter_currentStatus %>
+        </div>
+        <div class="field">
+        <%= form.label :favorite %>
+        <%= form.check_box :favorite, id: :personal_media_parameter_favorite %>
+        </div>
+        <div class="field">
+        <%= form.label :comments %>
+        <%= form.text_area :comments, id: :personal_media_parameter_comments %>
+        </div>
+        <div class="field">
+        <%= form.label :source %>
+        <%= form.text_field :source, id: :personal_media_parameter_source %>
+        </div>
+        <div class="field">
+        <%= form.label :replay %>
+        <%= form.number_field :replay, id: :personal_media_parameter_replay %>
+        </div>
+
+
+        <div style = "display:hidden">
+          <%= form.label :users_id %>
+          <%= form.text_field :users_id, id: :personal_media_parameter_users_id, :value => session[:current_user_id] %>
+        </div>
+        <!-- <div class = "display:hidden">
+          </%= form.label :general_medias_id %>
+          </%= form.text_field :general_medias_id, id: :personal_media_parameter_general_medias_id %>
+        </div> -->
+
+          <%= form.fields_for :musics do |f| %>
+          <div class="field">
+            <%= f.label :artist %>
+            <%= f.number_field :artist, id: :music_artist %>
+          </div>
+          <div class="field">
+            <%= f.label :album %>
+            <%= f.number_field :album, id: :music_album %>
+          </div>
+          <!--
+          <div class="field">
+            </%= form.label :general_medias_id %>
+            </%= form.text_field :general_medias_id, id: :personal_media_parameter_general_medias_id %>
+          </div> -->
+          <% end %>
+
+        <div class="actions">
+        <%= form.submit %>
+        </div>
+
+      <% end %>
+
+      <!--<form class="well form-horizontal" action="../personal_media_parameters" method="post" style = "display:none" name = "movie_form" id = "movie_form">
         <label>Name of Media:</label>
         <input type="text" placeholder = "Enter here" required>
         <label>Enter the Score:</label>
@@ -77,7 +198,7 @@
         <label>Favorite:</label>
         <input type="checkbox">
         <label>Comments:</label>
-        <input type="text" placeholder="If you have any notes to add.">
+        <textarea placeholder="If you have any notes to add."></textarea>
         <label>Source:</label>
         <input type="text" placeholder="Enter the source of the media here">
         <label>Replay (Are you tracking this again?):</label>
@@ -87,8 +208,63 @@
         <input type="number" placeholder = "Director Name" required>
 
         <input type="submit">
-      </form>
-      <form class="well form-horizontal" action="home.html" method="post" style = "display:none" name = "magazine_form" id = "magazine_form">
+      </form> -->
+
+      <%= form_for :personal_media_parameters, :html => {:id => "movie_form", :name => "movie_form", :style => "display:none", :role => "form"} do |form| %>
+        <div class="field">
+        <%= form.label :score %>
+        <%= form.number_field :score, id: :personal_media_parameter_score %>
+        </div>
+        <div class="field">
+        <%= form.label :currentStatus %>
+        <%= form.text_field :currentStatus, id: :personal_media_parameter_currentStatus %>
+        </div>
+        <div class="field">
+        <%= form.label :favorite %>
+        <%= form.check_box :favorite, id: :personal_media_parameter_favorite %>
+        </div>
+        <div class="field">
+        <%= form.label :comments %>
+        <%= form.text_area :comments, id: :personal_media_parameter_comments %>
+        </div>
+        <div class="field">
+        <%= form.label :source %>
+        <%= form.text_field :source, id: :personal_media_parameter_source %>
+        </div>
+        <div class="field">
+        <%= form.label :replay %>
+        <%= form.number_field :replay, id: :personal_media_parameter_replay %>
+        </div>
+
+
+        <div style = "display:hidden">
+          <%= form.label :users_id %>
+          <%= form.text_field :users_id, id: :personal_media_parameter_users_id, :value => session[:current_user_id] %>
+        </div>
+        <!-- <div class = "display:hidden">
+          </%= form.label :general_medias_id %>
+          </%= form.text_field :general_medias_id, id: :personal_media_parameter_general_medias_id %>
+        </div> -->
+
+          <%= form.fields_for :movies do |f| %>
+          <div class="field">
+            <%= f.label :director %>
+            <%= f.text_field :director, id: :movie_director %>
+          </div>
+          <!--
+          <div class="field">
+            </%= form.label :general_medias_id %>
+            </%= form.text_field :general_medias_id, id: :personal_media_parameter_general_medias_id %>
+          </div> -->
+          <% end %>
+
+        <div class="actions">
+        <%= form.submit %>
+        </div>
+
+      <% end %>
+
+    <!--  <form class="well form-horizontal" action="../personal_media_parameters" method="post" style = "display:none" name = "magazine_form" id = "magazine_form">
         <label>Name of Media:</label>
         <input type="text" placeholder = "Enter here" required>
         <label>Enter the Score:</label>
@@ -99,7 +275,7 @@
         <label>Favorite:</label>
         <input type="checkbox">
         <label>Comments:</label>
-        <input type="text" placeholder="If you have any notes to add.">
+        <textarea placeholder="If you have any notes to add."></textarea>
         <label>Source:</label>
         <input type="text" placeholder="Enter the source of the media here">
         <label>Replay (Are you tracking this again?):</label>
@@ -109,8 +285,63 @@
         <input type="number" placeholder = "1" min = "1" required>
 
         <input type="submit">
-      </form>
-      <form class="well form-horizontal" action="home.html" method="post" style = "display:none" name = "book_form" id = "book_form">
+      </form> -->
+
+      <%= form_for :personal_media_parameters, :html => {:id => "magazine_form", :name => "magazine_form", :style => "display:none", :role => "form"} do |form| %>
+        <div class="field">
+        <%= form.label :score %>
+        <%= form.number_field :score, id: :personal_media_parameter_score %>
+        </div>
+        <div class="field">
+        <%= form.label :currentStatus %>
+        <%= form.text_field :currentStatus, id: :personal_media_parameter_currentStatus %>
+        </div>
+        <div class="field">
+        <%= form.label :favorite %>
+        <%= form.check_box :favorite, id: :personal_media_parameter_favorite %>
+        </div>
+        <div class="field">
+        <%= form.label :comments %>
+        <%= form.text_area :comments, id: :personal_media_parameter_comments %>
+        </div>
+        <div class="field">
+        <%= form.label :source %>
+        <%= form.text_field :source, id: :personal_media_parameter_source %>
+        </div>
+        <div class="field">
+        <%= form.label :replay %>
+        <%= form.number_field :replay, id: :personal_media_parameter_replay %>
+        </div>
+
+
+        <div style = "display:hidden">
+          <%= form.label :users_id %>
+          <%= form.text_field :users_id, id: :personal_media_parameter_users_id, :value => session[:current_user_id] %>
+        </div>
+        <!-- <div class = "display:hidden">
+          </%= form.label :general_medias_id %>
+          </%= form.text_field :general_medias_id, id: :personal_media_parameter_general_medias_id %>
+        </div> -->
+
+          <%= form.fields_for :magazines do |f| %>
+          <div class="field">
+            <%= f.label :issue %>
+            <%= f.number_field :issue, id: :magazine_issue %>
+          </div>
+          <!--
+          <div class="field">
+            </%= form.label :general_medias_id %>
+            </%= form.text_field :general_medias_id, id: :personal_media_parameter_general_medias_id %>
+          </div> -->
+          <% end %>
+
+        <div class="actions">
+        <%= form.submit %>
+        </div>
+
+      <% end %>
+
+      <!--<form class="well form-horizontal" action="../personal_media_parameters" method="post" style = "display:none" name = "book_form" id = "book_form">
         <label>Name of Media:</label>
         <input type="text" placeholder = "Enter here" required>
         <label>Enter the Score:</label>
@@ -121,7 +352,7 @@
         <label>Favorite:</label>
         <input type="checkbox">
         <label>Comments:</label>
-        <input type="text" placeholder="If you have any notes to add.">
+        <textarea placeholder="If you have any notes to add."></textarea>
         <label>Source:</label>
         <input type="text" placeholder="Enter the source of the media here">
         <label>Replay (Are you tracking this again?):</label>
@@ -131,8 +362,63 @@
         <input type="text" placeholder = "Author Name" required>
 
         <input type="submit">
-      </form>
-      <form class="well form-horizontal" action="home.html" method="post" style = "display:none" name = "video_game_form" id = "video_game_form">
+      </form> -->
+
+      <%= form_for :personal_media_parameters, :html => {:id => "book_form", :name => "book_form", :style => "display:none", :role => "form"} do |form| %>
+        <div class="field">
+        <%= form.label :score %>
+        <%= form.number_field :score, id: :personal_media_parameter_score %>
+        </div>
+        <div class="field">
+        <%= form.label :currentStatus %>
+        <%= form.text_field :currentStatus, id: :personal_media_parameter_currentStatus %>
+        </div>
+        <div class="field">
+        <%= form.label :favorite %>
+        <%= form.check_box :favorite, id: :personal_media_parameter_favorite %>
+        </div>
+        <div class="field">
+        <%= form.label :comments %>
+        <%= form.text_area :comments, id: :personal_media_parameter_comments %>
+        </div>
+        <div class="field">
+        <%= form.label :source %>
+        <%= form.text_field :source, id: :personal_media_parameter_source %>
+        </div>
+        <div class="field">
+        <%= form.label :replay %>
+        <%= form.number_field :replay, id: :personal_media_parameter_replay %>
+        </div>
+
+
+        <div style = "display:hidden">
+          <%= form.label :users_id %>
+          <%= form.text_field :users_id, id: :personal_media_parameter_users_id, :value => session[:current_user_id] %>
+        </div>
+        <!-- <div class = "display:hidden">
+          </%= form.label :general_medias_id %>
+          </%= form.text_field :general_medias_id, id: :personal_media_parameter_general_medias_id %>
+        </div> -->
+
+          <%= form.fields_for :books do |f| %>
+          <div class="field">
+            <%= f.label :author %>
+            <%= f.text_field :author, id: :book_author %>
+          </div>
+          <!--
+          <div class="field">
+            </%= form.label :general_medias_id %>
+            </%= form.text_field :general_medias_id, id: :personal_media_parameter_general_medias_id %>
+          </div> -->
+          <% end %>
+
+        <div class="actions">
+        <%= form.submit %>
+        </div>
+
+      <% end %>
+
+    <!--  <form class="well form-horizontal" action="../personal_media_parameters" method="post" style = "display:none" name = "video_game_form" id = "video_game_form">
         <label>Name of Media:</label>
         <input type="text" placeholder = "Enter here" required>
         <label>Enter the Score:</label>
@@ -143,7 +429,7 @@
         <label>Favorite:</label>
         <input type="checkbox">
         <label>Comments:</label>
-        <input type="text" placeholder="If you have any notes to add.">
+        <textarea placeholder="If you have any notes to add."></textarea>
         <label>Source:</label>
         <input type="text" placeholder="Enter the source of the media here">
         <label>Replay (Are you tracking this again?):</label>
@@ -155,8 +441,68 @@
         <input type="text" placeholder = "System Name" required>
 
         <input type="submit">
-      </form>
-      <form class="well form-horizontal" action="home.html" method="post" style = "display:none" name = "custom_form" id = "custom_form">
+      </form> -->
+
+      <%= form_for :personal_media_parameters, :html => {:id => "video_game_form", :name => "video_game_form", :style => "display:none", :role => "form"} do |form| %>
+        <div class="field">
+        <%= form.label :score %>
+        <%= form.number_field :score, id: :personal_media_parameter_score %>
+        </div>
+        <div class="field">
+        <%= form.label :currentStatus %>
+        <%= form.text_field :currentStatus, id: :personal_media_parameter_currentStatus %>
+        </div>
+        <div class="field">
+        <%= form.label :favorite %>
+        <%= form.check_box :favorite, id: :personal_media_parameter_favorite %>
+        </div>
+        <div class="field">
+        <%= form.label :comments %>
+        <%= form.text_area :comments, id: :personal_media_parameter_comments %>
+        </div>
+        <div class="field">
+        <%= form.label :source %>
+        <%= form.text_field :source, id: :personal_media_parameter_source %>
+        </div>
+        <div class="field">
+        <%= form.label :replay %>
+        <%= form.number_field :replay, id: :personal_media_parameter_replay %>
+        </div>
+
+
+        <div style = "display:hidden">
+          <%= form.label :users_id %>
+          <%= form.text_field :users_id, id: :personal_media_parameter_users_id, :value => session[:current_user_id] %>
+        </div>
+        <!-- <div class = "display:hidden">
+          </%= form.label :general_medias_id %>
+          </%= form.text_field :general_medias_id, id: :personal_media_parameter_general_medias_id %>
+        </div> -->
+
+          <%= form.fields_for :video_games do |f| %>
+          <div class="field">
+            <%= form.label :studio %>
+            <%= form.text_field :studio, id: :video_game_studio %>
+          </div>
+
+          <div class="field">
+            <%= form.label :system %>
+            <%= form.text_field :system, id: :video_game_system %>
+          </div>
+          <!--
+          <div class="field">
+            </%= form.label :general_medias_id %>
+            </%= form.text_field :general_medias_id, id: :personal_media_parameter_general_medias_id %>
+          </div> -->
+          <% end %>
+
+        <div class="actions">
+        <%= form.submit %>
+        </div>
+
+      <% end %>
+
+      <form class="well form-horizontal" action="../personal_media_parameters" method="post" style = "display:none" name = "custom_form" id = "custom_form">
         <label> Please enter the number of custom fields would you like to add?</label>
         <input id = "number_of_items" type="number" min = "1" max = "10" placeholder = "0">
         <input style = "display:none" class = "1" type = "text" placeholder= "Enter Field 1">
@@ -194,13 +540,15 @@
         });
         $("#number_of_items").on("change", function() {
             //based on what is selected, only show that form
-            var end = $(this).val();
+            var last = $(this).val();
             var i = 0;
-            for (i = 1; i <= end; i++){
+            for (i = 1; i <= last; i++){
               $("." + i).show();
+              $("." + i).prop('required',true);
             }
-            for (i = 10; i > end; i--){
+            for (i = 10; i > last; i--){
               $("." + i).hide();
+              $("." + i).prop('required',false);
             }
         });
       </script>
