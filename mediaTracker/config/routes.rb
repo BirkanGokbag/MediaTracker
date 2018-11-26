@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :custom_media_entries
   resources :books
   resources :video_games
-  resources :users
+  #resources :users
 
   get 'static_pages/home'
   get 'static_pages/faq'

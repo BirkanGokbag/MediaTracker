@@ -12,7 +12,7 @@ class User < ApplicationRecord
 
   validates :username, uniqueness: true
 
-  self.primary_key = :username
+  #self.primary_key = :username
 
 
   #Set up table association
