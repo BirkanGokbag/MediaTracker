@@ -15,17 +15,20 @@ class HistoryLogsController < ApplicationController
 
   # GET /history_logs/new
   def new
-    @history_log = HistoryLog.new
+    @history_log = current_user.history_logs.build
   end
 
 
   # POST /history_logs
   # POST /history_logs.json
   def create
-    @user = User.find(current_user.id)
-    puts @user.id
-    @history_log = @user.history_logs.new(historyMessage: history_log_params['historyMessage'])
-    #@history_log = HistoryLog.new(historyMessage: history_log_params['historyMessage'], users_id: current_user.id)
+   # @user = User.find(current_user.id)
+    #@history_log = current_user.history_logs.build(history_log_params)
+    #@history_log.users_id = current_user.id
+    @history_log = HistoryLog.new(historyMessage: history_log_params['historyMessage'], users_id: current_user.id)
+    puts @history_log.id 
+puts @history_log.historyMessage 
+puts @history_log.users_id
     
     respond_to do |format|
       if @history_log.save

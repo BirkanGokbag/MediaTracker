@@ -1,4 +1,4 @@
 class HistoryLog < ApplicationRecord
-  belongs_to :user
+  belongs_to :users, class_name: "User"
 
 end

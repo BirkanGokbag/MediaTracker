@@ -16,11 +16,11 @@ class User < ApplicationRecord
 
 
   #Set up table association
-  has_one :preference, dependent: :destroy
-  has_many :history_logs, dependent: :destroy
-  has_many :personal_media_parameters, dependent: :destroy
+  has_one :preference, dependent: :destroy, foreign_key: :users_id
+  has_many :history_logs, dependent: :destroy, foreign_key: :users_id
+  has_many :personal_media_parameters, dependent: :destroy, foreign_key: :users_id
   has_many :general_medias, through: :personal_media_parameters
-  has_many :personal_media_parameters
+  has_many :personal_media_parameters, foreign_key: :users_id
 
   #Associations for followers
   has_many :followers, through: :follower_follows, source: :follower
