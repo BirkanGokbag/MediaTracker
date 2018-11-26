@@ -22,7 +22,7 @@ class HistoryLogsController < ApplicationController
   # POST /history_logs
   # POST /history_logs.json
   def create
-    @history_log = HistoryLog.new(history_log_params)
+    @history_log = HistoryLog.new(:historyMessage=>params['historyMessage'], :users_id=>current_user.id)
 
     respond_to do |format|
       if @history_log.save

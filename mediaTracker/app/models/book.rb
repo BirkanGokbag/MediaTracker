@@ -1,3 +1,3 @@
 class Book < ApplicationRecord
-  belongs_to :general_medias
+  belongs_to :general_media
 end

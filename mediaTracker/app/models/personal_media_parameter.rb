@@ -1,4 +1,4 @@
 class PersonalMediaParameter < ApplicationRecord
-  belongs_to :users
-  belongs_to :general_medias
+  belongs_to :user
+  belongs_to :general_media
 end

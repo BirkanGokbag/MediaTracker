@@ -1,3 +1,3 @@
 class Preference < ApplicationRecord
-  belongs_to :users, touch: true
+  belongs_to :user, touch: true
 end
