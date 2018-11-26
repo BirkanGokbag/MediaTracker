@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181125200348) do
+ActiveRecord::Schema.define(version: 20181126143719) do
 
   create_table "books", force: :cascade do |t|
     t.string "author"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 20181125200348) do
   create_table "custom_media_entries", force: :cascade do |t|
     t.string "key"
     t.string "value"
+    t.integer "custom_medium_id"
+    t.index ["custom_medium_id"], name: "index_custom_media_entries_on_custom_medium_id"
   end
 
   create_table "custom_medias", force: :cascade do |t|
