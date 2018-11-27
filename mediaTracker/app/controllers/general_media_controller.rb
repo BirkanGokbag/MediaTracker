@@ -25,6 +25,11 @@ class GeneralMediaController < ApplicationController
   # POST /general_media.json
   def create
     @general_medium = GeneralMedium.new(general_medium_params)
+  #TODO
+    history_logs_cont = HistoryLogsController.new
+        history_logs_cont.request = request
+        history_logs_cont.response = response
+        history_logs_cont.create
 
     respond_to do |format|
       if @general_medium.save

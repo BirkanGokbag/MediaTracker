@@ -15,7 +15,7 @@
     <% @custom_media.each do |custom_medium| %>
       <tr>
         <td><%= custom_medium.type %></td>
-        <td><%= custom_medium.general_medias %></td>
+        <td><%= custom_medium.general_media_id %></td>
         <td><%= link_to 'Show', custom_medium %></td>
         <td><%= link_to 'Edit', edit_custom_medium_path(custom_medium) %></td>
         <td><%= link_to 'Destroy', custom_medium, method: :delete, data: { confirm: 'Are you sure?' } %></td>
