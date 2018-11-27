@@ -5,7 +5,8 @@ class HistoryLogsController < ApplicationController
   # GET /history_logs
   # GET /history_logs.json
   def index
-    @history_logs = HistoryLog.all
+    @user = User.find(current_user.id)
+    @history_logs = @user.history_logs
   end
 
   # GET /history_logs/1
@@ -22,13 +23,7 @@ class HistoryLogsController < ApplicationController
   # POST /history_logs
   # POST /history_logs.json
   def create
-   # @user = User.find(current_user.id)
-    #@history_log = current_user.history_logs.build(history_log_params)
-    #@history_log.users_id = current_user.id
     @history_log = HistoryLog.new(historyMessage: history_log_params['historyMessage'], users_id: current_user.id)
-    puts @history_log.id 
-puts @history_log.historyMessage 
-puts @history_log.users_id
     
     respond_to do |format|
       if @history_log.save
