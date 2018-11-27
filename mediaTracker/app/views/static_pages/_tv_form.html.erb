@@ -1,0 +1,103 @@
+<!-- style = "display:none" -->
+      <!-- <form class="well form-horizontal" action="/personal_media_parameters" method="post" style = "display:none" name = "tv_form" id = "tv_form">
+        <label>Name of Media:</label>
+        <input type="text" placeholder = "Enter here" required>
+        <label>Enter the Score:</label>
+        <label> Score (1 to 10):</label>
+        <input type="number" min = "1" max = "10" placeholder = "1">
+        <label>Current Status:</label>
+        <input type="text" placeholder = "In Completion of This Media" required>
+        <label>Favorite:</label>
+        <input type="checkbox">
+        <label>Comments:</label>
+        <textarea placeholder="If you have any notes to add."></textarea>
+        <label>Source:</label>
+        <input type="text" placeholder="Enter the source of the media here">
+        <label>Replay (Are you tracking this again?):</label>
+        <input type="checkbox">
+
+        <label> Number of Seasons The Show Has:</label>
+        <input type="number" placeholder = "1" min = "1" required>
+        <label> Total Number of Episodes The Show Has:</label>
+        <input type="number" placeholder = "12" min = "1" required>
+
+        <input type="submit">
+      </form> -->
+
+
+
+<!--
+</%= form_for :personal_media_parameters, :html => {:id => "tv_form", :name => "tv_form", :style => "display:none", :role => "form"} do |form| %>
+  </%= form.fields_for :general_medium do %>
+  <div class="field">
+    </%= form.label :name %>
+    </%= form.text_field :name, id: :general_medium_name %>
+  </div>
+  </% end %>
+
+  <div class="field">
+  </%= form.label :score %>
+  </%= form.number_field :score, id: :personal_media_parameter_score %>
+  </div>
+  <div class="field">
+  </%= form.label :currentStatus %>
+  </%= form.text_field :currentStatus, id: :personal_media_parameter_currentStatus %>
+  </div>
+  <div class="field">
+  </%= form.label :favorite %>
+  </%= form.check_box :favorite, id: :personal_media_parameter_favorite %>
+  </div>
+  <div class="field">
+  </%= form.label :comments %>
+  </%= form.text_area :comments, id: :personal_media_parameter_comments %>
+  </div>
+  <div class="field">
+  </%= form.label :source %>
+  </%= form.text_field :source, id: :personal_media_parameter_source %>
+  </div>
+  <div class="field">
+  </%= form.label :replay %>
+  </%= form.number_field :replay, id: :personal_media_parameter_replay %>
+  </div>
+
+
+  <!-- <div style = "display:hidden">
+    </%= form.label :users_id %>
+    </%= form.text_field :users_id, id: :personal_media_parameter_users_id, :value => session[:current_user_id] %>
+  </div>
+  <!-- <div class = "display:hidden">
+    </%= form.label :general_medias_id %>
+    </%= form.text_field :general_medias_id, id: :personal_media_parameter_general_medias_id %>
+  </div>
+
+    </%= form.fields_for :tv_shows do |f| %>
+    <div class="field">
+      </%= f.label :numberOfSeasons %>
+      </%= f.number_field :numberOfSeasons, id: :tv_show_numberOfSeasons %>
+    </div>
+    <div class="field">
+      </%= f.label :totalEpisodes %>
+      </%= f.number_field :totalEpisodes, id: :tv_show_totalEpisodes %>
+    </div>
+
+
+    <!--
+    <div class="field">
+      </%= form.label :general_medias_id %>
+      </%= form.text_field :general_medias_id, id: :personal_media_parameter_general_medias_id %>
+    </div>
+    </% end %>
+
+  <div class="actions">
+  </%= form.submit %>
+  </div>
+
+</% end %> -->
+
+<%= form_tag("tv_form",:method => :post, :id => "tv_form", :name => "tv_form", :style => "display:none") do %>
+
+<%= text_area_tag(:name, "Enter comments", size: "24x6") %>
+<%= number_field(:score, "Enter comments", in: 1..10) %>
+<%= submit_tag "Forward" %>
+
+<% end %>
