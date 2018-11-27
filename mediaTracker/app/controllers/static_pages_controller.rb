@@ -11,6 +11,7 @@ class StaticPagesController < ApplicationController
 
     # There is a limit to how many updates can be displayed in the landing page
     @limit = @historylog.length
+    @historylength = @historylog.length
     if @limit > 5
       @limit = 5
     end

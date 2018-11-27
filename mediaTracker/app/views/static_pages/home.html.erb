@@ -15,7 +15,7 @@
           <h3>Latest Updates</h3>
 	    <% for i in 1..@limit do%>
 	      <div class = "history"> 
-		 <p><%= %></p>
+		 <p><%= @historylog[@historylength - i].historyMessage %></p>
 	      </div>
 	    <% end %>
         </div>
