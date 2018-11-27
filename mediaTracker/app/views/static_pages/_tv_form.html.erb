@@ -104,7 +104,7 @@
   </div>
   <div class="field">
     <label>Enter Score:</label>
-    <%= number_field(:score, in: 1..10) %>
+    <%= number_field(:score, :temp, in: 1..10) %>
   </div>
   <div class="field">
     <label>Enter the Status of the TV Show:</label>
@@ -124,17 +124,17 @@
   </div>
   <div class="field">
     <label>Enter the Amount of Time You Have Replayed This:</label>
-    <%= number_field(:replay, in: 0..100000) %>
+    <%= number_field(:replay, :temp, in: 0..100000) %>
   </div>
 
   <!-- Special Parameters-->
   <div class="field">
     <label>Enter the Number of Seasons of The TV Show:</label>
-    <%= number_field(:numberOfSeasons, in: 0..100000) %>
+    <%= number_field(:numberOfSeasons, :temp, in: 0..100000) %>
   </div>
   <div class="field">
     <label>Enter the Number of Episodes This TV Show Has:</label>
-    <%= number_field(:totalEpisodes, in: 0..100000) %>
+    <%= number_field(:totalEpisodes, :temp, in: 0..100000) %>
   </div>
 
   <div class="field">

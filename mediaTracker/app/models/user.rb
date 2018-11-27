@@ -7,7 +7,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
-         :trackable 
+         :trackable
          #:confirmable#, lockable, timeoutable
 
   validates :username, uniqueness: true
@@ -19,7 +19,7 @@ class User < ApplicationRecord
   has_one :preference, dependent: :destroy, foreign_key: :users_id
   has_many :history_logs, dependent: :destroy, foreign_key: :users_id
   has_many :personal_media_parameters, dependent: :destroy, foreign_key: :users_id
-  has_many :general_medias, through: :personal_media_parameters
+  has_many :general_media, through: :personal_media_parameters
   has_many :personal_media_parameters, foreign_key: :users_id
 
   #Associations for followers

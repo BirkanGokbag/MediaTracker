@@ -1,3 +1,3 @@
 class TvShow < ApplicationRecord
-  belongs_to :general_medias, class_name: "GeneralMedium"
+  belongs_to :general_media, class_name: "GeneralMedium"
 end

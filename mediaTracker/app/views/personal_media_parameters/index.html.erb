@@ -11,8 +11,8 @@
       <th>Comments</th>
       <th>Source</th>
       <th>Replay</th>
-      <th>Users</th>
-      <th>General medias</th>
+      <th>User id</th>
+      <th>General media</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -26,8 +26,8 @@
         <td><%= personal_media_parameter.comments %></td>
         <td><%= personal_media_parameter.source %></td>
         <td><%= personal_media_parameter.replay %></td>
-        <td><%= personal_media_parameter.users %></td>
-        <td><%= personal_media_parameter.general_medias %></td>
+        <td><%= personal_media_parameter.users_id %></td>
+        <td><%= personal_media_parameter.general_media_id %></td>
         <td><%= link_to 'Show', personal_media_parameter %></td>
         <td><%= link_to 'Edit', edit_personal_media_parameter_path(personal_media_parameter) %></td>
         <td><%= link_to 'Destroy', personal_media_parameter, method: :delete, data: { confirm: 'Are you sure?' } %></td>
