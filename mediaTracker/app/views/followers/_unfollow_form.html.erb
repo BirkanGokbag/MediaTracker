@@ -1,3 +1,8 @@
+<%# This is a form for unfollowing users 
+    Author: Alyssa Langhals
+    Created on: 11/27
+%>
+
 <%= form_for(current_user.followers.find_by(fTarget: 1), html: { method: :delete }) do |form| %>
   <div><%= hidden_field_tag :followee, 1 %></div>
   <%= form.submit "Unfollow", class: "btn btn-primary" %>

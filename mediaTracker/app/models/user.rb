@@ -1,3 +1,7 @@
+# This is the model for the User
+#
+# Author: Alyssa Langhals (Adding associations)
+# Created on: 11/19
 class User < ApplicationRecord
  
   # Include default devise modules. Others available are:

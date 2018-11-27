@@ -1,3 +1,8 @@
+# This is the controller for history logs
+#
+# Author: Alyssa Langhals (updating methods)
+# Created on: 11/25
+
 class HistoryLogsController < ApplicationController
   before_action :set_history_log, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!

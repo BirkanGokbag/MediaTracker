@@ -1,3 +1,8 @@
+# This is the controller for history logs
+#
+# Author: Alyssa Langhals (updating methods)
+# Created on: 11/19
+
 class FollowersController < ApplicationController
   before_action :set_follower, only: [:show, :edit, :update, :destroy]
 
