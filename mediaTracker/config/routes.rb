@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :movies
   resources :magazines
   resources :history_logs
-  resources :general_media
+  resources :general_medias
   resources :followers
   resources :custom_media
   resources :custom_media_entries

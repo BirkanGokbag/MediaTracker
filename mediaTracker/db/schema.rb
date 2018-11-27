@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181126143719) do
+ActiveRecord::Schema.define(version: 20181127071238) do
 
   create_table "books", force: :cascade do |t|
     t.string "author"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20181126143719) do
     t.datetime "timeStamp"
     t.date "created_at"
     t.date "updated_at"
+    t.string "specific_medias_id"
   end
 
   create_table "history_logs", force: :cascade do |t|
@@ -67,6 +68,8 @@ ActiveRecord::Schema.define(version: 20181126143719) do
     t.integer "replay"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string "users_id"
+    t.string "general_medias_id"
   end
 
   create_table "preferences", force: :cascade do |t|
