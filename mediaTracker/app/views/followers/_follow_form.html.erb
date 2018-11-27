@@ -1,0 +1,4 @@
+<%= form_with(model: follower, local: true) do |form| %>
+  <div><%= hidden_field_tag :followee, 1 %></div>
+  <%= form.submit "Follow", class: "btn btn-primary" %>
+<% end %>

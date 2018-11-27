@@ -1,0 +1,4 @@
+<%= form_for(current_user.followers.find_by(fTarget: 1), html: { method: :delete }) do |form| %>
+  <div><%= hidden_field_tag :followee, 1 %></div>
+  <%= form.submit "Unfollow", class: "btn btn-primary" %>
+<% end %>
