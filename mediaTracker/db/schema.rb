@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181127071238) do
+ActiveRecord::Schema.define(version: 20181127063748) do
 
   create_table "books", force: :cascade do |t|
     t.string "author"
@@ -43,7 +43,6 @@ ActiveRecord::Schema.define(version: 20181127071238) do
     t.datetime "timeStamp"
     t.date "created_at"
     t.date "updated_at"
-    t.string "specific_medias_id"
   end
 
   create_table "history_logs", force: :cascade do |t|
