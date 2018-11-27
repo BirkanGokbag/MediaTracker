@@ -5,7 +5,14 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-
+# Use jquery to display changes on website
+gem 'jquery-rails'
+# Use activemodel for the web console
+gem 'activemodel', '~> 5.1.6'
+# Use Activesupport for jbuilder, rails, and spring
+gem 'activesupport', '~> 5.1.6'
+# Use railties for jquery, devise, coffee, rails, sass-rails, and web console.
+gem 'railties', '~> 5.1.6'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.6'
 # Use sqlite3 as the database for Active Record

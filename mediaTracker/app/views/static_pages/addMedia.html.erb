@@ -1,0 +1,55 @@
+<div id = "container">
+  <div id = "header">
+    <h1>Add Media</h1>
+  </div>
+  <div id = "main">
+    <div id = "mainArea">
+      <h3>What Media would you like to add?</h3>
+      <form>
+        <select class="form-control" id = "select_form">
+          <option disabled selected>Select An Option</option>
+          <option value="tv_form">TV Show</option>
+          <option value="music_form">Music</option>
+          <option value="movie_form">Movie</option>
+          <option value="magazine_form">Magazine</option>
+          <option value="book_form">Book</option>
+          <option value="video_game_form">Video Game</option>
+          <option value="custom_form">Custom</option>
+        </select>
+      </form>
+
+<%= render "tv_form.html" %>
+<%= render "music_form.html" %>
+<%= render "movie_form.html" %>
+<%= render "magazine_form.html" %>
+<%= render "book_form.html" %>
+<%= render "video_game_form.html" %>
+<%= render "custom_form.html" %>
+
+      <script>
+        var prev = "";
+        $("#select_form").on("change", function() {
+            //based on what is selected, only show that form
+            if (prev != 0){
+              $(prev).hide();
+            }
+            $("#" + $(this).val()).show();
+            prev = "#" + $(this).val();
+        });
+        $("#number_of_items").on("change", function() {
+            //based on what is selected, only show that form
+            var last = $(this).val();
+            var i = 0;
+            for (i = 1; i <= last; i++){
+              $("." + i).show();
+              $("." + i).prop('required',true);
+            }
+            for (i = 10; i > last; i--){
+              $("." + i).hide();
+              $("." + i).prop('required',false);
+            }
+        });
+      </script>
+    </div>
+  </div>
+</div>
