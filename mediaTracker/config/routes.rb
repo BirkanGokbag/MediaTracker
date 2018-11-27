@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :views
   resources :tv_shows
   resources :preferences
   resources :personal_media_parameters
@@ -12,6 +13,8 @@ Rails.application.routes.draw do
   resources :custom_media_entries
   resources :books
   resources :video_games
+  #resources :users
+
   get 'static_pages/home'
   get 'static_pages/addMedia'
   get 'static_pages/faq'

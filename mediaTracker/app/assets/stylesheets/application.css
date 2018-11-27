@@ -18,3 +18,7 @@ div#deviseForms{
   margin: auto;
   width: 50%;
 }
+
+body{
+  color: white !important;
+}

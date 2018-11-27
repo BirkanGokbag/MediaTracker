@@ -3,7 +3,6 @@
   <head>
     <title>MediaTracker</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
@@ -17,6 +16,9 @@
     <% if user_signed_in? %>
       Hello, <%= current_user.username %>
     <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+    <div id = "login">
+      <p id = "loginText">Click <a href="/static_pages/addMedia">here</a> to add a media</p>
+    </div>
     <% else %>
     <%= link_to "Sign up", new_user_registration_path %>
     <%= link_to "Login", new_user_session_path %>

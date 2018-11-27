@@ -11,11 +11,9 @@ class StaticPagesController < ApplicationController
   end
 
   def tv_form
-    @info = params
-    puts "1"
-    puts @info
+    # Add the keys to tv, user, and general media table
     logger = Logger.new("#{Rails.root}/log/cache_read.log")
-    logger.error(params["message"])
+    logger.error(params)
     # protect_from_forgery prepend: true
     redirect_to "/static_pages/addMedia"
   end

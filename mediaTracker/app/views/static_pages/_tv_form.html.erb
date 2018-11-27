@@ -94,10 +94,51 @@
 
 </% end %> -->
 
+<!-- Get all the information relevant to tv -->
 <%= form_tag("tv_form",:method => :post, :id => "tv_form", :name => "tv_form", :style => "display:none") do %>
 
-<%= text_area_tag(:name, "Enter comments", size: "24x6") %>
-<%= number_field(:score, "Enter comments", in: 1..10) %>
-<%= submit_tag "Forward" %>
+  <!-- General Media ID's -->
+  <div class="field">
+    <label>Enter Name of the TV Show:</label>
+    <%= text_area_tag(:name) %>
+  </div>
+  <div class="field">
+    <label>Enter Score:</label>
+    <%= number_field(:score, in: 1..10) %>
+  </div>
+  <div class="field">
+    <label>Enter the Status of the TV Show:</label>
+    <%= text_area_tag(:currentStatus) %>
+  </div>
+  <div class="field">
+    <label>Would You Like to Favorite It?</label>
+    <%= check_box_tag(:favorite) %>
+  </div>
+  <div class="field">
+    <label>Enter Comments:</label>
+    <%= text_area_tag(:comments) %>
+  </div>
+  <div class="field">
+    <label>Enter the source of the TV Show:</label>
+    <%= text_area_tag(:source) %>
+  </div>
+  <div class="field">
+    <label>Enter the Amount of Time You Have Replayed This:</label>
+    <%= number_field(:replay, in: 0..100000) %>
+  </div>
+
+  <!-- Special Parameters-->
+  <div class="field">
+    <label>Enter the Number of Seasons of The TV Show:</label>
+    <%= number_field(:numberOfSeasons, in: 0..100000) %>
+  </div>
+  <div class="field">
+    <label>Enter the Number of Episodes This TV Show Has:</label>
+    <%= number_field(:totalEpisodes, in: 0..100000) %>
+  </div>
+
+  <div class="field">
+    <%= submit_tag "Submit TV Media" %>
+  </div>
 
 <% end %>
