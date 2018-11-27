@@ -23,16 +23,17 @@ class HistoryLogsController < ApplicationController
   # POST /history_logs
   # POST /history_logs.json
   def create
-    @history_log = HistoryLog.new(historyMessage: history_log_params['historyMessage'], users_id: current_user.id)
+    @history_log = HistoryLog.new(historyMessage: history_log_params['name'], users_id: current_user.id)
     
     respond_to do |format|
       if @history_log.save
-        format.html { redirect_to @history_log, notice: 'History log was successfully created.' }
-        format.json { render :show, status: :created, location: @history_log }
+        format.html {head :ok}
+        format.json {head :ok}
       else
-        format.html { render :new }
-        format.json { render json: @history_log.errors, status: :unprocessable_entity }
+        format.html {head :internal_server_error}
+        format.json {head :internal_server_error}
       end
+      head :ok
     end
   end
 
@@ -46,6 +47,7 @@ class HistoryLogsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def history_log_params
-      params.require(:history_log).permit(:historyMessage, :users_id)
+      #TODO 
+      params.require(:general_medium)#.permit(:historyMessage, :users_id)
     end
 end
