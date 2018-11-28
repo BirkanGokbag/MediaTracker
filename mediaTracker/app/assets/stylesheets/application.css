@@ -23,6 +23,6 @@ body{
   color: white !important;
 }
 
-#custom_form div{
+#custom_form .innerField{
   display:none;
 }

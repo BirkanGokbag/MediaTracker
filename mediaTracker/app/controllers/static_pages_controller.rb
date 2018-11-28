@@ -30,6 +30,9 @@ class StaticPagesController < ApplicationController
     # Need to save the general media before creating the other ones as the id is required
     @general.save
 
+    # Get the user parameters for the media
+    @userParameters = PersonalMediaParameter.new(:score => params[:score][:temp], :currentStatus => params[:currentStatus], :favorite => params[:favorite], :comments => params[:comments], :source => params[:source], :replay => params[:replay][:temp], :users_id => current_user[:id], :general_media_id => @general[:id])
+
     # params[:commit] contains the submit information to a specific media
     case params[:commit]
       when "Submit Video Game Media"
@@ -61,7 +64,6 @@ class StaticPagesController < ApplicationController
     end
 
     if customSpecific == 0
-        @userParameters = PersonalMediaParameter.new(:score => params[:score][:temp], :currentStatus => params[:currentStatus], :favorite => params[:favorite], :comments => params[:comments], :source => params[:source], :replay => params[:replay][:temp], :users_id => current_user[:id], :general_media_id => @general[:id])
         # This is for the regular media, save the parameters and the special media
         if @userParameters.save && @special.save
           flash[:success] = "Successfully added the media!"
@@ -72,8 +74,13 @@ class StaticPagesController < ApplicationController
           redirect_to "/static_pages/static_pages/addMedia"
         end
       else
-        flash[:success] = "Successfully added the media!"
-        redirect_to "/static_pages/home"
+        if @userParameters.save
+          flash[:success] = "Successfully added the custom media!"
+          redirect_to "/static_pages/home"
+        else
+          flash[:error] = "Oops, your custom media preferences was not added. Please try again."
+          redirect_to "/static_pages/static_pages/addMedia"
+        end
     end
 
     # protect_from_forgery prepend: true

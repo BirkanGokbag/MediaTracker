@@ -5,13 +5,49 @@ Description: Partial form for custom media
 -->
 
 <%= form_tag("form",:method => :post, :id => "custom_form", :name => "custom_form", :style => "display:none") do %>
+
+  <div class="field">
+    <label>Enter Name of the Custom Media:</label>
+    <%= text_field_tag(:name) %>
+  </div>
+
+  <div class="field">
+    <label>Enter Score:</label>
+    <%= number_field(:score, :temp, in: 1..10) %>
+  </div>
+
+  <div class="field">
+    <label>Enter the Status of the Custom Media:</label>
+    <%= text_field_tag(:currentStatus) %>
+  </div>
+
+  <div class="field">
+    <label>Would You Like to Favorite It?</label>
+    <%= check_box_tag(:favorite) %>
+  </div>
+
+  <div class="field">
+    <label>Enter Comments:</label>
+    <%= text_area_tag(:comments) %>
+  </div>
+
+  <div class="field">
+    <label>Enter the source of this media:</label>
+    <%= text_field_tag(:source) %>
+  </div>
+
+  <div class="field">
+    <label>Enter the Amount of Time You Done This:</label>
+    <%= number_field(:replay, :temp, in: 0..100000) %>
+  </div>
+
   <label> Enter the Name/Type of the Media: </label>
   <input name = "typeOfMedia" id = "typeOfMedia" type = "text" placeholder= "Enter Type" required>
   <label> Please enter the number of custom fields would you like to add? </label>
   <input id = "number_of_items" name = "allFields" id = "allFields" id = "1" type="number" min = "1" max = "10" placeholder = "0" required>
 
   <% (1..10).each do |i| %>
-  <div class = "field
+  <div class = "innerField
   <%= " #{i}" %>
   ">
   <label> Field
