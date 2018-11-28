@@ -4,7 +4,11 @@ class BooksController < ApplicationController
   # GET /books
   # GET /books.json
   def index
-    @books = Book.all
+    #@books = Book.all
+    personal_media_controller = PersonalMediaParametersController.new
+    user_media = personal_media_controller.retrieveUserMedia
+
+    @books = user_media.general_medium.includes(:books)
   end
 
   # GET /books/1
@@ -60,6 +64,13 @@ class BooksController < ApplicationController
       format.html { redirect_to books_url, notice: 'Book was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def userBooks
+    personal_media_controller = PersonalMediaParametersController.new
+    user_media = personal_media_controller.retrieveUserMedia
+
+    @books = user_media.general_medium.includes(:books)
   end
 
   private

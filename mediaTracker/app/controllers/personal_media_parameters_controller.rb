@@ -61,6 +61,14 @@ class PersonalMediaParametersController < ApplicationController
     end
   end
 
+  # def retrieveUserMedia
+  #   user_media = [];
+  #   if current_user then
+  #     userID = current_user.id
+  #     user_media = PersonalMediaParameter.includes(:general_media).where(users_id: current_user.id)
+  #   end
+  #   return user_media
+  # end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_personal_media_parameter
