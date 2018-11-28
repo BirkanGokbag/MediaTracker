@@ -1,83 +1,61 @@
-<!--  <form class="well form-horizontal" action="../personal_media_parameters" method="post" style = "display:none" name = "video_game_form" id = "video_game_form">
-    <label>Name of Media:</label>
-    <input type="text" placeholder = "Enter here" required>
-    <label>Enter the Score:</label>
-    <label> Score (1 to 10):</label>
-    <input type="number" min = "1" max = "10" placeholder = "1">
-    <label>Current Status:</label>
-    <input type="text" placeholder = "In Completion of This Media" required>
-    <label>Favorite:</label>
-    <input type="checkbox">
-    <label>Comments:</label>
-    <textarea placeholder="If you have any notes to add."></textarea>
-    <label>Source:</label>
-    <input type="text" placeholder="Enter the source of the media here">
-    <label>Replay (Are you tracking this again?):</label>
-    <input type="checkbox">
+<!--
+Date of Creation: 11/25/18
+Author: Birkan Gokbag
+Description: Partial form for adding video game
+-->
 
-    <label> Studio:</label>
-    <input type="text" placeholder = "Studio Name" required>
-    <label> System:</label>
-    <input type="text" placeholder = "System Name" required>
+<!-- Get all the information relevant to movie media -->
+<%= form_tag("form",:method => :post, :id => "video_game_form", :name => "video_game_form", :style => "display:none") do %>
 
-    <input type="submit">
-  </form> -->
+<!-- General Stuff -->
+<div class="field">
+  <label>Enter Name of the Video Game:</label>
+  <%= text_field_tag(:name) %>
+</div>
 
-  <%= form_for :personal_media_parameters, :html => {:id => "video_game_form", :name => "video_game_form", :style => "display:none", :role => "form"} do |form| %>
-    <div class="field">
-    <%= form.label :score %>
-    <%= form.number_field :score, id: :personal_media_parameter_score %>
-    </div>
-    <div class="field">
-    <%= form.label :currentStatus %>
-    <%= form.text_field :currentStatus, id: :personal_media_parameter_currentStatus %>
-    </div>
-    <div class="field">
-    <%= form.label :favorite %>
-    <%= form.check_box :favorite, id: :personal_media_parameter_favorite %>
-    </div>
-    <div class="field">
-    <%= form.label :comments %>
-    <%= form.text_area :comments, id: :personal_media_parameter_comments %>
-    </div>
-    <div class="field">
-    <%= form.label :source %>
-    <%= form.text_field :source, id: :personal_media_parameter_source %>
-    </div>
-    <div class="field">
-    <%= form.label :replay %>
-    <%= form.number_field :replay, id: :personal_media_parameter_replay %>
-    </div>
+<div class="field">
+  <label>Enter Score:</label>
+  <%= number_field(:score, :temp, in: 1..10) %>
+</div>
 
+<div class="field">
+  <label>Enter the Status of the Video Game:</label>
+  <%= text_field_tag(:currentStatus) %>
+</div>
 
-    <div style = "display:hidden">
-      <%= form.label :users_id %>
-      <%= form.text_field :users_id, id: :personal_media_parameter_users_id, :value => session[:current_user_id] %>
-    </div>
-    <!-- <div class = "display:hidden">
-      </%= form.label :general_medias_id %>
-      </%= form.text_field :general_medias_id, id: :personal_media_parameter_general_medias_id %>
-    </div> -->
+<div class="field">
+  <label>Would You Like to Favorite It?</label>
+  <%= check_box_tag(:favorite) %>
+</div>
 
-      <%= form.fields_for :video_games do |f| %>
-      <div class="field">
-        <%= form.label :studio %>
-        <%= form.text_field :studio, id: :video_game_studio %>
-      </div>
+<div class="field">
+  <label>Enter Comments:</label>
+  <%= text_area_tag(:comments) %>
+</div>
 
-      <div class="field">
-        <%= form.label :system %>
-        <%= form.text_field :system, id: :video_game_system %>
-      </div>
-      <!--
-      <div class="field">
-        </%= form.label :general_medias_id %>
-        </%= form.text_field :general_medias_id, id: :personal_media_parameter_general_medias_id %>
-      </div> -->
-      <% end %>
+<div class="field">
+  <label>Enter the source of the Video Game:</label>
+  <%= text_field_tag(:source) %>
+</div>
 
-    <div class="actions">
-    <%= form.submit %>
-    </div>
+<div class="field">
+  <label>Enter the Amount of Time You Have Played This:</label>
+  <%= number_field(:replay, :temp, in: 0..100000) %>
+</div>
 
-  <% end %>
+  <!-- Special Parameters for Video Game-->
+  <div class="field">
+    <label>Enter the Studio That Published This Game:</label>
+    <%= text_field_tag(:studio) %>
+  </div>
+
+  <div class="field">
+    <label>Enter the System That This Game Is You Want/Playing On:</label>
+    <%= text_field_tag(:system) %>
+  </div>
+
+  <div class="field">
+    <%= submit_tag "Submit Video Game Media" %>
+  </div>
+
+<% end %>
