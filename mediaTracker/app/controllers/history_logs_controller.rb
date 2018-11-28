@@ -1,3 +1,8 @@
+# This is the controller for history logs
+#
+# Author: Alyssa Langhals (updating methods)
+# Created on: 11/25
+
 class HistoryLogsController < ApplicationController
   before_action :set_history_log, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
@@ -8,17 +13,6 @@ class HistoryLogsController < ApplicationController
     @user = User.find(current_user.id)
     @history_logs = @user.history_logs
   end
-
-  # GET /history_logs/1
-  # GET /history_logs/1.json
-  def show
-  end
-
-  # GET /history_logs/new
-  def new
-    @history_log = current_user.history_logs.build
-  end
-
 
   # POST /history_logs
   # POST /history_logs.json
