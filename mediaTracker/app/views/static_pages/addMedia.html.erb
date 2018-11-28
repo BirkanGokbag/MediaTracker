@@ -36,19 +36,6 @@
             $("#" + $(this).val()).show();
             prev = "#" + $(this).val();
         });
-        $("#number_of_items").on("change", function() {
-            //based on what is selected, only show that form
-            var last = $(this).val();
-            var i = 0;
-            for (i = 1; i <= last; i++){
-              $("." + i).show();
-              $("." + i).prop('required',true);
-            }
-            for (i = 10; i > last; i--){
-              $("." + i).hide();
-              $("." + i).prop('required',false);
-            }
-        });
       </script>
     </div>
   </div>

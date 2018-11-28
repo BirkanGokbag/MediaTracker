@@ -22,3 +22,7 @@ div#deviseForms{
 body{
   color: white !important;
 }
+
+#custom_form div{
+  display:none;
+}
