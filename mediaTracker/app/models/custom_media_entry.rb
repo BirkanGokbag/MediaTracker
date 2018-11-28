@@ -1,3 +1,3 @@
 class CustomMediaEntry < ApplicationRecord
-    belongs_to :custom_medias, class_name: "CustomMedium"
+    belongs_to :custom_media, class_name: "CustomMedium"
 end

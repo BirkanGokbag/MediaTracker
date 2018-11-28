@@ -16,15 +16,17 @@ ActiveRecord::Schema.define(version: 20181127063748) do
     t.string "author"
   end
 
+  create_table "custom_media", force: :cascade do |t|
+    t.string "typeOfMedia"
+    t.integer "general_media_id"
+    t.index ["general_media_id"], name: "index_custom_media_on_general_media_id"
+  end
+
   create_table "custom_media_entries", force: :cascade do |t|
     t.string "key"
     t.string "value"
-    t.integer "custom_medium_id"
-    t.index ["custom_medium_id"], name: "index_custom_media_entries_on_custom_medium_id"
-  end
-
-  create_table "custom_medias", force: :cascade do |t|
-    t.string "type"
+    t.integer "custom_media_id"
+    t.index ["custom_media_id"], name: "index_custom_media_entries_on_custom_media_id"
   end
 
   create_table "followers", force: :cascade do |t|
