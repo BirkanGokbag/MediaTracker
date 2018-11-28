@@ -1,6 +1,6 @@
 class PersonalMediaParametersController < ApplicationController
   before_action :set_personal_media_parameter, only: [:show, :edit, :update, :destroy]
-
+ before_action :authenticate_user!
   # GET /personal_media_parameters
   # GET /personal_media_parameters.json
   def index
@@ -61,14 +61,9 @@ class PersonalMediaParametersController < ApplicationController
     end
   end
 
-  # def retrieveUserMedia
-  #   user_media = [];
-  #   if current_user then
-  #     userID = current_user.id
-  #     user_media = PersonalMediaParameter.includes(:general_media).where(users_id: current_user.id)
-  #   end
-  #   return user_media
-  # end
+  def retrieveUserMedia
+
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_personal_media_parameter
