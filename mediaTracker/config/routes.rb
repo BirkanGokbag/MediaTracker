@@ -6,14 +6,14 @@ Rails.application.routes.draw do
   resources :musics
   resources :movies
   resources :magazines
-  resources :history_logs
+  resources :history_logs, only: [:index]
   resources :general_media
-  resources :followers
+  resources :followers, except: [:edit, :update]
   resources :custom_media
   resources :custom_media_entries
   resources :books
   resources :video_games
-  #resources :users
+  
 
   get 'static_pages/home'
   get 'static_pages/addMedia'

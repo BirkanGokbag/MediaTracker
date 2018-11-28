@@ -5,10 +5,12 @@
 
 class FollowersController < ApplicationController
   before_action :set_follower, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /followers
   # GET /followers.json
   def index
+    #TODO get list of followers
     @followers = current_user.followers
   end
 
@@ -31,7 +33,7 @@ class FollowersController < ApplicationController
 
     respond_to do |format|
       if @follower.save
-        format.html { redirect_to @follower, notice: 'Follower was successfully created.' }
+        format.html { redirect_to @follower, notice: 'User was successfully followed.' }
         format.json { render :show, status: :created, location: @follower }
       else
         format.html { render :new }

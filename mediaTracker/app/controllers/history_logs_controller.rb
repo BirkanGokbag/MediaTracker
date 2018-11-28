@@ -14,17 +14,6 @@ class HistoryLogsController < ApplicationController
     @history_logs = @user.history_logs
   end
 
-  # GET /history_logs/1
-  # GET /history_logs/1.json
-  def show
-  end
-
-  # GET /history_logs/new
-  def new
-    @history_log = current_user.history_logs.build
-  end
-
-
   # POST /history_logs
   # POST /history_logs.json
   def create
