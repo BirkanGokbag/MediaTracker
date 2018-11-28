@@ -27,19 +27,8 @@ ActiveRecord::Schema.define(version: 20181127063748) do
   create_table "custom_media_entries", force: :cascade do |t|
     t.string "key"
     t.string "value"
-<<<<<<< HEAD
-    t.integer "custom_medium_id"
-    t.index ["custom_medium_id"], name: "index_custom_media_entries_on_custom_medium_id"
-  end
-
-  create_table "custom_medias", force: :cascade do |t|
-    t.string "type"
-    t.integer "general_media_id"
-    t.index ["general_media_id"], name: "index_custom_medias_on_general_media_id"
-=======
     t.integer "custom_media_id"
     t.index ["custom_media_id"], name: "index_custom_media_entries_on_custom_media_id"
->>>>>>> 09489fbd673fff25a72c7f6fac155f3c0fb3a04a
   end
 
   create_table "followers", force: :cascade do |t|

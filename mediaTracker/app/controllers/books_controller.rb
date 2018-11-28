@@ -1,12 +1,14 @@
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /books
   # GET /books.json
   def index
-    @books = Book.all
+    personal_media_controller = PersonalMediaParametersController.new
+    user_media = personal_media_controller.retrieveUserMedia
+    @books = user_media.joins(:books)
   end
-
   # GET /books/1
   # GET /books/1.json
   def show
@@ -62,10 +64,9 @@ class BooksController < ApplicationController
     end
   end
 
-  def userBooks
-    personal_media_controller = PersonalMediaParametersController.new
-    user_media = personal_media_controller.retrieveUserMedia
-  end
+  # def userBooks
+  #
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.
