@@ -1,7 +1,7 @@
 class CreateCustomMedias < ActiveRecord::Migration[5.1]
   def change
-    create_table :custom_medias do |t|
-      t.string :type
+    create_table :custom_media do |t|
+      t.string :typeOfMedia
     end
   end
 end

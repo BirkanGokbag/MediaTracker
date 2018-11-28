@@ -22,7 +22,7 @@ class AddForeignKeys < ActiveRecord::Migration[5.1]
     add_reference :video_games, :general_media, index: true, foreign_key: true
 
     #customMedias
-    add_reference :custom_medias, :general_media, index: true, foreign_key: true
+    add_reference :custom_media, :general_media, index: true, foreign_key: true
 
 
   end
