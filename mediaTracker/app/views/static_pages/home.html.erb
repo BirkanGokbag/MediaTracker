@@ -10,12 +10,20 @@
             <li>Custom entries support every media element</li>
             <li>Customize the look of your profile</li>
           </ul>
+
+	  <% if user_signed_in? %>
+	    <h3>Options</h3>
+	    <ul>
+              <li>Click <a href="/static_pages/addMedia">here</a> to add a media</li>
+	    <ul>
+          <% end %>
+
         </div>
         <div id = "latestUpdates">
           <h3>Latest Updates</h3>
 	    <% for i in 1..@limit do%>
-	      <div class = "history"> 
-		 <p><%= @historylog[@historylength - i].historyMessage %></p>
+	      <div class = "history">
+		 <p><%= @historylog[@historylength - i].users.username + @historylog[@historylength - i].historyMessage %> <%=@historylog[@historylength - i].created_at%></p>
 	      </div>
 	    <% end %>
         </div>

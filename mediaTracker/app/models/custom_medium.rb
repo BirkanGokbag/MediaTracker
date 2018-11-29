@@ -1,4 +1,4 @@
 class CustomMedium < ApplicationRecord
   belongs_to :general_media, class_name: "GeneralMedium"
-  has_many "custom_media_entries", dependent: :destroy, foreign_key: :custom_medias_id
+  has_many :custom_media_entries, dependent: :destroy, foreign_key: :custom_medium_id
 end
