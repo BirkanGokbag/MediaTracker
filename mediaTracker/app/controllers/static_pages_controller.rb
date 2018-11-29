@@ -8,13 +8,19 @@ class StaticPagesController < ApplicationController
     # Set up the title of the landing page and retrieve the table
     @Title = "Media Tracker"
     @historylog = HistoryLog.all
+    @followers = Follower.all
 
-    # There is a limit to how many updates can be displayed in the landing page
-    @limit = @historylog.length
+    # There is a limit to how many updates or followers can be displayed in the landing page
+    @limita = @historylog.length
+    @limitb = @followers.length
     @historylength = @historylog.length
-    if @limit > 5
-      @limit = 5
+    if @limita > 5
+      @limita = 5
     end
+    if @limitb>20
+      @limitb = 20
+    end
+
   end
 
   def faq

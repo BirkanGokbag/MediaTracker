@@ -16,16 +16,30 @@
 	    <ul>
               <li>Click <a href="/static_pages/addMedia">here</a> to add a media</li>
 	    <ul>
-          <% end %>
+	  <% else %>
 
+
+          <% end %>
         </div>
-        <div id = "latestUpdates">
-          <h3>Latest Updates</h3>
-	    <% for i in 1..@limit do%>
-	      <div class = "history">
-		 <p><%= @historylog[@historylength - i].historyMessage %></p>
-	      </div>
-	    <% end %>
-        </div>
+
+	<% if user_signed_in? %>
+	  <div id = "latestUpdates">
+            <h3>Followers</h3>
+	      <% for i in 1..@limitb do%>
+	        <div class = "followers">
+	          <p><%= @follower[i].id %></p>
+	        </div>
+	      <% end %>
+          </div>
+	<% else %>
+          <div id = "latestUpdates">
+            <h3>Latest Updates</h3>
+	      <% for i in 1..@limita do%>
+	        <div class = "history">
+	          <p><%= @historylog[@historylength - i].historyMessage %></p>
+	        </div>
+	      <% end %>
+          </div>
+	<% end %>
       </div>
     </div>
