@@ -30,13 +30,13 @@ class FollowersController < ApplicationController
   # POST /followers.json
   def create
     @follower = Follower.new(users_id: current_user.id, user: current_user.id, fTarget: params['fTarget'].to_i)
-    renderto = 'users/show/'
+    @thisUser = User.find_by(id: params['fTarget'].to_i)
     respond_to do |format|
       if @follower.save
-        format.html { head :no_content, notice: 'User was successfully followed.' }
+        format.html { redirect_to(@thisUser, :notice=> 'User was successfully followed.') }
         format.json { head :no_content, status: :created, location: @follower }
       else
-        format.html { head :no_content }
+        format.html { redirect_to(@thisUser, :notice=> 'User was not followed.') }
         format.json { render json: @follower.errors, status: :unprocessable_entity }
       end
     end
@@ -47,9 +47,9 @@ class FollowersController < ApplicationController
   # DELETE /followers/1.json
   def destroy
     @follower.destroy
-    renderto = 'users/show/'
+    @thisUser = User.find_by(id: params['fTarget'].to_i)
     respond_to do |format|
-      format.html {head :no_content, notice: 'User was successfully unfollowed.' }
+      format.html {redirect_to(@thisUser, :notice=> 'User was successfully unfollowed.') }
       format.json { head :no_content }
     end
   end
