@@ -1,0 +1,10 @@
+<%= form_tag("search_form",:method => :get, :id => "search_form", :name => "search_form") do %>
+
+<div class="field">
+  <label>Find User:</label>
+  <%= text_field_tag(:userName) %>
+</div>
+  <div class="field">
+    <%= submit_tag "Search" %>
+  </div>
+<% end %>

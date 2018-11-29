@@ -4,6 +4,14 @@ class StaticPagesController < ApplicationController
   before_action :authenticate_user!
 
   def home
+    #@preferences = nil
+    # Get the users preferences if they are set o/w default
+    #if user_signed_in?
+    #  @preferences = Preference.find_by users_id: current_user.id      
+    #end 
+    #if @preferences == nil
+    #  @preferences = Preference.find_by id: 1
+    #end 
 
     # Set up the title of the landing page and retrieve the tables
     @Title = "Media Tracker"
@@ -101,4 +109,27 @@ class StaticPagesController < ApplicationController
 
 
   end
+  def preference_form
+    @preferences = Preference.find_by users_id: current_user.id
+    if @preferences == nil
+      @preferences = Preference.find 1
+    end 
+    redirect_to "/static_pages/home"
+  end
+  def search_form
+    @searched_user = User.find_by username: params[:userName]
+    if @searched_user == nil
+      flash[:error] = "Your book was not found"
+      redirect_to "/static_pages/profile"
+    else
+      redirect_to "/users/#{@searched_user.id}"
+    end 
+  end 
+  def follow
+    redirect_to "/users/1"
+
+  end
+
+
 end
+
