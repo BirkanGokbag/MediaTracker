@@ -3,7 +3,9 @@
     Created on: 11/27
 %>
 
-<%= form_for(current_user.followers.find_by(fTarget: 1), html: { method: :delete }) do |form| %>
-  <div><%= hidden_field_tag :followee, 1 %></div>
+<%= form_for(@thisUser, :url => { :controller=> "followers", :action => "destroy", :method => "delete" }) do |form| %>
+  <div><%= hidden_field_tag :fTarget, @thisUser.id %></div>
   <%= form.submit "Unfollow", class: "btn btn-primary" %>
 <% end %>
+
+

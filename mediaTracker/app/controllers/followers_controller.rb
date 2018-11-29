@@ -29,7 +29,7 @@ class FollowersController < ApplicationController
   # POST /followers
   # POST /followers.json
   def create
-    @follower = Follower.new(users_id: current_user.id, user: current_user.id, fTarget: params['followee'].to_i)
+    @follower = Follower.new(users_id: current_user.id, user: current_user.id, fTarget: params['fTarget'].to_i)
 
     respond_to do |format|
       if @follower.save

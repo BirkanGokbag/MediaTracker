@@ -3,12 +3,12 @@
 	      <h1><%= @thisUser.first_name.capitalize%> <%=  @thisUser.last_name.capitalize%></h1>
       </div>
       <% if current_user.id != @thisUser.id %>
-      	<% if @followers.include? current_user.id %>
+      	<% if @followers.any?{|x| x.user == current_user.id} %>
       		<div>
-			    <p>following</p>
-			</div>
+		  <p>following</p><%= render 'followers/unfollow_form', follower: @follower %>
+		</div>
       	<% else %>
-			<%= render 'follow_form' %>
+      	  <%= render 'followers/follow_form', follower: @follower %>
       	<% end %>
       <% end %>
 
@@ -24,7 +24,14 @@
 	        <ul>
 
         </div>
-	      
-	
+
+	      <div id = "latestUpdates">
+            <h3>Followers</h3>
+	      <% for i in 1..@limitb do%>
+	        <div class = "followers">
+	          <p class = "follower"><%# @user.find(@follower[i].id).username %></p>
+	        </div>
+	      <% end %>
+          </div>	
       </div>
     </div>
