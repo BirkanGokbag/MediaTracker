@@ -3,9 +3,9 @@
     Created on: 11/27
 %>
 
-<%= form_with(model: follower, local: true, html: { :controller=> "followers", :method => "delete" }) do |form| %>
+<%= form_tag( url_for(:controller => 'followers', :action => 'destroy'), method: :delete) do %>
   <div><%= hidden_field_tag :fTarget, @thisUser.id %></div>
-  <%= form.submit "Unfollow", class: "btn btn-primary" %>
+  <%= submit_tag "Unfollow", class: "btn btn-primary" %>
 <% end %>
 
 
