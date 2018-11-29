@@ -6,4 +6,5 @@
 <%= form_tag(url_for(:controller => 'followers', :action => 'create'), method: :post) do %>
   <div><%= hidden_field_tag :fTarget, @thisUser.id %></div>
   <%= submit_tag "Follow", class: "btn btn-primary" %>
+
 <% end %>

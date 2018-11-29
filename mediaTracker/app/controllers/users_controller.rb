@@ -2,9 +2,14 @@ class UsersController < ApplicationController
 	def show
 	    @thisUser = User.find(params[:id])
 	    @historylog = HistoryLog.all
-	    @followers = Follower.where(fTarget: @thisUser.id)
-	    @user = User.all
+	    @followers = Follower.where(users_id: params[:id])
 
+	    @currUserFollowers = nil
+	    if @thisUser.id != current_user.id
+	    	@currUserFollowers = Follower.where(users_id: current_user.id)
+	    end 
+
+	    @user = User.all
 	    # There is a limit to how many updates or followers can be displayed in the landing page
 	    @limita = @historylog.length
 	    @limitb = @followers.length
@@ -16,8 +21,5 @@ class UsersController < ApplicationController
 	      @limitb = 20
 	    end
 	end
-	def follow
-		redirect_to "/static_pages/home"
 
-	end
 end
