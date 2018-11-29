@@ -101,6 +101,8 @@ class StaticPagesController < ApplicationController
 
   end
   def preferences
-    
-  end 
+
+  end
+  def profile
+  end
 end
