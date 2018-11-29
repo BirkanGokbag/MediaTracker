@@ -3,9 +3,7 @@
 one:
   artist: MyString
   album: MyString
-  general_medias: one
 
 two:
   artist: MyString
   album: MyString
-  general_medias: two

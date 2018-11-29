@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Currentstatus:</strong>
+  <%= @score.currentStatus %>
+</p>
+
+<p>
+  <strong>Favorite:</strong>
+  <%= @score.favorite %>
+</p>
+
+<p>
+  <strong>Comments:</strong>
+  <%= @score.comments %>
+</p>
+
+<p>
+  <strong>Source:</strong>
+  <%= @score.source %>
+</p>
+
+<p>
+  <strong>Replay:</strong>
+  <%= @score.replay %>
+</p>
+
+<p>
+  <strong>Users:</strong>
+  <%= @score.users_id %>
+</p>
+
+<p>
+  <strong>General media:</strong>
+  <%= @score.general_media_id %>
+</p>
+
+<%= link_to 'Edit', edit_score_path(@score) %> |
+<%= link_to 'Back', scores_path %>

@@ -1,0 +1,52 @@
+<%= form_with(model: score, local: true) do |form| %>
+  <% if score.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(score.errors.count, "error") %> prohibited this score from being saved:</h2>
+
+      <ul>
+      <% score.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :currentStatus %>
+    <%= form.text_field :currentStatus, id: :score_currentStatus %>
+  </div>
+
+  <div class="field">
+    <%= form.label :favorite %>
+    <%= form.text_field :favorite, id: :score_favorite %>
+  </div>
+
+  <div class="field">
+    <%= form.label :comments %>
+    <%= form.text_field :comments, id: :score_comments %>
+  </div>
+
+  <div class="field">
+    <%= form.label :source %>
+    <%= form.text_field :source, id: :score_source %>
+  </div>
+
+  <div class="field">
+    <%= form.label :replay %>
+    <%= form.text_field :replay, id: :score_replay %>
+  </div>
+
+  <div class="field">
+    <%= form.label :users_id %>
+    <%= form.text_field :users_id, id: :score_users_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :general_media_id %>
+    <%= form.text_field :general_media_id, id: :score_general_media_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
