@@ -5,10 +5,11 @@ class StaticPagesController < ApplicationController
 
   def home
 
-    # Set up the title of the landing page and retrieve the table
+    # Set up the title of the landing page and retrieve the tables
     @Title = "Media Tracker"
     @historylog = HistoryLog.all
     @followers = Follower.all
+    @user = User.all
 
     # There is a limit to how many updates or followers can be displayed in the landing page
     @limita = @historylog.length
