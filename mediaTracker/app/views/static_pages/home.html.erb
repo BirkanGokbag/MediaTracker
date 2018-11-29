@@ -5,26 +5,30 @@
     <%= render "search_form.html" %>
   <% end %>
   <div id = "main">
-    <div class = "well">
-      <h3>Track Your Media Collection</h3>
-      <ul>
-        <li>See your every media element in one place</li>
-        <li>Custom entries support every media element</li>
-        <li>Customize the look of your profile</li>
-      </ul>
+    <div class="col-sm-8"> 
+      <div class = "well">
+        <h3 class = "jumbotron">Track Your Media Collection</h3>
+        <ul>
+          <li>See your every media element in one place</li>
+          <li>Custom entries support every media element</li>
+          <li>Customize the look of your profile</li>
+        </ul>
+      </div>
     </div>
     <% if user_signed_in? %>
+    <div class="col-sm-4"> 
       <div class = "well">
-        <h3>Followers</h3>
+        <h3 class = "jumbotron">Followers</h3>
         <% for i in 1..@limitb do%>
           <div class = "followers">
             <p class = "follower"><%= @user.find(@follower[i].id).username %></p>
           </div>
         <% end %>
       </div>
+    </div>
     <% else %>
       <div class = "well">
-        <h3>Latest Updates</h3>
+        <h3 class = "jumbotron">Latest Updates</h3>
         <% for i in 1..@limita do%>
           <div class = "history">
             <p><%= @historylog[@historylength - i].users.username + @historylog[@historylength - i].historyMessage %><%= @historylog[@historylength - i].created_at %></p>
