@@ -1,3 +1,5 @@
+include Devise::Controllers::Helpers
+
 class PersonalMediaParametersController < ApplicationController
   before_action :set_personal_media_parameter, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
@@ -61,9 +63,6 @@ class PersonalMediaParametersController < ApplicationController
     end
   end
 
-  def retrieveUserMedia
-    return PersonalMediaParameter.join(:general_media).where(users_id: current_user().id) if user_signed_in?
-  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

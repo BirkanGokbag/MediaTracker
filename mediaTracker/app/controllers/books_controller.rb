@@ -1,3 +1,5 @@
+include Devise::Controllers::Helpers
+
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
@@ -5,9 +7,8 @@ class BooksController < ApplicationController
   # GET /books
   # GET /books.json
   def index
-    personal_media_controller = PersonalMediaParametersController.new
-    user_media = personal_media_controller.retrieveUserMedia
-    @books = user_media.joins(:books)
+
+    @books = (GeneralMedium.joins(:book)).joins(:personal_media_parameters).where('personal_media_parameters.users_id =?', current_user.id)
   end
   # GET /books/1
   # GET /books/1.json
