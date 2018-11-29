@@ -1,6 +1,7 @@
 <div id = "container">
-  <%= render "header.html" %>
+  
   <% if user_signed_in? %>
+    <%= render "header.html" %>
     <%= render "search_form.html" %>
   <% end %>
   <div id = "main">
