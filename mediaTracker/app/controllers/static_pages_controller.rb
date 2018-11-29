@@ -17,6 +17,7 @@ class StaticPagesController < ApplicationController
     @Title = "Media Tracker"
     @historylog = HistoryLog.all
     @followers = Follower.where(:users_id => current_user.id)
+    #@followers = @followers.each
     @user = User.all
 
     # There is a limit to how many updates or followers can be displayed in the landing page
@@ -119,7 +120,7 @@ class StaticPagesController < ApplicationController
     @searched_user = User.find_by username: params[:userName]
     if @searched_user == nil
       flash[:error] = "Your book was not found"
-      redirect_to "/static_pages/profile"
+      redirect_to "/static_pages/home"
     else
       redirect_to "/users/#{@searched_user.id}"
     end 

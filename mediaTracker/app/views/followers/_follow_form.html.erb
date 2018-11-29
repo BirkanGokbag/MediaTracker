@@ -3,7 +3,12 @@
     Created on: 11/27
 %>
 
-<%= form_for(@thisUser, :url => {:controller => "followers", :action => "create", :method => "post"}) do |form| %>
+
+<%= form_tag("create",:method => :post, :id => "create", :name => "create") do %>
+
   <div><%= hidden_field_tag :fTarget, @thisUser.id %></div>
-  <%= form.submit "Follow", class: "btn btn-primary" %>
+
+  <div class="field">
+    <%= submit_tag "Follow" %>
+  </div>
 <% end %>
