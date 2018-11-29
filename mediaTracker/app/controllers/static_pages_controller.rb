@@ -4,6 +4,14 @@ class StaticPagesController < ApplicationController
   before_action :authenticate_user!
 
   def home
+    #@preferences = nil
+    # Get the users preferences if they are set o/w default
+    #if user_signed_in?
+    #  @preferences = Preference.find_by users_id: current_user.id      
+    #end 
+    #if @preferences == nil
+    #  @preferences = Preference.find_by id: 1
+    #end 
 
     # Set up the title of the landing page and retrieve the tables
     @Title = "Media Tracker"
@@ -106,28 +114,16 @@ class StaticPagesController < ApplicationController
       @preferences = Preference.find 1
     end 
     redirect_to "/static_pages/home"
-
-
   end
-
-  def profile 
-        # Set up the title of the landing page and retrieve the tables
-    @thisUser = User.find_by id: current_user.id
-    @historylog = HistoryLog.all
-    @followers = Follower.all
-    @user = User.all
-
-    # There is a limit to how many updates or followers can be displayed in the landing page
-    @limita = @historylog.length
-    @limitb = @followers.length
-    @historylength = @historylog.length
-    if @limita > 5
-      @limita = 5
-    end
-    if @limitb>20
-      @limitb = 20
-    end
-  end
+  def search_form
+    @searched_user = User.find_by username: params[:userName]
+    if @searched_user == nil
+      flash[:error] = "Your book was not found"
+      redirect_to "/static_pages/profile"
+    else
+      redirect_to "/users/#{@searched_user.id}"
+    end 
+  end 
 
 
 end

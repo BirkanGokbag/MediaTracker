@@ -1,24 +1,20 @@
-    <div id = "container">
+ <div id = "container">
       <div id = "header">
 	      <h1><%= @thisUser.first_name.capitalize%> <%=  @thisUser.last_name.capitalize%></h1>
       </div>
       <div id = "main">
         <div id = "mainArea">
-          <h3>Track Your Media Collection</h3>
-          <ul>
-            <li>See your every media element in one place</li>
-            <li>Custom entries support every media element</li>
-            <li>Customize the look of your profile</li>
-          </ul>
+          <h3>Your Media</h3>
 
 	        <h3>Options</h3>
 	        <ul>
             <li>Click <a href="/static_pages/addMedia">here</a> to add a media</li>
             <li>Click <a href="/static_pages/preferences">here</a> to update preferences</li>
+            <li><a href="/static_pages/home">home</a></li>
 	        <ul>
 
         </div>
-	  <div id = "latestUpdates">
+	      <div id = "latestUpdates">
             <h3>Followers</h3>
 	      <% for i in 1..@limitb do%>
 	        <div class = "followers">
