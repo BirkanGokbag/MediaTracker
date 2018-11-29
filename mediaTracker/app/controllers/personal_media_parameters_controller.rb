@@ -1,6 +1,8 @@
+include Devise::Controllers::Helpers
+
 class PersonalMediaParametersController < ApplicationController
   before_action :set_personal_media_parameter, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
   # GET /personal_media_parameters
   # GET /personal_media_parameters.json
   def index
@@ -60,6 +62,7 @@ class PersonalMediaParametersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

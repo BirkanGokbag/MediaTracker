@@ -1,10 +1,10 @@
 class MusicsController < ApplicationController
   before_action :set_music, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
   # GET /musics
   # GET /musics.json
   def index
-    @musics = Music.all
+    @magazines = (GeneralMedium.joins(:music)).joins(:personal_media_parameters).where('personal_media_parameters.users_id =?', current_user.id)
   end
 
   # GET /musics/1

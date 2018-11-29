@@ -1,10 +1,10 @@
 class CustomMediaController < ApplicationController
   before_action :set_custom_medium, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
   # GET /custom_media
   # GET /custom_media.json
   def index
-    @custom_media = CustomMedium.all
+    @custom_media = (GeneralMedium.joins(:custom_medium).joins(custom_medium: [:custom_media_entries])).joins(:personal_media_parameters).where('personal_media_parameters.users_id =?', current_user.id)
   end
 
   # GET /custom_media/1
