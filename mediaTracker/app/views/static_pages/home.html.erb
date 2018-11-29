@@ -4,7 +4,7 @@
     <%= render "header.html" %>
   <% end %>
   <div id = "main">
-    <div id = "mainArea">
+    <div class = "well">
       <h3>Track Your Media Collection</h3>
       <ul>
         <li>See your every media element in one place</li>
@@ -13,7 +13,16 @@
       </ul>
     </div>
     <% if user_signed_in? %>
-      <div id = "latestUpdates">
+      <div class = "well">
+        <h3>Followers</h3>
+        <% for i in 1..@limitb do%>
+          <div class = "followers">
+            <p class = "follower"><%= @user.find(@follower[i].id).username %></p>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <div class = "well">
         <h3>Latest Updates</h3>
         <% for i in 1..@limita do%>
           <div class = "history">

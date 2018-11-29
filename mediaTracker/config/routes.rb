@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   post 'static_pages/form'
   post 'static_pages/follow_form'
   post 'static_pages/preference_form'
+
   devise_for :users
   resources :users, :only => [:show, :follow] 
   root to: redirect('static_pages/home')
