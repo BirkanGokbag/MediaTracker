@@ -2,7 +2,8 @@
     Author: Alyssa Langhals
     Created on: 11/27
 %>
-<%= form_with(model: follower, local: true, html: { method: "create" })) do |form| %>
+
+<%= form_for(@thisUser, :url => {:controller => "followers", :action => "create", :method => "post"}) do |form| %>
   <div><%= hidden_field_tag :fTarget, @thisUser.id %></div>
   <%= form.submit "Follow", class: "btn btn-primary" %>
 <% end %>
