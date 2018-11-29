@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   post 'static_pages/form'
   post 'static_pages/preference_form'
 devise_for :users
-resources :users, :only => [:show] 
+resources :users, :only => [:show, :follow] 
  root to: redirect('static_pages/home')
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

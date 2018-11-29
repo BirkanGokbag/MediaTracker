@@ -124,6 +124,10 @@ class StaticPagesController < ApplicationController
       redirect_to "/users/#{@searched_user.id}"
     end 
   end 
+  def follow
+    redirect_to "/users/1"
+
+  end
 
 
 end

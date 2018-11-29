@@ -2,6 +2,22 @@
       <div id = "header">
 	      <h1><%= @thisUser.first_name.capitalize%> <%=  @thisUser.last_name.capitalize%></h1>
       </div>
+      <% if current_user.id != @thisUser.id %>
+      	<% if @followers.include? current_user.id %>
+      		<div>
+			    <p>following</p>
+			</div>
+      	<% else %>
+      		<%= form_tag("follow",:method => :get, :id => "follow", :name => "follow") do %>
+      		  <%= hidden_field_tag 'userRequesting', current_user.id %>
+      		  <%= hidden_field_tag 'userToFollow', @thisUser.id %>
+			  <div">
+			    <%= submit_tag "Follow" %>
+			  </div>
+      		<% end %>
+      	<% end %>
+      <% end %>
+
       <div id = "main">
         <div id = "mainArea">
           <h3>Your Media</h3>

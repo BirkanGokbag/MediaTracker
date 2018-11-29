@@ -16,4 +16,8 @@ class UsersController < ApplicationController
 	      @limitb = 20
 	    end
 	end
+	def follow
+		redirect_to "/static_pages/home"
+
+	end
 end
