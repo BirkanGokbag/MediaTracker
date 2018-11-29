@@ -16,7 +16,7 @@ class StaticPagesController < ApplicationController
     # Set up the title of the landing page and retrieve the tables
     @Title = "Media Tracker"
     @historylog = HistoryLog.all
-    @followers = Follower.all
+    @followers = Follower.where(:users_id => current_user.id)
     @user = User.all
 
     # There is a limit to how many updates or followers can be displayed in the landing page

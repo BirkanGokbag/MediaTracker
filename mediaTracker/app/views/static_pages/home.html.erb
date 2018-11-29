@@ -30,7 +30,7 @@
         <h3>Followers</h3>
         <% for i in 1..@limitb do%>
           <div class = "followers">
-            <p class = "follower"><%= @user.find(@follower[i].id).username %></p>
+            <p class = "follower"><%= @user.find(@followers[i].Ftarget).username %></p>
           </div>
         <% end %>
       </div>
