@@ -5,20 +5,29 @@
 <table>
   <thead>
     <tr>
+      <th>Title</th>
       <th>Author</th>
-      <th>General medias</th>
+      <th>Current Status</th>
+      <th>Favorite?</th>
+      <th>Score</th>
+      <th>Source</th>
+      <th>re-reads</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @books.each do |book| %>
+    <% @books.each do |book_entry| %>
       <tr>
-        <td><%= book.author %></td>
-        <td><%= book.general_media_id %></td>
-        <td><%= link_to 'Show', book %></td>
-        <td><%= link_to 'Edit', edit_book_path(book) %></td>
-        <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= book_entry.name%></td>
+        <td><%= book_entry.book.author %></td>
+        <td><%= book_entry.personal_media_parameters.first.currentStatus%></td>
+        <td><%= book_entry.personal_media_parameters.first.favorite%></td>
+        <td><%= book_entry.personal_media_parameters.first.score%></td>
+        <td><%= book_entry.personal_media_parameters.first.source%></td>
+        <td><%= book_entry.personal_media_parameters.first.replay%></td>
+
+        <td><%= link_to 'Edit', edit_book_path(book_entry.book) %></td>
       </tr>
     <% end %>
   </tbody>
