@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
   get 'static_pages/home'
   get 'static_pages/addMedia'
+  get 'static_pages/preferences'
   get 'static_pages/faq'
   post 'static_pages/form'
   devise_for :users

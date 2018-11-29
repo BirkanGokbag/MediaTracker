@@ -1,0 +1,45 @@
+<div id = "container">
+  <div id = "header">
+    <h1>Update Preferences</h1>
+  </div>
+  <div id = "main">
+    <div id = "mainArea">
+		<%= form_tag("form",:method => :put, :id => "preference_form", :name => "preference_form") do %>
+
+		<div class="field">
+		  <label>wallpaper:</label>
+		  <%= file_field_tag 'wallpaper', accept: 'image/png,image/gif,image/jpeg' %>
+		</div>
+
+		<div class="field">
+		  <label>font size:</label>
+		  <%= number_field(:score, :temp, in: 5..50) %>
+		</div>
+
+		<div class="field">
+		  <label>font:</label>
+		  <%= text_field_tag(:font) %>
+		</div>
+
+		<div class="field">
+		  <label>profile pic</label>
+		  <%= file_field_tag 'profilePic', accept: 'image/png,image/gif,image/jpeg' %></div>
+
+		<div class="field">
+		  <label>privacy:</label>
+		  <%= text_area_tag(:privacy) %>
+		</div>
+
+		<div class="field">
+		  <label>font color:</label>
+		  <%= text_field_tag(:fontColor) %>
+		</div>
+
+		  <div class="field">
+		    <%= submit_tag "Update Preferences" %>
+		  </div>
+
+		<% end %>
+    </div>
+  </div>
+</div>
