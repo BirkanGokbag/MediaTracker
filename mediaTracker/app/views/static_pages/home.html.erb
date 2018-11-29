@@ -1,7 +1,5 @@
 <div id = "container">
-  <div id = "header">
-    <h1><%= @Title %></h1>
-  </div>
+  <%= render "header.html" %>
   <% if user_signed_in? %>
     <%= render "search_form.html" %>
   <% end %>
@@ -13,17 +11,6 @@
         <li>Custom entries support every media element</li>
         <li>Customize the look of your profile</li>
       </ul>
-
-      <% if user_signed_in? %>
-        <h3>Options</h3>
-        <ul>
-          <li>Click <a href="/static_pages/addMedia">here</a> to add a media</li>
-          <li>Click <a href="/static_pages/preferences">here</a> to update preferences</li>
-          <% if user_signed_in? %>
-            <li>Click <%= link_to "here", current_user %> to see your profile</li>
-          <% end %>
-        <ul>
-      <% end %>
     </div>
     <% if user_signed_in? %>
       <div id = "latestUpdates">
