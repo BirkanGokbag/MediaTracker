@@ -2,7 +2,7 @@
     Author: Alyssa Langhals
     Created on: 11/27
 %>
-<%= form_with(model: follower, local: true) do |form| %>
+<%= form_with(model: follower, local: true, html: { method: "create" })) do |form| %>
   <div><%= hidden_field_tag :fTarget, @thisUser.id %></div>
   <%= form.submit "Follow", class: "btn btn-primary" %>
 <% end %>
