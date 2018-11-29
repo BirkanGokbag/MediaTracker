@@ -30,13 +30,13 @@ class FollowersController < ApplicationController
   # POST /followers.json
   def create
     @follower = Follower.new(users_id: current_user.id, user: current_user.id, fTarget: params['fTarget'].to_i)
-
+    renderto = 'users/show/'
     respond_to do |format|
       if @follower.save
-        format.html { redirect_to @follower, notice: 'User was successfully followed.' }
-        format.json { render :show, status: :created, location: @follower }
+        format.html { head :no_content, notice: 'User was successfully followed.' }
+        format.json { head :no_content, status: :created, location: @follower }
       else
-        format.html { render :new }
+        format.html { head :no_content }
         format.json { render json: @follower.errors, status: :unprocessable_entity }
       end
     end
@@ -47,20 +47,26 @@ class FollowersController < ApplicationController
   # DELETE /followers/1.json
   def destroy
     @follower.destroy
+    renderto = 'users/show/'
     respond_to do |format|
-      format.html { redirect_to followers_url, notice: 'User was successfully unfollowed.' }
+      format.html {head :no_content, notice: 'User was successfully unfollowed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
+      # Use callbacks to share common setup or constraints between actions.
     def set_follower
-      @follower = Follower.find(params[:id])
+      @follower = Follower.find_by(user: current_user.id, fTarget: follower_params)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def follower_params
-      params.require(:followee)#TODO permit
+      puts "JFJFJF"
+      puts params['fTarget']
+      params.require(:fTarget)#TODO permit
     end
+
+  
 end
