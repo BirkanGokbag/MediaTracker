@@ -8,13 +8,7 @@
 			    <p>following</p>
 			</div>
       	<% else %>
-      		<%= form_tag("follow",:method => :get, :id => "follow", :name => "follow") do %>
-      		  <%= hidden_field_tag 'userRequesting', current_user.id %>
-      		  <%= hidden_field_tag 'userToFollow', @thisUser.id %>
-			  <div">
-			    <%= submit_tag "Follow" %>
-			  </div>
-      		<% end %>
+			<%= render 'follow_form' %>
       	<% end %>
       <% end %>
 
