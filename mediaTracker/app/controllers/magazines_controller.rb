@@ -24,8 +24,8 @@ class MagazinesController < ApplicationController
   # POST /magazines
   # POST /magazines.json
   def create
-    @magazine = Magazine.new(magazine_params)
 
+    @magazine = Magazine.new(magazine_params)
     respond_to do |format|
       if @magazine.save
         format.html { redirect_to @magazine, notice: 'Magazine was successfully created.' }

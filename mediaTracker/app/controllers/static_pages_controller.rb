@@ -69,6 +69,12 @@ class StaticPagesController < ApplicationController
 
     end
 
+    #This will call the controller to create a history log    
+    history_logs_cont = HistoryLogsController.new
+    history_logs_cont.request = request
+    history_logs_cont.response = response
+    history_logs_cont.create
+
     if customSpecific == 0
         # This is for the regular media, save the parameters and the special media
         if @userParameters.save && @special.save
@@ -90,6 +96,7 @@ class StaticPagesController < ApplicationController
     end
 
     # protect_from_forgery prepend: true
+
 
   end
 end

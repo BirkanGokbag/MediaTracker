@@ -1,3 +1,8 @@
+# This is the controller for history logs
+#
+# Author: Alyssa Langhals (updating methods)
+# Created on: 11/25
+
 class HistoryLogsController < ApplicationController
   before_action :set_history_log, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
@@ -9,21 +14,13 @@ class HistoryLogsController < ApplicationController
     @history_logs = @user.history_logs
   end
 
-  # GET /history_logs/1
-  # GET /history_logs/1.json
-  def show
-  end
-
-  # GET /history_logs/new
-  def new
-    @history_log = current_user.history_logs.build
-  end
-
-
   # POST /history_logs
   # POST /history_logs.json
   def create
-    @history_log = HistoryLog.new(historyMessage: history_log_params['name'], users_id: current_user.id)
+   
+    message = " created " + history_log_params
+    message += " at "
+    @history_log = HistoryLog.new(historyMessage: message, users_id: current_user.id)
     
     respond_to do |format|
       if @history_log.save
@@ -33,7 +30,7 @@ class HistoryLogsController < ApplicationController
         format.html {head :internal_server_error}
         format.json {head :internal_server_error}
       end
-      head :ok
+
     end
   end
 
@@ -47,7 +44,6 @@ class HistoryLogsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def history_log_params
-      #TODO 
-      params.require(:general_medium)#.permit(:historyMessage, :users_id)
+      params.require(:name)#.permit(:name)
     end
 end

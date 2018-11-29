@@ -21,7 +21,6 @@
 
           <% end %>
         </div>
-
 	<% if user_signed_in? %>
 	  <div id = "latestUpdates">
             <h3>Followers</h3>
@@ -41,5 +40,13 @@
 	      <% end %>
           </div>
 	<% end %>
+        <div id = "latestUpdates">
+          <h3>Latest Updates</h3>
+	    <% for i in 1..@limit do%>
+	      <div class = "history">
+		 <p><%= @historylog[@historylength - i].users.username + @historylog[@historylength - i].historyMessage %> <%=@historylog[@historylength - i].created_at%></p>
+	      </div>
+	    <% end %>
+        </div>
       </div>
     </div>
