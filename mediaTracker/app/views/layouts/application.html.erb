@@ -21,9 +21,7 @@
       </div>
     <% end %>
 
-    <% if user_signed_in? %>
-      Hello, <%= current_user.username %>
-    <% else %>
+    <% if not user_signed_in? %>
     <%= link_to "Sign up", new_user_registration_path %>
     <%= link_to "Login", new_user_session_path %>
     <% end %>
