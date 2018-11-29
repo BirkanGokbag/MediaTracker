@@ -10,6 +10,7 @@ class StaticPagesController < ApplicationController
     @historylog = HistoryLog.all
     @followers = Follower.all
     @user = User.all
+    @currentUserId = current_user.id
 
     # There is a limit to how many updates or followers can be displayed in the landing page
     @limita = @historylog.length
