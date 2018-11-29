@@ -10,7 +10,8 @@ Description: Partial form for adding video game
 <!-- General Stuff -->
 <div class="field">
   <label>Enter Name of the Video Game:</label>
-  <%= text_field_tag(:name) %>
+  <input type="text" name="name" id="name" required>
+  <!--  </%= text_field_tag(:name) %>-->
 </div>
 
 <div class="field">
@@ -46,12 +47,14 @@ Description: Partial form for adding video game
   <!-- Special Parameters for Video Game-->
   <div class="field">
     <label>Enter the Studio That Published This Game:</label>
-    <%= text_field_tag(:studio) %>
+    <input type="text" name="studio" id="studio" required>
+    <!--  </%= text_field_tag(:studio) %>-->
   </div>
 
   <div class="field">
     <label>Enter the System That This Game Is You Want/Playing On:</label>
-    <%= text_field_tag(:system) %>
+    <input type="text" name="system" id="system" required>
+    <!--  </%= text_field_tag(:system) %>-->
   </div>
 
   <div class="field">

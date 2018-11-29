@@ -10,7 +10,8 @@ Description: Partial form for adding books
 <!-- General Stuff -->
 <div class="field">
   <label>Enter Name of the Book:</label>
-  <%= text_field_tag(:name) %>
+  <input type="text" name="name" id="name" required>
+  <!--  </%= text_field_tag(:name) %>-->
 </div>
 
 <div class="field">
@@ -46,7 +47,8 @@ Description: Partial form for adding books
   <!-- Special Parameters for Book-->
   <div class="field">
     <label>Enter the Author of This Book:</label>
-    <%= text_field_tag(:author) %>
+    <input type="text" name="author" id="author" required>
+  <!--  </%= text_field_tag(:author) %>-->
   </div>
 
   <div class="field">

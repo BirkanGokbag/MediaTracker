@@ -10,7 +10,8 @@ Description: Partial form for adding movie media
 <!-- General Stuff -->
 <div class="field">
   <label>Enter Name of the Movie:</label>
-  <%= text_field_tag(:name) %>
+  <input type="text" name="name" id="name" required>
+  <!--  </%= text_field_tag(:name) %>-->
 </div>
 
 <div class="field">
@@ -46,7 +47,8 @@ Description: Partial form for adding movie media
   <!-- Special Parameters for Movie-->
   <div class="field">
     <label>Enter the Director of This Movie:</label>
-    <%= text_field_tag(:director) %>
+    <input type="text" name="director" id="director" required>
+    <!--  </%= text_field_tag(:director) %>-->
   </div>
 
   <div class="field">
