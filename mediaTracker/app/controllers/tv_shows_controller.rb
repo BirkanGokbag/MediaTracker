@@ -1,10 +1,10 @@
 class TvShowsController < ApplicationController
   before_action :set_tv_show, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
   # GET /tv_shows
   # GET /tv_shows.json
   def index
-    @tv_shows = TvShow.all
+    @tv_shows = (GeneralMedium.joins(:tv_show)).joins(:personal_media_parameters).where('personal_media_parameters.users_id =?', current_user.id)
   end
 
   # GET /tv_shows/1

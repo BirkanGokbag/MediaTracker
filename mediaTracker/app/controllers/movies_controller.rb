@@ -1,10 +1,11 @@
 class MoviesController < ApplicationController
   before_action :set_movie, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /movies
   # GET /movies.json
   def index
-    @movies = Movie.all
+    @movies = (GeneralMedium.joins(:movie)).joins(:personal_media_parameters).where('personal_media_parameters.users_id =?', current_user.id)
   end
 
   # GET /movies/1
