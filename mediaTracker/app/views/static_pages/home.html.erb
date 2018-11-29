@@ -35,7 +35,7 @@
             <h3>Latest Updates</h3>
 	      <% for i in 1..@limita do%>
 	        <div class = "history">
-	          <p><%= @historylog[@historylength - i].historyMessage %></p>
+	          <p><%= @historylog[@historylength - i].users.username + @historylog[@historylength - i].historyMessage %><%= @historylog[@historylength - i].created_at %></p>
 	        </div>
 	      <% end %>
           </div>
