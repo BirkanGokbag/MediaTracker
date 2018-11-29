@@ -11,9 +11,10 @@ Description: Partial form for adding books
 <div class="field">
   <label>Enter Name of the Book:</label>
   <input type="text" name="name" id="name" required>
-  <!--  </%= text_field_tag(:name) %>-->
+  <!--  </%= text_field_tag(:name) %> -->
 </div>
 
+<!--</%= Logger.new("#{Rails.root}/log/cache_read.log").error(params[:general][:comments]) %> -->
 <div class="field">
   <label>Enter Score:</label>
   <%= number_field(:score, :temp, in: 1..10) %>
@@ -21,7 +22,7 @@ Description: Partial form for adding books
 
 <div class="field">
   <label>Enter the Status of the Book:</label>
-  <%= text_field_tag(:currentStatus) %>
+  <%= text_field_tag(:currentStatus, :value) %>
 </div>
 
 <div class="field">

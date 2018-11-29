@@ -1,10 +1,11 @@
 class MagazinesController < ApplicationController
   before_action :set_magazine, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /magazines
   # GET /magazines.json
   def index
-    @magazines = Magazine.all
+    @magazines = (GeneralMedium.joins(:magazine)).joins(:personal_media_parameters).where('personal_media_parameters.users_id =?', current_user.id)
   end
 
   # GET /magazines/1
@@ -24,8 +25,8 @@ class MagazinesController < ApplicationController
   # POST /magazines
   # POST /magazines.json
   def create
-    @magazine = Magazine.new(magazine_params)
 
+    @magazine = Magazine.new(magazine_params)
     respond_to do |format|
       if @magazine.save
         format.html { redirect_to @magazine, notice: 'Magazine was successfully created.' }

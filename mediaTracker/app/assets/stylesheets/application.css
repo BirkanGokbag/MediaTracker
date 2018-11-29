@@ -23,6 +23,6 @@ body{
   color: white !important;
 }
 
-#custom_form .innerField{
+.media .innerField, .editMedia form{
   display:none;
 }

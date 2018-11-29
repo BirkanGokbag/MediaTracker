@@ -4,17 +4,33 @@ class StaticPagesController < ApplicationController
   before_action :authenticate_user!
 
   def home
+    #@preferences = nil
+    # Get the users preferences if they are set o/w default
+    #if user_signed_in?
+    #  @preferences = Preference.find_by users_id: current_user.id      
+    #end 
+    #if @preferences == nil
+    #  @preferences = Preference.find_by id: 1
+    #end 
 
-    # Set up the title of the landing page and retrieve the table
+    # Set up the title of the landing page and retrieve the tables
     @Title = "Media Tracker"
     @historylog = HistoryLog.all
+    @followers = Follower.all
+    @user = User.all
+    @currentUserId = current_user.id
 
-    # There is a limit to how many updates can be displayed in the landing page
-    @limit = @historylog.length
+    # There is a limit to how many updates or followers can be displayed in the landing page
+    @limita = @historylog.length
+    @limitb = @followers.length
     @historylength = @historylog.length
-    if @limit > 5
-      @limit = 5
+    if @limita > 5
+      @limita = 5
     end
+    if @limitb>20
+      @limitb = 20
+    end
+
   end
 
   def faq
@@ -63,6 +79,12 @@ class StaticPagesController < ApplicationController
 
     end
 
+    #This will call the controller to create a history log    
+    history_logs_cont = HistoryLogsController.new
+    history_logs_cont.request = request
+    history_logs_cont.response = response
+    history_logs_cont.create
+
     if customSpecific == 0
         # This is for the regular media, save the parameters and the special media
         if @userParameters.save && @special.save
@@ -85,5 +107,29 @@ class StaticPagesController < ApplicationController
 
     # protect_from_forgery prepend: true
 
+
   end
+  def preference_form
+    @preferences = Preference.find_by users_id: current_user.id
+    if @preferences == nil
+      @preferences = Preference.find 1
+    end 
+    redirect_to "/static_pages/home"
+  end
+  def search_form
+    @searched_user = User.find_by username: params[:userName]
+    if @searched_user == nil
+      flash[:error] = "Your book was not found"
+      redirect_to "/static_pages/profile"
+    else
+      redirect_to "/users/#{@searched_user.id}"
+    end 
+  end 
+  def follow
+    redirect_to "/users/1"
+
+  end
+
+
 end
+

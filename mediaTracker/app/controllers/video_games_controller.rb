@@ -1,10 +1,10 @@
 class VideoGamesController < ApplicationController
   before_action :set_video_game, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
   # GET /video_games
   # GET /video_games.json
   def index
-    @video_games = VideoGame.all
+    @video_games = (GeneralMedium.joins(:video_game)).joins(:personal_media_parameters).where('personal_media_parameters.users_id =?', current_user.id)
   end
 
   # GET /video_games/1
