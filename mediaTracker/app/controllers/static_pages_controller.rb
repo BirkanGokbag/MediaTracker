@@ -19,6 +19,7 @@ class StaticPagesController < ApplicationController
     @followers = Follower.where(:users_id => current_user.id)
     #@followers = @followers.each
     @user = User.all
+    @currentUserId = current_user.id
 
     # There is a limit to how many updates or followers can be displayed in the landing page
     @limita = @historylog.length

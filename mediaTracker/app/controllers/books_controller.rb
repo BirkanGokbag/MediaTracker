@@ -1,12 +1,12 @@
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /books
   # GET /books.json
   def index
-    @books = Book.all
+      @books = (GeneralMedium.joins(:book)).joins(:personal_media_parameters).where('personal_media_parameters.users_id =?', current_user.id)
   end
-
   # GET /books/1
   # GET /books/1.json
   def show
@@ -61,6 +61,10 @@ class BooksController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  # def userBooks
+  #
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.

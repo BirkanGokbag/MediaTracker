@@ -14,6 +14,7 @@
  *= require_self
  */
 
+/*
 div#deviseForms{
   margin: auto;
   width: 50%;
@@ -22,7 +23,7 @@ div#deviseForms{
 body{
   color: white !important;
 }
-
+*/
 #custom_form .innerField{
   display:none;
 }
