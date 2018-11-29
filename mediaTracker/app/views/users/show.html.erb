@@ -3,18 +3,12 @@
 	      <h1><%= @thisUser.first_name.capitalize%> <%=  @thisUser.last_name.capitalize%></h1>
       </div>
       <% if current_user.id != @thisUser.id %>
-      	<% if @followers.include? current_user.id %>
+      	<% if @followers.any?{|x| x.user == current_user.id} %>
       		<div>
-			    <p>following</p>
-			</div>
+		  <p>following</p><%= render 'followers/unfollow_form', follower: @follower %>
+		</div>
       	<% else %>
-      		<%= form_tag("follow",:method => :get, :id => "follow", :name => "follow") do %>
-      		  <%= hidden_field_tag 'userRequesting', current_user.id %>
-      		  <%= hidden_field_tag 'userToFollow', @thisUser.id %>
-			  <div">
-			    <%= submit_tag "Follow" %>
-			  </div>
-      		<% end %>
+      	  <%= render 'followers/follow_form', follower: @follower %>
       	<% end %>
       <% end %>
 
@@ -34,7 +28,7 @@
             <h3>Followers</h3>
 	      <% for i in 1..@limitb do%>
 	        <div class = "followers">
-	          <p class = "follower"><%= @user.find(@follower[i].id).username %></p>
+	          <p class = "follower"><%# @user.find(@follower[i].id).username %></p>
 	        </div>
 	      <% end %>
           </div>
