@@ -100,9 +100,35 @@ class StaticPagesController < ApplicationController
 
 
   end
-  def preferences
+  def preference_form
+    @preferences = Preference.find_by users_id: current_user.id
+    if @preferences == nil
+      @preferences = Preference.find 1
+    end 
+    redirect_to "/static_pages/home"
+
 
   end
-  def profile
+
+  def profile 
+        # Set up the title of the landing page and retrieve the tables
+    @thisUser = User.find_by id: current_user.id
+    @historylog = HistoryLog.all
+    @followers = Follower.all
+    @user = User.all
+
+    # There is a limit to how many updates or followers can be displayed in the landing page
+    @limita = @historylog.length
+    @limitb = @followers.length
+    @historylength = @historylog.length
+    if @limita > 5
+      @limita = 5
+    end
+    if @limitb>20
+      @limitb = 20
+    end
   end
+
+
 end
+

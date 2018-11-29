@@ -16,7 +16,9 @@
 	    <ul>
               <li>Click <a href="/static_pages/addMedia">here</a> to add a media</li>
               <li>Click <a href="/static_pages/preferences">here</a> to update preferences</li>
-
+              <% if user_signed_in? %>
+                <li>Click <a href="/static_pages/profile">here</a> to see your profile</li>
+              <% end %>
 	    <ul>
 	  <% else %>
 

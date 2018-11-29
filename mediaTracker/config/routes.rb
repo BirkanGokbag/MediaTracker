@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   get 'static_pages/profile'
   get 'static_pages/faq'
   post 'static_pages/form'
+  post 'static_pages/preference_form'
   devise_for :users
   root to: redirect('static_pages/home')
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
