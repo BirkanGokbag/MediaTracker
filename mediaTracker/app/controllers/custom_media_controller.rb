@@ -9,7 +9,7 @@ class CustomMediaController < ApplicationController
 
   #Accesses the user's custom media. Author:Rajeev Ravi 11/28
   def index
-    @custom_media = (GeneralMedium.joins(:custom_medium).joins(custom_medium: [:custom_media_entries])).joins(:personal_media_parameters).where('personal_media_parameters.users_id =?', current_user.id)
+    @custom_media = ((GeneralMedium.joins(:personal_media_parameters).where('personal_media_parameters.users_id =?', current_user.id)).joins(:custom_medium))
   end
 
   # GET /custom_media/1
