@@ -1,4 +1,7 @@
 <p id="notice"><%= notice %></p>
+    <% if user_signed_in? %>
+     <%= render "static_pages/header.html" %>
+    <% end %>
 <h1>Custom Media </h1>
 <% if @custom_media.any? do %>
 <% @custom_media.each do |custom_media_entry| %>
