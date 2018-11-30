@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :magazines
   resources :history_logs, only: [:index]
   resources :general_media
-  resources :followers, only: [:create, :delete]
+  resources :followers, only: [:create, :delete, :destroy]
   resources :custom_media
   resources :custom_media_entries
   resources :books
@@ -19,8 +19,6 @@ Rails.application.routes.draw do
   get 'static_pages/profile'
   get 'static_pages/faq'
   get 'static_pages/search_form'
-  post 'static_pages/form'
-  post 'static_pages/follow_form'
   post 'static_pages/preference_form'
 
   devise_for :users
