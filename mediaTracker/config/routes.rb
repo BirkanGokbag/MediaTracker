@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   get 'static_pages/faq'
   get 'static_pages/search_form'
   post 'static_pages/form'
+  post 'static_pages/follow_form'
   post 'static_pages/preference_form'
   get '/books/static_pages/editMedia'
   get 'static_pages/editMedia'

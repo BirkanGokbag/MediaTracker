@@ -2,7 +2,9 @@
     Author: Alyssa Langhals
     Created on: 11/27
 %>
-<%= form_with(model: follower, local: true) do |form| %>
-  <div><%= hidden_field_tag :followee, 1 %></div>
-  <%= form.submit "Follow", class: "btn btn-primary" %>
+
+<%= form_tag(url_for(:controller => 'followers', :action => 'create'), method: :post) do %>
+  <div><%= hidden_field_tag :fTarget, @thisUser.id %></div>
+  <%= submit_tag "Follow", class: "btn btn-primary" %>
+
 <% end %>

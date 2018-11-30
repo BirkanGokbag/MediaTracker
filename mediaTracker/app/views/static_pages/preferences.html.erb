@@ -1,37 +1,37 @@
 <div id = "container">
-  <div id = "header">
-    <h1>Update Preferences</h1>
-  </div>
-  <div id = "main">
-    <div id = "mainArea">
+  <% if user_signed_in? %>
+    <%= render "header.html" %>
+  <% end %>
+  <div class = "well">
+    <h1 class = "jumbotron">Update Preferences</h1>
 		<%= form_tag("preference_form",:method => :post, :id => "preference_form", :name => "preference_form") do %>
 
 		<div class="field">
-		  <label>wallpaper:</label>
+		  <label>Wallpaper of Your Media Page:</label>
 		  <%= file_field_tag 'wallpaper', accept: 'image/png,image/gif,image/jpeg' %>
 		</div>
 
 		<div class="field">
-		  <label>font size:</label>
-		  <%= number_field(:score, :temp, in: 5..50) %>
+		  <label>Font Size of your Page:</label>
+		  <%= number_field(:fontSize, :temp, in: 5..50) %>
 		</div>
 
 		<div class="field">
-		  <label>font:</label>
+		  <label>Font of Your Page:</label>
 		  <%= text_field_tag(:font) %>
 		</div>
 
 		<div class="field">
-		  <label>profile pic</label>
-		  <%= file_field_tag 'profilePic', accept: 'image/png,image/gif,image/jpeg' %></div>
+		  <label>Profile Picture</label>
+		  <%= file_field_tag 'profilePicture', accept: 'image/png,image/gif,image/jpeg' %></div>
 
 		<div class="field">
-		  <label>privacy:</label>
-		  <%= text_area_tag(:privacy) %>
+		  <label>Would You Like To Be Set To Private?</label>
+		  <%= check_box_tag(:privacy) %>
 		</div>
 
 		<div class="field">
-		  <label>font color:</label>
+		  <label>Font Color of Your Site:</label>
 		  <%= text_field_tag(:fontColor) %>
 		</div>
 
@@ -40,6 +40,5 @@
 		  </div>
 
 		<% end %>
-    </div>
   </div>
 </div>

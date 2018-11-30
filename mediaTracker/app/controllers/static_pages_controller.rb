@@ -7,16 +7,17 @@ class StaticPagesController < ApplicationController
     #@preferences = nil
     # Get the users preferences if they are set o/w default
     #if user_signed_in?
-    #  @preferences = Preference.find_by users_id: current_user.id      
-    #end 
+    #  @preferences = Preference.find_by users_id: current_user.id
+    #end
     #if @preferences == nil
     #  @preferences = Preference.find_by id: 1
-    #end 
+    #end
 
     # Set up the title of the landing page and retrieve the tables
     @Title = "Media Tracker"
     @historylog = HistoryLog.all
-    @followers = Follower.all
+    @followers = Follower.where(:users_id => current_user.id)
+    #@followers = @followers.each
     @user = User.all
     @currentUserId = current_user.id
 
@@ -79,7 +80,7 @@ class StaticPagesController < ApplicationController
 
     end
 
-    #This will call the controller to create a history log    
+    #This will call the controller to create a history log
     history_logs_cont = HistoryLogsController.new
     history_logs_cont.request = request
     history_logs_cont.response = response
@@ -93,7 +94,7 @@ class StaticPagesController < ApplicationController
         else
           # if it wasn't registered correctly, redirect them to home page.
           flash[:error] = "Oops, your media was not added. Please try again."
-          redirect_to "/static_pages/static_pages/addMedia"
+          redirect_to "/static_pages/addMedia"
         end
       else
         if @userParameters.save
@@ -101,7 +102,7 @@ class StaticPagesController < ApplicationController
           redirect_to "/static_pages/home"
         else
           flash[:error] = "Oops, your custom media preferences was not added. Please try again."
-          redirect_to "/static_pages/static_pages/addMedia"
+          redirect_to "/static_pages/addMedia"
         end
     end
 
@@ -109,22 +110,51 @@ class StaticPagesController < ApplicationController
 
 
   end
+
   def preference_form
     @preferences = Preference.find_by users_id: current_user.id
     if @preferences == nil
-      @preferences = Preference.find 1
-    end 
+      @preferences = Preference.new(:wallpaper => params[:wallpaper], :fontSize => params[:fontSize], :font => params[:font], :profilePicture => params[:profilePicture], :privacy => params[:privacy], :fontColor => params[:fontColor], :users_id => current_user[:id])
+    else
+      @preferences.wallpaper = params[:wallpaper];
+      @preferences.fontSize = params[:fontSize];
+      @preferences.font = params[:font];
+      @preferences.profilePicture = params[:profilePicture];
+      @preferences.privacy = params[:privacy];
+      @preferences.fontColor = params[:fontColor];
+    end
+
+    if @preferences.save
+      uploaded_io = params[:wallpaper]
+
+      fileLocation = Rails.root.join('public', 'uploads', uploaded_io.original_filename)
+      cssLocation = Rails.root + "app/assets/stylesheets/application.css";
+      # File.open(location, 'wb') do |file|
+        # file.write(uploaded_io.read)
+      File.open(cssLocation,'w') do |cssFile|
+        cssFile.puts "body { background-image: url(\"" + fileLocation.basename.to_s + "\";}"
+      end
+      # end
+      Logger.new("#{Rails.root}/log/cache_read.log").error(Rails.root + "app/assets/stylesheets/application.css")
+      # File.open(Rails.root + "app/assets/stylesheets/application.css",'w') do |cssFile|
+      #   cssFile.puts "body { " + params[:wallpaper] + "}"
+      # end
+      flash[:success] = "Successfully updated your preferences."
+    else
+      flash[:error] = "Could not update your preferences, please try again."
+    end
     redirect_to "/static_pages/home"
   end
+
   def search_form
     @searched_user = User.find_by username: params[:userName]
     if @searched_user == nil
       flash[:error] = "Your book was not found"
-      redirect_to "/static_pages/profile"
+      redirect_to "/static_pages/home"
     else
       redirect_to "/users/#{@searched_user.id}"
-    end 
-  end 
+    end
+  end
   def follow
     redirect_to "/users/1"
 
@@ -132,4 +162,3 @@ class StaticPagesController < ApplicationController
 
 
 end
-
