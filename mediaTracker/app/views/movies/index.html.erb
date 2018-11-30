@@ -15,10 +15,12 @@
   <tbody>
     <% @movies.each do |movie_entry| %>
       <tr>
-        <td><%= link_to 'Edit', 'static_pages/addMedia' %></td>
+        <td><%= link_to 'Edit', {:controller => "static_pages", :action => "editMedia",:chooseSelect => "movie_form", :name => movie_entry.name, :director => movie_entry.movie.director, :general => movie_entry.personal_media_parameters.first.as_json, :mediaId => movie_entry.id } %></td>
         <td><%= movie_entry.name%></td>
         <td><%= movie_entry.movie.director %></td>
         <%= render :partial => 'media_object', :object => movie_entry %>
+        <td><%= link_to :controller => "static_pages", :action => "deleteMedia", :deleteId => movie_entry.id, :deleteWhich => "movie_form" do%>
+          <button type = "button" class = "close" aria-label = "Close" style="color:red"%><span aria-hidden = "true">&times;</span> </button><% end %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +30,5 @@
   <p> You don't have any movies! Add some here: <%= link_to 'Add Movies', '../static_pages/addMedia' %><p>
 <% end %>
 <br>
-</div>
+
+<%= link_to 'New Movie', "static_pages/addMedia" %>

@@ -16,11 +16,14 @@
   <tbody>
     <% @tv_shows.each do |tv_entry| %>
       <tr>
-        <td><%= link_to 'Edit', 'static_pages/addMedia' %></td>
+        <td><%= link_to 'Edit', {:controller => "static_pages", :action => "editMedia",:chooseSelect => "tv_form", :name => tv_entry.name, :numberOfSeasons => tv_entry.tv_show.numberOfSeasons, :totalEpisodes => tv_entry.tv_show.totalEpisodes, :general => tv_entry.personal_media_parameters.first.as_json, :mediaId => tv_entry.id } %></td>
         <td><%= tv_entry.name%></td>
         <td><%= tv_entry.tv_show.numberOfSeasons %></td>
         <td><%= tv_entry.tv_show.totalEpisodes %></td>
         <%= render :partial => 'media_object', :object => tv_entry %>
+        <td><%= link_to :controller => "static_pages", :action => "deleteMedia", :deleteId => tv_entry.id, :deleteWhich => "tv_form" do%>
+          <button type = "button" class = "close" aria-label = "Close" style="color:red"%><span aria-hidden = "true">&times;</span> </button><% end %></td>
+
       </tr>
     <% end %>
   </tbody>

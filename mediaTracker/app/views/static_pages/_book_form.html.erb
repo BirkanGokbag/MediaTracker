@@ -4,15 +4,25 @@ Author: Birkan Gokbag
 Description: Partial form for adding books
 -->
 
+<% if params[:mediaId].nil?%>
+  <% destination = "form" %>
+<% else %>
+  <% destination = "edit" %>
+<% end %>
 <!-- Get all the information relevant to book media -->
-<%= form_tag("form",:method => :post, :id => "book_form", :name => "book_form", :style => "display:none") do %>
+<%= form_tag(destination,:method => :post, :id => "book_form", :name => "book_form", :style => "display:none") do %>
+
+<!-- This input is hidden and carries the id of the media that is being sent to the edit form in order to find the media that will be edited. -->
+<input type="number" name="editId" id = "editId" value="" style = "display:none">
 
 <!-- General Stuff -->
 <div class="field">
   <label>Enter Name of the Book:</label>
-  <%= text_field_tag(:name) %>
+  <input type="text" name="name" id="name" required>
+  <!--  </%= text_field_tag(:name) %> -->
 </div>
 
+<!--</%= Logger.new("#{Rails.root}/log/cache_read.log").error(params[:general][:comments]) %> -->
 <div class="field">
   <label>Enter Score:</label>
   <%= number_field(:score, :temp, in: 1..10) %>
@@ -20,7 +30,7 @@ Description: Partial form for adding books
 
 <div class="field">
   <label>Enter the Status of the Book:</label>
-  <%= text_field_tag(:currentStatus) %>
+  <%= text_field_tag(:currentStatus, :value) %>
 </div>
 
 <div class="field">
@@ -46,7 +56,8 @@ Description: Partial form for adding books
   <!-- Special Parameters for Book-->
   <div class="field">
     <label>Enter the Author of This Book:</label>
-    <%= text_field_tag(:author) %>
+    <input type="text" name="author" id="author" required>
+  <!--  </%= text_field_tag(:author) %>-->
   </div>
 
   <div class="field">

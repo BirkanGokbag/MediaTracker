@@ -9,4 +9,5 @@ class GeneralMedium < ApplicationRecord
 
     has_many :users, through: :personal_media_parameters
     has_many :personal_media_parameters, foreign_key: :general_media_id
+
 end

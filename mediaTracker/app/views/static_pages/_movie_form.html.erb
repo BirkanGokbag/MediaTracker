@@ -4,13 +4,22 @@ Author: Birkan Gokbag
 Description: Partial form for adding movie media
 -->
 
+<% if params[:mediaId].nil?%>
+  <% destination = "form" %>
+<% else %>
+  <% destination = "edit" %>
+<% end %>
 <!-- Get all the information relevant to movie media -->
-<%= form_tag("form",:method => :post, :id => "movie_form", :name => "movie_form", :style => "display:none") do %>
+<%= form_tag(destination,:method => :post, :id => "movie_form", :name => "movie_form", :style => "display:none") do %>
+
+<!-- This input is hidden and carries the id of the media that is being sent to the edit form in order to find the media that will be edited. -->
+<input type="number" name="editId" id = "editId" value="" style = "display:none">
 
 <!-- General Stuff -->
 <div class="field">
   <label>Enter Name of the Movie:</label>
-  <%= text_field_tag(:name) %>
+  <input type="text" name="name" id="name" required>
+  <!--  </%= text_field_tag(:name) %>-->
 </div>
 
 <div class="field">
@@ -46,7 +55,8 @@ Description: Partial form for adding movie media
   <!-- Special Parameters for Movie-->
   <div class="field">
     <label>Enter the Director of This Movie:</label>
-    <%= text_field_tag(:director) %>
+    <input type="text" name="director" id="director" required>
+    <!--  </%= text_field_tag(:director) %>-->
   </div>
 
   <div class="field">

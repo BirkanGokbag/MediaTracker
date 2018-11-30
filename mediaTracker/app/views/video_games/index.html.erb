@@ -16,11 +16,13 @@
   <tbody>
     <% @video_games.each do |game_entry| %>
       <tr>
-        <td><%= link_to 'Edit', 'static_pages/addMedia' %></td>
+        <td><%= link_to 'Edit', {:controller => "static_pages", :action => "editMedia",:chooseSelect => "video_game_form", :name => game_entry.name, :system => game_entry.video_game.system, :studio => game_entry.video_game.studio, :general => game_entry.personal_media_parameters.first.as_json, :mediaId => game_entry.id } %></td>
         <td><%= game_entry.name%></td>
         <td><%= game_entry.video_game.system %></td>
         <td><%= game_entry.video_game.studio %></td>
         <%= render :partial => 'media_object', :object => game_entry %>
+        <td><%= link_to :controller => "static_pages", :action => "deleteMedia", :deleteId => game_entry.id, :deleteWhich => "video_game_form" do%>
+          <button type = "button" class = "close" aria-label = "Close" style="color:red"%><span aria-hidden = "true">&times;</span> </button><% end %></td>
       </tr>
     <% end %>
   </tbody>
