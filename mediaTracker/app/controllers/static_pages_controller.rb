@@ -84,7 +84,7 @@ class StaticPagesController < ApplicationController
           end
 
       end
-     
+
       #This will call the controller to create a history log
       history_logs_cont = HistoryLogsController.new
       history_logs_cont.request = request
@@ -170,7 +170,6 @@ class StaticPagesController < ApplicationController
 
     # params[:mediaId] contains the media id of the general media.
     @userParam = PersonalMediaParameter.find_by(general_media_id: params[:editId])
-    Logger.new("#{Rails.root}/log/cache_read.log").error(params[:editId])
 
     @userParam[:score] = params[:score][:temp]
     @userParam[:currentStatus] = params[:currentStatus]
@@ -178,7 +177,7 @@ class StaticPagesController < ApplicationController
     @userParam[:comments] = params[:comments]
     @userParam[:source] = params[:source]
     @userParam[:replay] = params[:replay][:temp]
-    
+
     @generalMedia = GeneralMedium.find_by(id: params[:editId])
     @generalMedia[:name] = params[:name]
 
@@ -207,6 +206,8 @@ class StaticPagesController < ApplicationController
         @special[:issue] = params[:issue][:temp]
       else
         # For custom submission
+        @special = CustomMedium.find_by(general_media_id: params[:editId])
+        @special[:typeOfMedia] = params[:typeOfMedia]
 
     end
 
@@ -253,6 +254,10 @@ class StaticPagesController < ApplicationController
         @special = Magazine.find_by(general_media_id: params[:deleteId])
       else
         # For custom submission
+        @special = CustomMedium.find_by(general_media_id: params[:deleteId])
+
+        #Delete all the entries of this particular custom media
+        CustomMediaEntry.where(custom_media_id: @special[:id]).destroy_all
 
     end
 

@@ -53,7 +53,7 @@ Description: Partial form for custom media
   <label> Enter the Name/Type of the Media: </label>
   <input name = "typeOfMedia" id = "typeOfMedia" type = "text" placeholder= "Enter Type" required>
   <label> Please enter the number of custom fields would you like to add? </label>
-  <input id = "number_of_items" name = "allFields" id = "allFields" id = "1" type="number" min = "1" max = "10" placeholder = "0" required>
+  <input name = "allFields" id = "allFields" id = "1" type="number" min = "1" max = "10" placeholder = "0" required>
 
   <% (1..10).each do |i| %>
   <div class = "innerField
@@ -76,7 +76,7 @@ Description: Partial form for custom media
   </div>
 <% end %>
 <script>
-  $("#number_of_items").on("change", function() {
+  $("#allFields").on("change", function() {
       //based on what number is shown, show that many fields
       var last = $(this).val();
       var i = 0;

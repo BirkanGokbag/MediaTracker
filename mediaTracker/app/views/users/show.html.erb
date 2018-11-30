@@ -4,6 +4,8 @@ Created By: Michael Radey: Show the users media, followers and recent history
   or the current_user follows this user
   
 Updated By: Berkay Kaplan: Bootstrapped the layout, and added header.html
+
+Updated By: Alyssa Langhals: Added favorites display, updated layout
 -->
 
 <div id = "container">
@@ -80,8 +82,7 @@ Updated By: Berkay Kaplan: Bootstrapped the layout, and added header.html
                 <li><%= cm.custom_medium.typeOfMedia %>: <%= cm.name %></li>
               <% end %>
             <% end %>
-          <% end %>
-
+           <% end %>
         <% if current_user.id == @thisUser.id %>
           <h3 class = "jumbotron">Options</h3>
           <ul>
@@ -93,7 +94,7 @@ Updated By: Berkay Kaplan: Bootstrapped the layout, and added header.html
         <% end %>
         </div>
 
-        <div class = "well">
+	    <div class = "well">
             <% if @followers != [] %>
               <% if current_user.id == @thisUser.id %>
                 <h3>People You Follow</h3>
@@ -118,7 +119,14 @@ Updated By: Berkay Kaplan: Bootstrapped the layout, and added header.html
                 <li><%= link_to User.find(f.users_id).username, "/users/#{f.users_id}"%> <%= f.historyMessage %> <%= f.updated_at %></li>
               <% end %>
             </ul>
+             
+          </div>
+          <div class = "well">
+            <h3 class= "jumbotron"> My Favorities </h3>
+            <% PersonalMediaParameter.where(favorite: true).each do |media| %>	
+              <% if media.users_id == current_user.id %>
+                <li><%= media.general_media.name %></li>
+              <% end %>
             <% end %>
-          </div>  
+          </div>
       </div>
-    </div>
