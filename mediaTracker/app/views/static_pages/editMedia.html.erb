@@ -26,12 +26,15 @@ Description: Form to Edit All Sorts of Media
         // This is done to prefill the form when the user is trying to edit the form
 
         //Store the edit to submit the media id in order to update it.
-        console.log("<%= params[:mediaId]%>");
+        $("#<%= params[:chooseSelect]%> #editId").val("<%= params[:mediaId]%>");
+
 
 
         // Show the particular form
         $("#" + "<%= params[:chooseSelect]%>").show();
-        $("#allFields ~ label").hide();
+
+        //Hide the custom parameters for the user as they should only update user parameters
+        $("#hideEdit").hide();
         $("#allFields").hide();
         $("#allFields").attr('required',false);
 
@@ -77,7 +80,7 @@ Description: Form to Edit All Sorts of Media
           default:
             //This should never happen
         }
-        $("#editId").val("<%= params[:mediaId]%>");
+
 
       </script>
   </div>

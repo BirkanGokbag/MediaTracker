@@ -1,5 +1,8 @@
 # README
 
+# Media Tracker - An Error Occured
+
+Required ruby version: ~2.5.0, any version that is compatible with the other gems are also
 This README would normally document whatever steps are necessary to get the
 application up and running.
 

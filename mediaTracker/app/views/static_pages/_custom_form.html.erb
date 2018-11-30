@@ -52,7 +52,7 @@ Description: Partial form for custom media
 
   <label> Enter the Name/Type of the Media: </label>
   <input name = "typeOfMedia" id = "typeOfMedia" type = "text" placeholder= "Enter Type" required>
-  <label> Please enter the number of custom fields would you like to add? </label>
+  <label id = "hideEdit"> Please enter the number of custom fields would you like to add? </label>
   <input name = "allFields" id = "allFields" id = "1" type="number" min = "1" max = "10" placeholder = "0" required>
 
   <% (1..10).each do |i| %>

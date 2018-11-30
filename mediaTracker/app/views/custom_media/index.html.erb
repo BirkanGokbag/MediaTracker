@@ -20,8 +20,8 @@
 
 <tbody>
       <tr>
-        <!-- Created small errors, is used to edit the media similar to other ones.
-        <!-- <td></%= link_to 'Edit', {:controller => "static_pages", :action => "editMedia",:chooseSelect => "custom_form", :name => custom_media_entry.name, :general => custom_media_entry.personal_media_parameters.first.as_json, :typeOfMedia => custom_media_entry.custom_medium.typeOfMedia, :mediaId => custom_media_entry.personal_media_parameters.general_media_id } %></td> -->
+        <!-- Created small errors, is used to edit the media similar to other ones. -->
+        <td><%= link_to 'Edit', {:controller => "static_pages", :action => "editMedia",:chooseSelect => "custom_form", :name => custom_media_entry.name, :general => custom_media_entry.personal_media_parameters.first.as_json, :typeOfMedia => custom_media_entry.custom_medium.typeOfMedia, :mediaId => custom_media_entry.id } %></td>
         <td><%=custom_media_entry.name%>
           <% custom_media_entry.custom_medium.custom_media_entries.each do |custom_media_param| %>
             <td><%=custom_media_param.value%></td>
