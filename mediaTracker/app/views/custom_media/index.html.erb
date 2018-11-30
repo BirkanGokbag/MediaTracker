@@ -20,12 +20,16 @@
 
 <tbody>
       <tr>
-        <td><%= link_to 'Edit', 'static_pages/addMedia' %></td>
+        <!-- Created small errors, is used to edit the media similar to other ones.
+        <!-- <td></%= link_to 'Edit', {:controller => "static_pages", :action => "editMedia",:chooseSelect => "custom_form", :name => custom_media_entry.name, :general => custom_media_entry.personal_media_parameters.first.as_json, :typeOfMedia => custom_media_entry.custom_medium.typeOfMedia, :mediaId => custom_media_entry.personal_media_parameters.general_media_id } %></td> -->
         <td><%=custom_media_entry.name%>
           <% custom_media_entry.custom_medium.custom_media_entries.each do |custom_media_param| %>
             <td><%=custom_media_param.value%></td>
           <%end%>
           <%= render :partial => 'media_object', :object => custom_media_entry %>
+          <td><%= link_to :controller => "static_pages", :action => "deleteMedia", :deleteId => custom_media_entry.id, :deleteWhich => "custom_form" do%>
+            <button type = "button" class = "close" aria-label = "Close" style="color:red"%><span aria-hidden = "true">&times;</span> </button><% end %></td>
+        </tr>
       </tr>
     </tbody>
 </table>
