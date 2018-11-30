@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :magazines
   resources :history_logs, only: [:index]
   resources :general_media
-  resources :followers, except: [:edit, :update]
+  resources :followers, only: [:create, :delete]
   resources :custom_media
   resources :custom_media_entries
   resources :books

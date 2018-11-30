@@ -2,8 +2,8 @@
 
 one:
   user: 1
-  fTarget: 1
+  fTarget: 2
 
 two:
   user: 1
-  fTarget: 1
+  fTarget: 3
