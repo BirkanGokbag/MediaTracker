@@ -18,10 +18,10 @@ Updated By: Alyssa Langhals: Added favorites display, updated layout
       <% if current_user.id != @thisUser.id %>
         <% if @currUserFollowers.any?{|x| x.fTarget == @thisUser.id} %>
       		<div>
-		        <p></p><%= render :partial => 'followers/unfollow_form', follower: @follower %>
+		        <%= render :partial => 'followers/unfollow_form', follower: @follower %>
 		      </div>
       	<% else %>
-      	  <p></p><%= render :partial => 'followers/follow_form', follower: @follower %>
+      	  <%= render :partial => 'followers/follow_form', follower: @follower %>
       	<% end %>
       <% else %>
          <li><a href="/static_pages/preferences">Update Preferences</a></li>
@@ -40,6 +40,7 @@ Updated By: Alyssa Langhals: Added favorites display, updated layout
           <% else %>
             <h3 class = "jumbotron"><%= @thisUser.username%>'s Media</h3>
           <% end %>
+          <% if current_user.id == @thisUser.id %>
             <ul>
               <li><%= link_to "Books", '/books' %></li>
               <li><%= link_to "Magazines", '/magazines' %></li>
@@ -49,6 +50,44 @@ Updated By: Alyssa Langhals: Added favorites display, updated layout
               <li><%= link_to "Video Games", "/video_games" %></li>
               <li><%= link_to "Custom Media", "/custom_media" %></li>
             </ul>
+          <% else %>
+            <% if @books.any? %>
+              <h4>Books</h4>
+              <% @books.each do |book| %>
+                <li><%= book.name %></li>
+              <% end %>
+            <% end %>
+            <% if @movies.any? %>
+              <h4>Movies</h4>
+              <% @movies.each do |movie| %>
+                <li><%= movie.name %></li>
+              <% end %>
+            <% end %>
+            <% if @musics.any? %>
+              <h4>Music</h4>
+              <% @musics.each do |mus| %>
+                <li><%= mus.name %></li>
+              <% end %>
+            <% end %>
+            <% if @tv_shows.any? %>
+              <h4>Tv Shows</h4>
+              <% @tv_shows.each do |tv| %>
+                <li><%= tv.name %></li>
+              <% end %>
+            <% end %>
+            <% if @video_games.any? %>
+              <h4>Video Games</h4>
+              <% @video_games.each do |vg| %>
+                <li><%= vg.name %></li>
+              <% end %>
+            <% end %>
+            <% if @custom_media.any? %>
+              <h4>Custom Media</h4>
+              <% @custom_media.each do |cm| %>
+                <li><%= cm.custom_medium.typeOfMedia %>: <%= cm.name %></li>
+              <% end %>
+            <% end %>
+           <% end %>
            <% end %>
         </div>
         <div class = "well col-md-6">
@@ -80,10 +119,11 @@ Updated By: Alyssa Langhals: Added favorites display, updated layout
               <h3 class = "jumbotron">Does Not Follow Anyone</h3>
             <% end %>
           </div>
+
           <div class = "well col-md-8">
 
               <% if current_user.id == @thisUser.id %>
-                <h3 class = "jumbotron">Your Last Actions <%= @privateAccount%></h3>
+                <h3 class = "jumbotron">Your Last Actions </h3>
               <% else %>
                 <h3 class = "jumbotron"><%= @thisUser.username%>'s Last Actions <%= @privateAccount%></h3>
               <% end %>
@@ -96,4 +136,3 @@ Updated By: Alyssa Langhals: Added favorites display, updated layout
           </div>
           </div>
       </div>
-    </div>
