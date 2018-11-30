@@ -1,9 +1,9 @@
+<% if user_signed_in? %>
+  <%= render "header.html" %>
+<% end %>
 <div id = "container">
-  <div id = "header">
-    <h1>Add Media</h1>
-  </div>
-  <div id = "main">
-    <div id = "mainArea">
+  <div class = "well">
+      <h3 class = "jumbotron">Add Media</h1>
       <h3>What Media would you like to add?</h3>
       <form>
         <select class="form-control" id = "select_form">
@@ -37,6 +37,5 @@
             prev = "#" + $(this).val();
         });
       </script>
-    </div>
   </div>
 </div>

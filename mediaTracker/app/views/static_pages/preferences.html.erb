@@ -1,9 +1,9 @@
 <div id = "container">
-  <div id = "header">
-    <h1>Update Preferences</h1>
-  </div>
-  <div id = "main">
-    <div id = "mainArea">
+  <% if user_signed_in? %>
+    <%= render "header.html" %>
+  <% end %>
+  <div class = "well">
+    <h3 class = "jumbotron">Update Preferences</h1>
 		<%= form_tag("preference_form",:method => :post, :id => "preference_form", :name => "preference_form") do %>
 
 		<div class="field">
@@ -40,6 +40,5 @@
 		  </div>
 
 		<% end %>
-    </div>
   </div>
 </div>

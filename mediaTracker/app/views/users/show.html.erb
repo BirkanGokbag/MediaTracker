@@ -1,28 +1,25 @@
- <div id = "container">
-      <div id = "header">
+<% if user_signed_in? %>
+  <%= render "static_pages/header.html" %>
+<% end %>
+<div id = "container">
+      <div class = "well">
 	      <h1><%= @thisUser.first_name.capitalize%> <%=  @thisUser.last_name.capitalize%></h1>
       </div>
       <% if current_user.id != @thisUser.id %>
-      	<% if @followers.include? current_user.id %>
+        <% if @currUserFollowers.any?{|x| x.fTarget == @thisUser.id} %>
       		<div>
-			    <p>following</p>
-			</div>
+		        <p>Unfollow</p><%= render 'followers/unfollow_form', follower: @follower %>
+		      </div>
       	<% else %>
-      		<%= form_tag("follow",:method => :get, :id => "follow", :name => "follow") do %>
-      		  <%= hidden_field_tag 'userRequesting', current_user.id %>
-      		  <%= hidden_field_tag 'userToFollow', @thisUser.id %>
-			  <div">
-			    <%= submit_tag "Follow" %>
-			  </div>
-      		<% end %>
+      	  <p>follow</p><%= render 'followers/follow_form', follower: @follower %>
       	<% end %>
       <% end %>
 
       <div id = "main">
-        <div id = "mainArea">
-          <h3>Your Media</h3>
+        <div class = "well">
+          <h3 class = "jumbotron">Your Media</h3>
 
-	        <h3>Options</h3>
+	        <h3 class = "jumbotron">Options</h3>
 	        <ul>
             <li>Click <a href="/static_pages/addMedia">here</a> to add a media</li>
             <li>Click <a href="/static_pages/preferences">here</a> to update preferences</li>
@@ -30,14 +27,21 @@
 	        <ul>
 
         </div>
-	      <div id = "latestUpdates">
-            <h3>Followers</h3>
+
+	      <div class = "well">
+            <% if @followers != [] %>
+              <h3>People <%= @thisUser.first_name.capitalize%> Follows</h3>
+              <% @followers.each do |f| %>
+                <%= User.find(f.fTarget).username %>
+              <% end %>
+            <% else %>
+              <h3 class = "jumbotron">Does Not Follow Anyone</h3>
+            <% end %>
 	      <% for i in 1..@limitb do%>
 	        <div class = "followers">
-	          <p class = "follower"><%= @user.find(@follower[i].id).username %></p>
+	          <p class = "follower"><%# @user.find(@follower[i].id).username %></p>
 	        </div>
 	      <% end %>
-          </div>
-	
+          </div>	
       </div>
     </div>

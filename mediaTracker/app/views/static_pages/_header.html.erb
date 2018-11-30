@@ -1,0 +1,18 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/static_pages/home.html">Media Tracker</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><%= link_to "Profile", current_user %></li>
+      <li><%= link_to "Preferences", "/static_pages/preferences.html" %></li>
+      <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+    </ul>
+    <form class="navbar-form navbar-left" action="search_form" method="get">
+      <div class="form-group">
+        <input id = "userName" name="userName" type="text" class="form-control" placeholder="Search">
+      </div>
+      <button type="submit" class="btn btn-default">Search</button>
+    </form>
+  </div>
+</nav> 
