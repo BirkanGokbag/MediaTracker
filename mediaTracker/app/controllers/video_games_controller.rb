@@ -12,11 +12,6 @@ class VideoGamesController < ApplicationController
     @video_games = (GeneralMedium.joins(:video_game)).joins(:personal_media_parameters).where('personal_media_parameters.users_id =?', current_user.id)
   end
 
-  # GET /video_games/1
-  # GET /video_games/1.json
-  def show
-  end
-
   # GET /video_games/new
   def new
     @video_game = VideoGame.new

@@ -12,18 +12,9 @@ class MoviesController < ApplicationController
     @movies = (GeneralMedium.joins(:movie)).joins(:personal_media_parameters).where('personal_media_parameters.users_id =?', current_user.id)
   end
 
-  # GET /movies/1
-  # GET /movies/1.json
-  def show
-  end
-
   # GET /movies/new
   def new
     @movie = Movie.new
-  end
-
-  # GET /movies/1/edit
-  def edit
   end
 
   # POST /movies

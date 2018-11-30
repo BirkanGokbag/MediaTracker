@@ -11,25 +11,17 @@ class BooksController < ApplicationController
   def index
       @books = (GeneralMedium.joins(:book)).joins(:personal_media_parameters).where('personal_media_parameters.users_id =?', current_user.id)
   end
-  # GET /books/1
-  # GET /books/1.json
-  def show
-  end
 
   # GET /books/new
   def new
     @book = Book.new
   end
 
-  # GET /books/1/edit
-  def edit
-  end
 
   # POST /books
   # POST /books.json
   def create
     @book = Book.new(book_params)
-
 
     respond_to do |format|
       if @book.save

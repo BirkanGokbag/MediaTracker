@@ -1,10 +1,9 @@
 <!--
 Author: Berkay Kaplan
+Date created 11/24/2018
+Updated by: Michael Radey
 -->
 <div id = "container">
-  <% if user_signed_in? %>
-    <%= render "header.html" %>
-  <% end %>
   <div id = "main">
     <div class="col-sm-8"> 
       <div class = "well">
@@ -16,15 +15,18 @@ Author: Berkay Kaplan
         </ul>
       </div>
     </div>
+    
      <div class="col-sm-4"> 
       <div class = "well">
         <h3 class = "jumbotron">Latest Updates</h3>
         <ul>
+          <% puts "HIT" %>
           <% @historyLogs.each do |f| %>
-            <li><%= f.historyMessage %> <%= f.updated_at %></li>
+            <li><%= link_to User.find(f.users_id).username, "/users/#{f.users_id}"%> <%= f.historyMessage %> <%= f.updated_at %></li>
           <% end %>
         </ul>
       </div>
+
      </div>
   </div>
 </div>

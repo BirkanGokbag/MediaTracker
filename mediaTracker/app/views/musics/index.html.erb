@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<div class = "well">
 <h1>Music</h1>
 
 <% if @musics.any? then %>
@@ -16,11 +16,13 @@
   <tbody>
     <% @musics.each do |music_entry| %>
       <tr>
-        <td><%= link_to 'Edit', 'static_pages/addMedia' %></td>
+        <td><%= link_to 'Edit', {:controller => "static_pages", :action => "editMedia",:chooseSelect => "music_form", :name => music_entry.name, :artist => music_entry.music.artist, :album => music_entry.music.album, :general => music_entry.personal_media_parameters.first.as_json, :mediaId => music_entry.id } %></td>
         <td><%= music_entry.name%></td>
         <td><%= music_entry.music.artist %></td>
         <td><%= music_entry.music.album %></td>
         <%= render :partial => 'media_object', :object => music_entry %>
+        <td><%= link_to :controller => "static_pages", :action => "deleteMedia", :deleteId => music_entry.id, :deleteWhich => "music_form" do%>
+          <button type = "button" class = "close" aria-label = "Close" style="color:red"%><span aria-hidden = "true">&times;</span> </button><% end %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,3 +32,5 @@
   <p> You don't have any music! Add some here: <%= link_to 'Add Music', '../static_pages/addMedia' %><p>
 <% end %>
 <br>
+
+<%= link_to 'New Music', "static_pages/addMedia" %>

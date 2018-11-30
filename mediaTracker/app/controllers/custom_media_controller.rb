@@ -12,18 +12,9 @@ class CustomMediaController < ApplicationController
     @custom_media = ((GeneralMedium.joins(:personal_media_parameters).where('personal_media_parameters.users_id =?', current_user.id)).joins(:custom_medium))
   end
 
-  # GET /custom_media/1
-  # GET /custom_media/1.json
-  def show
-  end
-
   # GET /custom_media/new
   def new
     @custom_medium = CustomMedium.new
-  end
-
-  # GET /custom_media/1/edit
-  def edit
   end
 
   # POST /custom_media

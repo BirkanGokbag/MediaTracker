@@ -18,16 +18,19 @@ class HistoryLogsController < ApplicationController
 
   # POST /history_logs
   # POST /history_logs.json
-  def create
-
-    message = " created " + history_log_params
+  def create(verb)
+    if params['name']
+      message = verb + params['name']
+    else
+      message = verb + GeneralMedium.find_by(id: params['deleteId'].to_i).name
+    end
     message += " at "
     @history_log = HistoryLog.new(historyMessage: message, users_id: current_user.id)
 
     respond_to do |format|
       if @history_log.save
-        format.html {head :ok}
-        format.json {head :ok}
+        format.html {head :no_content}
+        format.json {head :no_content}
       else
         format.html {head :internal_server_error}
         format.json {head :internal_server_error}
@@ -46,6 +49,5 @@ class HistoryLogsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def history_log_params
-      params.require(:name)#.permit(:name)
     end
 end

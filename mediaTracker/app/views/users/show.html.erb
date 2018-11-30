@@ -1,16 +1,17 @@
-<% if user_signed_in? %>
-  <%= render "static_pages/header.html" %>
-<% end %>
+<!--
+Updated By: Berkay Kaplan: Bootstrapped the layout, and added header.html
+-->
+
 <div id = "container">
       <div class = "well">
 	      <h1 style:"display:inline;"><%= @thisUser.first_name.capitalize%> <%=  @thisUser.last_name.capitalize%></h1>
       <% if current_user.id != @thisUser.id %>
         <% if @currUserFollowers.any?{|x| x.fTarget == @thisUser.id} %>
       		<div>
-		        <%= render 'followers/unfollow_form', follower: @follower %>
+		        <p></p><%= render :partial => 'followers/unfollow_form', follower: @follower %>
 		      </div>
       	<% else %>
-      	  <%= render 'followers/follow_form', follower: @follower %>
+      	  <p></p><%= render :partial => 'followers/follow_form', follower: @follower %>
       	<% end %>
       <% end %>
       </div>
@@ -21,7 +22,7 @@
               <li><%= link_to "Books", '/books' %></li>
               <li><%= link_to "Magazines", '/magazines' %></li>
               <li><%= link_to "Movies", '/movies' %></li>
-              <li><%= link_to "Music", "/music" %></li>
+              <li><%= link_to "Music", "/musics" %></li>
               <li><%= link_to "TV Shows", "/tv_shows" %></li>
               <li><%= link_to "Video Games", "/video_games" %></li>
               <li><%= link_to "Custom Media", "/custom_media" %></li>
@@ -39,16 +40,12 @@
             <% if @followers != [] %>
               <h3>People <%= @thisUser.first_name.capitalize%> Follows</h3>
               <% @followers.each do |f| %>
-                <%= User.find(f.fTarget).username %>
+                <%= link_to User.find(f.fTarget).username, "/users/#{f.fTarget}" %>
+                <p style = "margin:1% 2%; font-size:150%;"><%= link_to User.find(f.fTarget).username, "/users/#{f.fTarget}" %><p>
               <% end %>
             <% else %>
               <h3 class = "jumbotron">Does Not Follow Anyone</h3>
             <% end %>
-	      <% for i in 1..@limitb do%>
-	        <div class = "followers">
-	          <p class = "follower"><%# @user.find(@follower[i].id).username %></p>
-	        </div>
-	      <% end %>
           </div>	
       </div>
     </div>

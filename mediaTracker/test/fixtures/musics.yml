@@ -3,7 +3,9 @@
 one:
   artist: MyString
   album: MyString
+  general_media_id: 1
 
 two:
   artist: MyString
   album: MyString
+  general_media_id: 2
