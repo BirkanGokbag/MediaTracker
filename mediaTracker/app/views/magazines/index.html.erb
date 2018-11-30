@@ -3,10 +3,7 @@
 <h1>Magazines</h1>
 
 <% if @magazines.any? then %>
-<table>
-  <thead>
-    <tr>
-      <th colspan = "1"></th>
+      <%= render :partial => 'table_setup' %>
       <th>Name</th>
       <th>Issue #</th>
       <%= render :partial => 'common_params' %>
@@ -21,7 +18,8 @@
         <td><%= magazine_entry.name%></td>
         <td><%= magazine_entry.magazine.issue %></td>
         <%= render :partial => 'media_object', :object => magazine_entry %>
-        <th>re-reads</th>
+        <td><%= link_to :controller => "static_pages", :action => "deleteMedia", :deleteId => magazine_entry.id, :deleteWhich => "magazine_form" do%>
+          <button type = "button" class = "close" aria-label = "Close" style="color:red"%><span aria-hidden = "true">&times;</span> </button><% end %></td>
       </tr>
     <% end %>
   </tbody>

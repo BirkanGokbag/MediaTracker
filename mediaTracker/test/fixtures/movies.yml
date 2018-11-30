@@ -2,8 +2,6 @@
 
 one:
   director: MyString
-  general_medias: one
 
 two:
   director: MyString
-  general_medias: two

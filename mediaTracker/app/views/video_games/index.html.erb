@@ -3,10 +3,7 @@
 <h1>Video Games</h1>
 
 <% if @video_games.any? then %>
-<table>
-  <thead>
-    <tr>
-      <th colspan = "1"></th>
+      <%= render :partial => 'table_setup' %>
       <th>Name</th>
       <th>System</th>
       <th>Studio</th>
@@ -24,6 +21,8 @@
         <td><%= game_entry.video_game.system %></td>
         <td><%= game_entry.video_game.studio %></td>
         <%= render :partial => 'media_object', :object => game_entry %>
+        <td><%= link_to :controller => "static_pages", :action => "deleteMedia", :deleteId => game_entry.id, :deleteWhich => "video_game_form" do%>
+          <button type = "button" class = "close" aria-label = "Close" style="color:red"%><span aria-hidden = "true">&times;</span> </button><% end %></td>
       </tr>
     <% end %>
   </tbody>

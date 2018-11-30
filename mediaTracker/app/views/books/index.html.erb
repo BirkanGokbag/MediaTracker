@@ -3,10 +3,7 @@
 <h1>Books</h1>
 
 <% if @books.any? then %>
-<table>
-  <thead>
-    <tr>
-      <th colspan = "1"></th>
+      <%= render :partial => 'table_setup' %>
       <th>Title</th>
       <th>Author</th>
       <%= render :partial => 'common_params' %>
@@ -22,6 +19,9 @@
         <td><%= book_entry.name%></td>
         <td><%= book_entry.book.author %></td>
         <%= render :partial => 'media_object', :object => book_entry %>
+        <td><%= link_to :controller => "static_pages", :action => "deleteMedia", :deleteId => book_entry.id, :deleteWhich => "book_form" do%>
+          <button type = "button" class = "close" aria-label = "Close" style="color:red"%><span aria-hidden = "true">&times;</span> </button><% end %></td>
+
       </tr>
     <% end %>
   </tbody>

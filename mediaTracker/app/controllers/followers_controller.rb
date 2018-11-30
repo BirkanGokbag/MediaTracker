@@ -3,27 +3,11 @@
 # Author: Alyssa Langhals (updating methods)
 # Created on: 11/19
 
+#Summary: Followers controller adds or deletes a follower from the table depending on if the user decides
+# to follow or unfollow someone. 
 class FollowersController < ApplicationController
   before_action :set_follower, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
-
-  # GET /followers
-  # GET /followers.json
-  def index
-    #TODO get list of followers
-    @followers = current_user.followers
-  end
-
-  # GET /followers/1
-  # GET /followers/1.json
-  def show
-    #TODO redirect to their homepage
-  end
-
-  # GET /followers/new
-  def new
-    @follower = Follower.new
-  end
 
 
   # POST /followers
@@ -42,7 +26,7 @@ class FollowersController < ApplicationController
     end
   end
 
- 
+
   # DELETE /followers/1
   # DELETE /followers/1.json
   def destroy
@@ -63,10 +47,8 @@ class FollowersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def follower_params
-      puts "JFJFJF"
-      puts params['fTarget']
-      params.require(:fTarget)#TODO permit
+      params.require(:fTarget)
     end
 
-  
+
 end

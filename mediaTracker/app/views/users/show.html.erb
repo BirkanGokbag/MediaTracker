@@ -3,22 +3,29 @@
 <% end %>
 <div id = "container">
       <div class = "well">
-	      <h1><%= @thisUser.first_name.capitalize%> <%=  @thisUser.last_name.capitalize%></h1>
-      </div>
+	      <h1 style:"display:inline;"><%= @thisUser.first_name.capitalize%> <%=  @thisUser.last_name.capitalize%></h1>
       <% if current_user.id != @thisUser.id %>
         <% if @currUserFollowers.any?{|x| x.fTarget == @thisUser.id} %>
       		<div>
-		        <p>Unfollow</p><%= render 'followers/unfollow_form', follower: @follower %>
+		        <%= render 'followers/unfollow_form', follower: @follower %>
 		      </div>
       	<% else %>
-      	  <p>follow</p><%= render 'followers/follow_form', follower: @follower %>
+      	  <%= render 'followers/follow_form', follower: @follower %>
       	<% end %>
       <% end %>
-
+      </div>
       <div id = "main">
         <div class = "well">
           <h3 class = "jumbotron">Your Media</h3>
-
+            <ul>
+              <li><%= link_to "Books", '/books' %></li>
+              <li><%= link_to "Magazines", '/magazines' %></li>
+              <li><%= link_to "Movies", '/movies' %></li>
+              <li><%= link_to "Music", "/music" %></li>
+              <li><%= link_to "TV Shows", "/tv_shows" %></li>
+              <li><%= link_to "Video Games", "/video_games" %></li>
+              <li><%= link_to "Custom Media", "/custom_media" %></li>
+            </ul>
 	        <h3 class = "jumbotron">Options</h3>
 	        <ul>
             <li>Click <a href="/static_pages/addMedia">here</a> to add a media</li>

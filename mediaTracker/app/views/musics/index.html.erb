@@ -3,10 +3,7 @@
 <h1>Music</h1>
 
 <% if @musics.any? then %>
-<table>
-  <thead>
-    <tr>
-      <th colspan = "1"></th>
+      <%= render :partial => 'table_setup' %>
       <th>Name</th>
       <th>Artist</th>
       <th>Album</th>
@@ -24,6 +21,8 @@
         <td><%= music_entry.music.artist %></td>
         <td><%= music_entry.music.album %></td>
         <%= render :partial => 'media_object', :object => music_entry %>
+        <td><%= link_to :controller => "static_pages", :action => "deleteMedia", :deleteId => music_entry.id, :deleteWhich => "music_form" do%>
+          <button type = "button" class = "close" aria-label = "Close" style="color:red"%><span aria-hidden = "true">&times;</span> </button><% end %></td>
       </tr>
     <% end %>
   </tbody>

@@ -3,10 +3,7 @@
 <h1>Movies</h1>
 
 <% if @movies.any? then %>
-<table>
-  <thead>
-    <tr>
-      <th colspan = "1"></th>
+      <%= render :partial => 'table_setup' %>
       <th>Name</th>
       <th>Director</th>
       <%= render :partial => 'common_params' %>
@@ -22,7 +19,11 @@
         <td><%= movie_entry.name%></td>
         <td><%= movie_entry.movie.director %></td>
         <%= render :partial => 'media_object', :object => movie_entry %>
-      </tr>
+        <td><%= link_to :controller => "static_pages", :action => "deleteMedia", :deleteId => movie_entry.id, :deleteWhich => "movie_form" do%>
+          <button type = "button" class = "close" aria-label = "Close" style="color:red"%><span aria-hidden = "true">&times;</span> </button><% end %></td>
+          <tr>
+            reread
+          </tr>
     <% end %>
   </tbody>
 </table>
