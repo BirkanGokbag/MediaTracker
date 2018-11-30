@@ -9,11 +9,10 @@ Date created 11/29/2018
     </div>
     <ul class="nav navbar-nav">
       <li><%= link_to "Profile", current_user %></li>
-      <li><%= link_to "Preferences", "/static_pages/preferences.html" %></li>
+      <li><%= link_to "Privacy", "/static_pages/privacy.html" %></li>
       <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
-      <l1><%= link_to "Update Info", edit_user_registration_path %></li>
     </ul>
 
-    <%= render :partial => 'static_pages/search1_form', follower: @follower %>
+    <%= render :partial => '/static_pages/search1_form', follower: @follower %>
   </div>
 </nav>

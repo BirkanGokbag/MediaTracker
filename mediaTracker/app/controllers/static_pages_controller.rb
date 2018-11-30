@@ -8,39 +8,18 @@ class StaticPagesController < ApplicationController
 
   #
   # Author: Berkay Kaplan
-  # Pulls the models to retrieve the followers of the current user and the latest updates in the public page
+  #
+  # Collaborator: Michael Radey
+  #
+  # Pulls the models to retrieve the latest updates to history logs viewable
+  # by the current user
   #
   def home
-    #@preferences = nil
-    # Get the users preferences if they are set o/w default
-    #if user_signed_in?
-    #  @preferences = Preference.find_by users_id: current_user.id
-    #end
-    #if @preferences == nil
-    #  @preferences = Preference.find_by id: 1
-    #end
-
-    # Set up the title of the landing page and retrieve the tables
-    @Title = "Media Tracker"
-    @historyLogs = HistoryLog.last(10).reverse - [nil]
-
-#sql = "select * from
-#(select * from history_logs h
-#where h.users_id=#{current_user.id}
-#or not exists(select 1 from users u,preferences p where h.users_id=u.id and u.id=p.users_id and p.privacy)
-#or exists(select 1 from followers where #{current_user.id}=u.id and u.id=f.users_id and f.fTarget=h.users_id)
-#order by h.created_at desc)
-#where rownum<=10"
-
-    #@hisSQL = HistoryLog.find_by_sql(sql)
-    # There is a limit to how many updates or followers can be displayed in the landing page
-    @limita = @historyLogs.length
-    if @limita > 10
-      @limita = 10
-    end
-  end
-
-  def faq
+    # Get the history logs of all users that you follow or have public privacy
+    @historyLog = HistoryLog.all
+    @historyLog.order(created_at: :desc)
+    @currUserFollowers = Follower.where(users_id: current_user.id)
+    @historyLogs = @historyLog.select{|log| log.users_id == current_user.id || !Preference.find_by(users_id: log.users_id).privacy || @currUserFollowers.any?{|x| x.fTarget == log.users_id}}.take(10).to_a
   end
 
   #
@@ -139,7 +118,8 @@ class StaticPagesController < ApplicationController
 
   #
   # Author: Birkan Gokbag & Michael Radey
-  # Used in order to record the preferences of the user. IN PROGRESS
+  # Used in order to record the preferences of the user.
+  # IMPORTANT: Only used for privacy page for final submission
   #
   def preference_form
     @preferences = Preference.find_by users_id: current_user.id
@@ -155,16 +135,7 @@ class StaticPagesController < ApplicationController
     end
 
     if @preferences.save
-      uploaded_io = params[:wallpaper]
 
-      fileLocation = Rails.root.join('public', 'uploads', uploaded_io.original_filename)
-      cssLocation = Rails.root + "app/assets/stylesheets/application.css";
-      # File.open(location, 'wb') do |file|
-        # file.write(uploaded_io.read)
-      File.open(cssLocation,'w') do |cssFile|
-        cssFile.puts "body { background-image: url(\"" + fileLocation.basename.to_s + "\";}"
-      end
-      # end
       Logger.new("#{Rails.root}/log/cache_read.log").error(Rails.root + "app/assets/stylesheets/application.css")
       # File.open(Rails.root + "app/assets/stylesheets/application.css",'w') do |cssFile|
       #   cssFile.puts "body { " + params[:wallpaper] + "}"
@@ -176,6 +147,10 @@ class StaticPagesController < ApplicationController
     redirect_to "/static_pages/home"
   end
 
+  #
+  # Author: Michael Radey
+  # Allow user to search for other users by username
+  #
   def search_form
     @searched_user = User.find_by username: params[:userName]
     if @searched_user == nil
@@ -302,11 +277,4 @@ class StaticPagesController < ApplicationController
     end
 
   end
-
-  def follow
-    redirect_to "/users/1"
-
-  end
-
-
 end

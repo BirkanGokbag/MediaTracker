@@ -1,8 +1,15 @@
 <!--
+Created By: Michael Radey: Show the users media, followers and recent history
+  if account is public.  Otherwise only shows if the current_user is the user
+  or the current_user follows this user
+  
 Updated By: Berkay Kaplan: Bootstrapped the layout, and added header.html
 -->
 
 <div id = "container">
+    <% if user_signed_in? %>
+     <%= render "static_pages/header.html" %>
+    <% end %>
       <div class = "well">
 	      <h1 style:"display:inline;"><%= @thisUser.first_name.capitalize%> <%=  @thisUser.last_name.capitalize%></h1>
       <% if current_user.id != @thisUser.id %>
@@ -15,9 +22,17 @@ Updated By: Berkay Kaplan: Bootstrapped the layout, and added header.html
       	<% end %>
       <% end %>
       </div>
+
       <div id = "main">
         <div class = "well">
-          <h3 class = "jumbotron">Your Media</h3>
+        <% if current_user.id != @thisUser.id && @privateAccount && !(@currUserFollowers.any?{|x| x.fTarget == @thisUser.id})%>
+          <h3 class = "jumbotron">Private Account! Must Follow To View Content</h3>
+        <% else %>
+          <% if current_user.id == @thisUser.id %>
+            <h3 class = "jumbotron">Your Media</h3>
+          <% else %>
+            <h3 class = "jumbotron"><%= @thisUser.first_name.capitalize%>'s Media</h3>
+          <% end %>
             <ul>
               <li><%= link_to "Books", '/books' %></li>
               <li><%= link_to "Magazines", '/magazines' %></li>
@@ -27,24 +42,42 @@ Updated By: Berkay Kaplan: Bootstrapped the layout, and added header.html
               <li><%= link_to "Video Games", "/video_games" %></li>
               <li><%= link_to "Custom Media", "/custom_media" %></li>
             </ul>
+        <% if current_user.id == @thisUser.id %>
 	        <h3 class = "jumbotron">Options</h3>
 	        <ul>
             <li>Click <a href="/static_pages/addMedia">here</a> to add a media</li>
             <li>Click <a href="/static_pages/preferences">here</a> to update preferences</li>
             <li><a href="/static_pages/home">home</a></li>
+            <li><%= link_to "Update Info", edit_user_registration_path %></li>
 	        <ul>
-
+        <% end %>
         </div>
 
 	      <div class = "well">
             <% if @followers != [] %>
-              <h3>People <%= @thisUser.first_name.capitalize%> Follows</h3>
+              <% if current_user.id == @thisUser.id %>
+                <h3>People You Follow</h3>
+              <% else %>
+                <h3>People <%= @thisUser.first_name.capitalize%> Follows</h3>
+              <% end %>
               <% @followers.each do |f| %>
-                <%= link_to User.find(f.fTarget).username, "/users/#{f.fTarget}" %>
                 <p style = "margin:1% 2%; font-size:150%;"><%= link_to User.find(f.fTarget).username, "/users/#{f.fTarget}" %><p>
               <% end %>
             <% else %>
               <h3 class = "jumbotron">Does Not Follow Anyone</h3>
+            <% end %>
+          </div>
+          <div class = "well">
+            <% if current_user.id == @thisUser.id %>
+                <h3 class = "jumbotron">Your Last Actions <%= @privateAccount%></h3>
+              <% else %>
+                <h3 class = "jumbotron"><%= @thisUser.first_name.capitalize%>'s Last Actions <%= @privateAccount%></h3>
+              <% end %>
+            <ul>
+              <% @historyLogs.each do |f| %>
+                <li><%= link_to User.find(f.users_id).username, "/users/#{f.users_id}"%> <%= f.historyMessage %> <%= f.updated_at %></li>
+              <% end %>
+            </ul>
             <% end %>
           </div>	
       </div>

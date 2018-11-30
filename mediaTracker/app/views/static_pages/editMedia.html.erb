@@ -5,6 +5,9 @@ Description: Form to Edit All Sorts of Media
 -->
 
 <div id = "container" class = "editMedia">
+  <% if user_signed_in? %>
+     <%= render "static_pages/header.html" %>
+   <% end %>
   <div class = "well">
       <h3 class = "jumbotron">Edit Media</h3>
       <h3>Enter The New Information For The Media</h3>
