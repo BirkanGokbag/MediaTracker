@@ -25,24 +25,15 @@
         <ul>
       <% end %>
     </div>
-    <--! <% if user_signed_in? %>
-      <div id = "latestUpdates">
-        <h3>Followers</h3>
-        <% for i in 1..@limitb do%>
-          <div class = "followers">
-            <p class = "follower"><%= @user.find(@follower[i].id).username %></p>
-          </div>
-        <% end %>
-      </div>
-    <% else %> -->
+
       <div id = "latestUpdates">
         <h3>Latest Updates</h3>
         <% for i in 1..@limita do%>
           <div class = "history">
             <p><%= @historylog[@historylength - i].users.username + @historylog[@historylength - i].historyMessage %><%= @historylog[@historylength - i].created_at %></p>
           </div>
-        <%# end %>
+        <% end %>
       </div>
-    <% end %>
+    
   </div>
 </div>
