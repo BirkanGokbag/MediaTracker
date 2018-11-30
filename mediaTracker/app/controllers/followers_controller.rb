@@ -7,24 +7,6 @@ class FollowersController < ApplicationController
   before_action :set_follower, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
 
-  # GET /followers
-  # GET /followers.json
-  def index
-    #TODO get list of followers
-    @followers = current_user.followers
-  end
-
-  # GET /followers/1
-  # GET /followers/1.json
-  def show
-    #TODO redirect to their homepage
-  end
-
-  # GET /followers/new
-  def new
-    @follower = Follower.new
-  end
-
 
   # POST /followers
   # POST /followers.json
@@ -63,9 +45,7 @@ class FollowersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def follower_params
-      puts "JFJFJF"
-      puts params['fTarget']
-      params.require(:fTarget)#TODO permit
+      params.require(:fTarget)
     end
 
   

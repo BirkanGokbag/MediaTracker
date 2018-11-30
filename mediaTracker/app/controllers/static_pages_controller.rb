@@ -3,6 +3,10 @@ class StaticPagesController < ApplicationController
   skip_before_action :verify_authenticity_token
   before_action :authenticate_user!
 
+  #
+  # Author: Berkay Kaplan
+  # Pulls the models to retrieve the followers of the current user and the latest updates in the public page
+  #
   def home
      # Set up the title of the landing page and retrieve the tables
     @Title = "Media Tracker"
