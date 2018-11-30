@@ -171,6 +171,10 @@ class StaticPagesController < ApplicationController
   end
 
 
+  #
+  # Author: Birkan Gokbag
+  # Edit the specified media by the user
+  #
   def edit
 
     # params[:mediaId] contains the media id of the general media.
@@ -226,6 +230,10 @@ class StaticPagesController < ApplicationController
 
   end
 
+  #
+  # Author: Birkan Gokbag
+  # Delete the media the user wishes to delete.
+  #
   def deleteMedia
 
     # params[:mediaId] contains the media id of the general media.
@@ -250,7 +258,7 @@ class StaticPagesController < ApplicationController
         # For custom submission
 
     end
-    
+
     if @userParam.destroy && @generalMedia.destroy && @special.destroy
       flash[:success] = "Successfully deleted the media!"
       redirect_to "/static_pages/home"
