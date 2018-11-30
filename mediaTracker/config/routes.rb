@@ -9,8 +9,8 @@ Rails.application.routes.draw do
   resources :movies, except: [:show, :edit]
   resources :magazines, except: [:show, :edit]
   resources :history_logs, only: [:index]
+  resources :followers, only: [:create, :delete, :destroy]
   resources :general_media, except: [:show, :edit]
-  resources :followers, only: [:create, :delete]
   resources :custom_media
   resources :custom_media_entries
   resources :books, except: [:show, :edit]

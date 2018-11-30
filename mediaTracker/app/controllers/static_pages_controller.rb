@@ -24,6 +24,7 @@ class StaticPagesController < ApplicationController
     @Title = "Media Tracker"
     @historyLogs = HistoryLog.last(10).reverse - [nil]
 
+    #@hisSQL = HistoryLog.find_by_sql()
     # There is a limit to how many updates or followers can be displayed in the landing page
     @limita = @historyLogs.length
     if @limita > 10
