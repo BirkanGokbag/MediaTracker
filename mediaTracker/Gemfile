@@ -5,6 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'seed_dump'
 # Use jquery to display changes on website
 gem 'jquery-rails'
 # Use activemodel for the web console
