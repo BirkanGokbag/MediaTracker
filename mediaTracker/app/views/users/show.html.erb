@@ -19,7 +19,7 @@ Updated By: Alyssa Langhals: Added favorites display, updated layout
         <% if @currUserFollowers.any?{|x| x.fTarget == @thisUser.id} %>
       		<div>
 		        <%= render :partial => 'followers/unfollow_form', follower: @follower %>
-		      </div>
+		 </div>
       	<% else %>
       	  <%= render :partial => 'followers/follow_form', follower: @follower %>
       	<% end %>
