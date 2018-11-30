@@ -8,38 +8,18 @@ class StaticPagesController < ApplicationController
 
   #
   # Author: Berkay Kaplan
-  # Pulls the models to retrieve the followers of the current user and the latest updates in the public page
+  #
+  # Collaborator: Michael Radey
+  #
+  # Pulls the models to retrieve the latest updates to history logs viewable
+  # by the current user
   #
   def home
-    #@preferences = nil
-    # Get the users preferences if they are set o/w default
-    #if user_signed_in?
-    #  @preferences = Preference.find_by users_id: current_user.id
-    #end
-    #if @preferences == nil
-    #  @preferences = Preference.find_by id: 1
-    #end
-
-    # Set up the title of the landing page and retrieve the tables
-    @Title = "Media Tracker"
-    #@historyLog = HistoryLog.last(10).reverse - [nil]
+    # Get the history logs of all users that you follow or have public privacy
     @historyLog = HistoryLog.all
     @historyLog.order(created_at: :desc)
     @currUserFollowers = Follower.where(users_id: current_user.id)
     @historyLogs = @historyLog.select{|log| log.users_id == current_user.id || !Preference.find_by(users_id: log.users_id).privacy || @currUserFollowers.any?{|x| x.fTarget == log.users_id}}.take(10).to_a
-
-#SQL Statement to get the history of logs of users that have public accounts or private 
-#users that the current user follows.
-#sql = "select * from
-#(select * from history_logs h
-#where h.users_id=#{current_user.id}
-#or not exists(select 1 from users u,preferences p where h.users_id=u.id and u.id=p.users_id and p.privacy)
-#or exists(select 1 from followers where #{current_user.id}=u.id and u.id=f.users_id and f.fTarget=h.users_id)
-#order by h.created_at desc)
-#where rownum<=10"
-
-    #@hisSQL = HistoryLog.find_by_sql(sql)
-
   end
 
   def faq
@@ -141,7 +121,8 @@ class StaticPagesController < ApplicationController
 
   #
   # Author: Birkan Gokbag & Michael Radey
-  # Used in order to record the preferences of the user. IN PROGRESS
+  # Used in order to record the preferences of the user.
+  # IMPORTANT: Only used for privacy page for final submission
   #
   def preference_form
     @preferences = Preference.find_by users_id: current_user.id
@@ -169,6 +150,10 @@ class StaticPagesController < ApplicationController
     redirect_to "/static_pages/home"
   end
 
+  #
+  # Author: Michael Radey
+  # Allow user to search for other users by username
+  #
   def search_form
     @searched_user = User.find_by username: params[:userName]
     if @searched_user == nil
