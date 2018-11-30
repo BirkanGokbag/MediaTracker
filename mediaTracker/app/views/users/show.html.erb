@@ -40,7 +40,7 @@ Updated By: Berkay Kaplan: Bootstrapped the layout, and added header.html
 
         </div>
 
-	      <div class = "well">
+	    <div class = "well">
             <% if @followers != [] %>
               <h3>People <%= @thisUser.first_name.capitalize%> Follows</h3>
               <% @followers.each do |f| %>
@@ -49,6 +49,14 @@ Updated By: Berkay Kaplan: Bootstrapped the layout, and added header.html
               <% end %>
             <% else %>
               <h3 class = "jumbotron">Does Not Follow Anyone</h3>
+            <% end %>
+          </div>
+          <div class = "well">
+           
+            <% PersonalMediaParameter.where(favorite: true).each do |media| %>
+              <% if media.users_id == current_user.id %>
+                <li><%= media.general_media.name %></li>
+              <% end %>
             <% end %>
           </div>	
       </div>
