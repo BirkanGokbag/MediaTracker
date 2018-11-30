@@ -2,7 +2,7 @@
 Created By: Michael Radey: Show the users media, followers and recent history
   if account is public.  Otherwise only shows if the current_user is the user
   or the current_user follows this user
-  
+
 Updated By: Berkay Kaplan: Bootstrapped the layout, and added header.html
 
 Updated By: Alyssa Langhals: Added favorites display, updated layout
@@ -14,7 +14,7 @@ Updated By: Alyssa Langhals: Added favorites display, updated layout
     <% end %>
       <div class = "well">
 	      <h1 style:"display:inline;"><%= @thisUser.username%> (<%= @thisUser.first_name.capitalize%>)</h1>
-              
+
       <% if current_user.id != @thisUser.id %>
         <% if @currUserFollowers.any?{|x| x.fTarget == @thisUser.id} %>
       		<div>
@@ -24,7 +24,6 @@ Updated By: Alyssa Langhals: Added favorites display, updated layout
       	  <%= render :partial => 'followers/follow_form', follower: @follower %>
       	<% end %>
       <% else %>
-         <a href="/preferences">Update Preferences</a></li>
          <%= link_to "Update Info", edit_user_registration_path %></li>
       <% end %>
       </div>
@@ -99,13 +98,13 @@ Updated By: Alyssa Langhals: Added favorites display, updated layout
           <% else %>
             <h3 class = "jumbotron"><%= @thisUser.username%>'s Favorites</h3>
           <% end %>
-            <% PersonalMediaParameter.where(favorite: true).each do |media| %>	
+            <% PersonalMediaParameter.where(favorite: true).each do |media| %>
               <% if media.users_id == current_user.id %>
                 <li><%= media.general_media.name %></li>
               <% end %>
             <% end %>
           </div>
-          
+
           </div>
           <div class="row">
 	    <div class = "well col-md-4">
@@ -133,7 +132,7 @@ Updated By: Alyssa Langhals: Added favorites display, updated layout
                   <li><%= link_to User.find(f.users_id).username, "/users/#{f.users_id}"%> <%= f.historyMessage %> <%= f.updated_at %></li>
                 <% end %>
               <% end %>
-             
+
           </div>
           </div>
           <% end %>
