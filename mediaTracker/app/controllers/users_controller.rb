@@ -26,7 +26,17 @@ class UsersController < ApplicationController
 	    @currUserFollowers = nil
 	    if @thisUser.id != current_user.id
 	    	@currUserFollowers = Follower.where(users_id: current_user.id)
+
+	    	#Get all of the users media to display to visitor 
+			@books = (GeneralMedium.joins(:book)).joins(:personal_media_parameters).where('personal_media_parameters.users_id =?', @thisUser.id)
+			@movies = (GeneralMedium.joins(:movie)).joins(:personal_media_parameters).where('personal_media_parameters.users_id =?', @thisUser.id)
+			@musics = (GeneralMedium.joins(:music)).joins(:personal_media_parameters).where('personal_media_parameters.users_id =?', @thisUser.id)
+			@tv_shows = (GeneralMedium.joins(:tv_show)).joins(:personal_media_parameters).where('personal_media_parameters.users_id =?', @thisUser.id)
+			@video_games = (GeneralMedium.joins(:video_game)).joins(:personal_media_parameters).where('personal_media_parameters.users_id =?', @thisUser.id)
+			@custom_media = ((GeneralMedium.joins(:personal_media_parameters).where('personal_media_parameters.users_id =?', @thisUser.id)).joins(:custom_medium))
 	    end
+
+
 	end
 
 end

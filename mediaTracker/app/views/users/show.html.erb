@@ -11,15 +11,15 @@ Updated By: Berkay Kaplan: Bootstrapped the layout, and added header.html
      <%= render "static_pages/header.html" %>
     <% end %>
       <div class = "well">
-	      <h1 style:"display:inline;"><%= @thisUser.first_name.capitalize%> <%=  @thisUser.last_name.capitalize%></h1>
+        <h1 style:"display:inline;"><%= @thisUser.first_name.capitalize%> <%=  @thisUser.last_name.capitalize%></h1>
       <% if current_user.id != @thisUser.id %>
         <% if @currUserFollowers.any?{|x| x.fTarget == @thisUser.id} %>
-      		<div>
-		        <p></p><%= render :partial => 'followers/unfollow_form', follower: @follower %>
-		      </div>
-      	<% else %>
-      	  <p></p><%= render :partial => 'followers/follow_form', follower: @follower %>
-      	<% end %>
+          <div>
+            <p></p><%= render :partial => 'followers/unfollow_form', follower: @follower %>
+          </div>
+        <% else %>
+          <p></p><%= render :partial => 'followers/follow_form', follower: @follower %>
+        <% end %>
       <% end %>
       </div>
 
@@ -33,6 +33,7 @@ Updated By: Berkay Kaplan: Bootstrapped the layout, and added header.html
           <% else %>
             <h3 class = "jumbotron"><%= @thisUser.first_name.capitalize%>'s Media</h3>
           <% end %>
+          <% if current_user.id == @thisUser.id %>
             <ul>
               <li><%= link_to "Books", '/books' %></li>
               <li><%= link_to "Magazines", '/magazines' %></li>
@@ -42,18 +43,57 @@ Updated By: Berkay Kaplan: Bootstrapped the layout, and added header.html
               <li><%= link_to "Video Games", "/video_games" %></li>
               <li><%= link_to "Custom Media", "/custom_media" %></li>
             </ul>
+          <% else %>
+            <% if @books.any? %>
+              <h4>Books</h4>
+              <% @books.each do |book| %>
+                <li><%= book.name %></li>
+              <% end %>
+            <% end %>
+            <% if @movies.any? %>
+              <h4>Movies</h4>
+              <% @movies.each do |movie| %>
+                <li><%= movie.name %></li>
+              <% end %>
+            <% end %>
+            <% if @musics.any? %>
+              <h4>Music</h4>
+              <% @musics.each do |mus| %>
+                <li><%= mus.name %></li>
+              <% end %>
+            <% end %>
+            <% if @tv_shows.any? %>
+              <h4>Tv Shows</h4>
+              <% @tv_shows.each do |tv| %>
+                <li><%= tv.name %></li>
+              <% end %>
+            <% end %>
+            <% if @video_games.any? %>
+              <h4>Video Games</h4>
+              <% @video_games.each do |vg| %>
+                <li><%= vg.name %></li>
+              <% end %>
+            <% end %>
+            <% if @custom_media.any? %>
+              <h4>Custom Media</h4>
+              <% @custom_media.each do |cm| %>
+                <li><%= cm.custom_medium.typeOfMedia %>: <%= cm.name %></li>
+              <% end %>
+            <% end %>
+          <% end %>
+
         <% if current_user.id == @thisUser.id %>
-	        <h3 class = "jumbotron">Options</h3>
-	        <ul>
+          <h3 class = "jumbotron">Options</h3>
+          <ul>
             <li>Click <a href="/static_pages/addMedia">here</a> to add a media</li>
             <li>Click <a href="/static_pages/preferences">here</a> to update preferences</li>
             <li><a href="/static_pages/home">home</a></li>
             <li><%= link_to "Update Info", edit_user_registration_path %></li>
-	        <ul>
+          <ul>
         <% end %>
         </div>
 
-	      <div class = "well">
+        <div class = "well">
             <% if @followers != [] %>
               <% if current_user.id == @thisUser.id %>
                 <h3>People You Follow</h3>
@@ -69,9 +109,9 @@ Updated By: Berkay Kaplan: Bootstrapped the layout, and added header.html
           </div>
           <div class = "well">
             <% if current_user.id == @thisUser.id %>
-                <h3 class = "jumbotron">Your Last Actions <%= @privateAccount%></h3>
+                <h3 class = "jumbotron">Your Last Actions</h3>
               <% else %>
-                <h3 class = "jumbotron"><%= @thisUser.first_name.capitalize%>'s Last Actions <%= @privateAccount%></h3>
+                <h3 class = "jumbotron"><%= @thisUser.first_name.capitalize%>'s Last Actions </h3>
               <% end %>
             <ul>
               <% @historyLogs.each do |f| %>
@@ -79,6 +119,6 @@ Updated By: Berkay Kaplan: Bootstrapped the layout, and added header.html
               <% end %>
             </ul>
             <% end %>
-          </div>	
+          </div>  
       </div>
     </div>
