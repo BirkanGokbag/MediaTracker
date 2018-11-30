@@ -1,31 +1,37 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Musics</h1>
+<h1>Music</h1>
 
+<% if @musics.any? then %>
 <table>
   <thead>
     <tr>
+      <th colspan = "1"></th>
+      <th>Name</th>
       <th>Artist</th>
       <th>Album</th>
-      <th>General medias</th>
-      <th colspan="3"></th>
+      <%= render :partial => 'common_params' %>
+      <th>Replays</th>
+      <th colspan = "3"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @musics.each do |music| %>
+    <% @musics.each do |music_entry| %>
       <tr>
-        <td><%= music.artist %></td>
-        <td><%= music.album %></td>
-        <td><%= music.general_media_id %></td>
-        <td><%= link_to 'Show', music %></td>
-        <td><%= link_to 'Edit', edit_music_path(music) %></td>
-        <td><%= link_to 'Destroy', music, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', {:controller => "static_pages", :action => "editMedia",:chooseSelect => "music_form", :name => music_entry.name, :artist => music_entry.music.artist, :album => music_entry.music.album, :general => music_entry.personal_media_parameters.first.as_json, :mediaId => music_entry.id } %></td>
+        <td><%= music_entry.name%></td>
+        <td><%= music_entry.music.artist %></td>
+        <td><%= music_entry.music.album %></td>
+        <%= render :partial => 'media_object', :object => music_entry %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
+<% else %>
+  <p> You don't have any music! Add some here: <%= link_to 'Add Music', '../static_pages/addMedia' %><p>
+<% end %>
 <br>
 
 <%= link_to 'New Music', "static_pages/addMedia" %>

@@ -1,23 +1,19 @@
+<!--
+Date of Creation: 11/25/18
+Author: Birkan Gokbag
+Description: Form to Edit All Sorts of Media
+-->
+
+<% if user_signed_in? %>
+  <%= render "header.html" %>
+<% end %>
 <div id = "container" class = "editMedia">
   <div id = "header">
-    <h1>Edit Media</h1>
+    <h3 class = "jumbotron">Edit Media</h3>
   </div>
   <div id = "main">
     <div id = "mainArea">
       <h3>Enter The New Information For The Media</h3>
-      <form>
-        <!-- value = </%= params[:chooseSelect]%> -->
-        <!-- <select class="form-control" id = "select_form" >
-          <option disabled selected>Select An Option</option>
-          <option value="tv_form">TV Show</option>
-          <option value="music_form">Music</option>
-          <option value="movie_form">Movie</option>
-          <option value="magazine_form">Magazine</option>
-          <option value="book_form">Book</option>
-          <option value="video_game_form">Video Game</option>
-          <option value="custom_form">Custom</option>
-        </select>
-      </form> -->
 
 <%= render "tv_form.html" %>
 <%= render "music_form.html" %>
@@ -27,15 +23,15 @@
 <%= render "video_game_form.html" %>
 <%= render "custom_form.html" %>
 
+
+
       <script>
         // This is done to prefill the form when the user is trying to edit the form
 
-        console.log("<%= params[:book_author]%>");
-        console.log("book_form");
-
-        // document.getElementById("select_form").value = "</%= params[:chooseSelect]%>";
+        // Show the particular form
         $("#" + "<%= params[:chooseSelect]%>").show();
-        // $("#select_form").prop("disabled", true);
+
+        //Proceed to fill the form
         $("#<%= params[:chooseSelect]%> #name").val("<%= params[:name]%>");
         $("#<%= params[:chooseSelect]%> #score_temp").val("<%= params[:general][:score]%>");
         $("#<%= params[:chooseSelect]%> #currentStatus").val("<%= params[:general][:currentStatus]%>");
@@ -46,31 +42,38 @@
         $("#<%= params[:chooseSelect]%> #source").val("<%= params[:general][:source]%>");
         $("#<%= params[:chooseSelect]%> #replay_temp").val("<%= params[:general][:replay]%>");
 
+        //Proceed to fill the unique parameters
         switch ("<%= params[:chooseSelect]%>"){
           case "movie_form":
-
+            $("#<%= params[:chooseSelect]%> #director").val("<%= params[:director]%>");
             break;
           case "tv_form":
-
+            $("#<%= params[:chooseSelect]%> #numberOfSeasons_temp").val("<%= params[:numberOfSeasons]%>");
+            $("#<%= params[:chooseSelect]%> #totalEpisodes_temp").val("<%= params[:totalEpisodes]%>");
             break;
           case "music_form":
-
+          $("#<%= params[:chooseSelect]%> #artist").val("<%= params[:artist]%>");
+          $("#<%= params[:chooseSelect]%> #album").val("<%= params[:album]%>");
             break;
           case "magazine_form":
-
+          $("#<%= params[:chooseSelect]%> #issue_temp").val("<%= params[:issue]%>");
             break;
           case "book_form":
-            $("#<%= params[:chooseSelect]%> #author").val("<%= params[:book_author]%>");
+            $("#<%= params[:chooseSelect]%> #author").val("<%= params[:author]%>");
             break;
           case "video_game_form":
-
+          $("#<%= params[:chooseSelect]%> #studio").val("<%= params[:studio]%>");
+          $("#<%= params[:chooseSelect]%> #system").val("<%= params[:system]%>");
             break;
           case "custom_form":
 
             break;
           default:
-
+            //This should never happen
         }
+
+        //Store the edit to submit the media id in order to update it.
+        $("#main #editId").val("<%= params[:mediaId]%>");
 
       </script>
     </div>

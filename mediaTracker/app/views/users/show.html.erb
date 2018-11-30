@@ -1,4 +1,7 @@
- <div id = "container">
+<% if user_signed_in? %>
+  <%= render "static_pages/header.html" %>
+<% end %>
+<div id = "container">
       <div class = "well">
 	      <h1><%= @thisUser.first_name.capitalize%> <%=  @thisUser.last_name.capitalize%></h1>
       </div>

@@ -5,7 +5,15 @@ Description: Partial form for adding tv shows
 -->
 
 <!-- Get all the information relevant to tv -->
-<%= form_tag("form",:method => :post, :id => "tv_form", :name => "tv_form", :style => "display:none") do %>
+<% if params[:mediaId].nil?%>
+  <% destination = "form" %>
+<% else %>
+  <% destination = "edit" %>
+<% end %>
+<%= form_tag(destination,:method => :post, :id => "tv_form", :name => "tv_form", :style => "display:none") do %>
+
+<!-- This input is hidden and carries the id of the media that is being sent to the edit form in order to find the media that will be edited. -->
+<input type="number" name="editId" id = "editId" value="" style = "display:none">
 
   <!-- General Stuff -->
   <div class="field">

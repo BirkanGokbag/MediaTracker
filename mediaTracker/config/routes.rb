@@ -13,16 +13,20 @@ Rails.application.routes.draw do
   resources :custom_media_entries
   resources :books
   resources :video_games
+  
   get 'static_pages/home'
   get 'static_pages/addMedia'
   get 'static_pages/preferences'
   get 'static_pages/profile'
   get 'static_pages/faq'
   get 'static_pages/search_form'
+
+  # Posts point to the static_pages controller
   post 'static_pages/form'
+  post 'static_pages/edit'
   post 'static_pages/follow_form'
   post 'static_pages/preference_form'
-  get '/books/static_pages/editMedia'
+
   get 'static_pages/editMedia'
 devise_for :users
 resources :users, :only => [:show, :follow]

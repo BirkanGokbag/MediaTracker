@@ -1,31 +1,36 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Tv Shows</h1>
+<h1>TV Shows</h1>
 
+<% if @tv_shows.any? then %>
 <table>
   <thead>
     <tr>
-      <th>Numberofseasons</th>
-      <th>Totalepisodes</th>
-      <th>General medias</th>
-      <th colspan="3"></th>
+      <th colspan = "1"></th>
+      <th>Name</th>
+      <th>Number of Seasons</th>
+      <th>Total Episodes</th>
+      <%= render :partial => 'common_params' %>
+      <th>Rewatches</th>
+      <th colspan = "3"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @tv_shows.each do |tv_show| %>
+    <% @tv_shows.each do |tv_entry| %>
       <tr>
-        <td><%= tv_show.numberOfSeasons %></td>
-        <td><%= tv_show.totalEpisodes %></td>
-        <td><%= tv_show.general_media_id %></td>
-        <td><%= link_to 'Show', tv_show %></td>
-        <td><%= link_to 'Edit', edit_tv_show_path(tv_show) %></td>
-        <td><%= link_to 'Destroy', tv_show, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', {:controller => "static_pages", :action => "editMedia",:chooseSelect => "tv_form", :name => tv_entry.name, :numberOfSeasons => tv_entry.tv_show.numberOfSeasons, :totalEpisodes => tv_entry.tv_show.totalEpisodes, :general => tv_entry.personal_media_parameters.first.as_json, :mediaId => tv_entry.id } %></td>
+        <td><%= tv_entry.name%></td>
+        <td><%= tv_entry.tv_show.numberOfSeasons %></td>
+        <td><%= tv_entry.tv_show.totalEpisodes %></td>
+        <%= render :partial => 'media_object', :object => tv_entry %>
+
       </tr>
     <% end %>
   </tbody>
 </table>
 
+<% else %>
+  <p> You don't have any TV shows! Add some here: <%= link_to 'Add TV Shows', '../static_pages/addMedia' %><p>
+<% end %>
 <br>
-
-<%= link_to 'New Tv Show', "static_pages/addMedia" %>

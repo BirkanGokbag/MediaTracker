@@ -4,7 +4,15 @@ Author: Birkan Gokbag
 Description: Partial form for custom media
 -->
 
-<%= form_tag("form",:method => :post, :id => "custom_form", :name => "custom_form", :style => "display:none") do %>
+<% if params[:mediaId].nil?%>
+  <% destination = "form" %>
+<% else %>
+  <% destination = "edit" %>
+<% end %>
+<%= form_tag(destination,:method => :post, :id => "custom_form", :name => "custom_form", :style => "display:none") do %>
+
+<!-- This input is hidden and carries the id of the media that is being sent to the edit form in order to find the media that will be edited. -->
+<input type="number" name="editId" id = "editId" value="" style = "display:none">
 
   <div class="field">
     <label>Enter Name of the Custom Media:</label>
