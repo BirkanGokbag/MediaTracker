@@ -2,28 +2,32 @@
 
 <h1>Movies</h1>
 
+<% if @movies.any? then %>
 <table>
   <thead>
     <tr>
+      <th colspan = "1"></th>
+      <th>Name</th>
       <th>Director</th>
-      <th>General medias</th>
-      <th colspan="3"></th>
+      <%= render :partial => 'common_params' %>
+      <th>Rewatches</th>
+      <th colspan = "3"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @movies.each do |movie| %>
+    <% @movies.each do |movie_entry| %>
       <tr>
-        <td><%= movie.director %></td>
-        <td><%= movie.general_media_id %></td>
-        <td><%= link_to 'Show', movie %></td>
-        <td><%= link_to 'Edit', edit_movie_path(movie) %></td>
-        <td><%= link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', 'static_pages/addMedia' %></td>
+        <td><%= movie_entry.name%></td>
+        <td><%= movie_entry.movie.director %></td>
+        <%= render :partial => 'media_object', :object => movie_entry %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
+<% else %>
+  <p> You don't have any movies! Add some here: <%= link_to 'Add Movies', '../static_pages/addMedia' %><p>
+<% end %>
 <br>
-
-<%= link_to 'New Movie', new_movie_path %>
