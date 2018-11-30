@@ -1,0 +1,5 @@
+<%= form_tag(url_for(:controller => 'static_pages', :action => 'search_form'), method: :get, class:"navbar-form navbar-left") do %>
+  <div class="form-group"><%= text_field_tag(:userName, nil, placeholder: 'search') %></div>
+  <%= submit_tag "Search", class: "btn btn-default" %>
+
+<% end %>
