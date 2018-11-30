@@ -19,7 +19,8 @@ The views were broken down into default views for models that showed all the res
 
 To help with the implementation of the project, a variety of other technologies and frameworks were used.  These included devise for user login/signup and then the users view and controller, specifically the show function.  Jquery: Was used in order to display the selected media form to the user, handle the amount of parameters that the user wishes to enter a custom media, and prefill the media form when the user is to edit the media. Bootstrap was also used to easily change the styling and layout of the page to be tabular and easy to navigate. In addition, bootstrap was used to make the styling of the tables both more simple but also much nicer.
 
-For testing the group used the default rails test framework, capybara.  In addition, system testing was done by each member trying to "break" other members' code.  The group tested different views and controllers with unit testing and then determined how navigation to other pages worked to do implementation testing.
+### Testing:
+For testing the group used the default rails test framework, capybara, to create tests for the new controller methods that were created.  In addition, system testing was done by each member trying to "break" other members' code.  The group tested different views and controllers with unit testing and then determined how navigation to other pages worked to do implementation testing.
 
 
 ### How to run
@@ -28,6 +29,12 @@ rails s
 then go to http://0.0.0.0:3000
 
 If you run into conflicts, run bundle install in the rails project.
+
+This program also includes some data already in the database for your use.
+rails db:seed
+The usernames of the already exsisting users are: AlyKat16, WWoman, and LasangaLover
+
+
 ### Contributions
 
 Birkan Gokbag: Created the book, custom, magazine, movie, music, tv, and video game forms within app/static_pages folder in order to allow the user to enter values for each media. Created the addMedia and editMedia pages within app/static_pages in order to allow the user to enter a media items to their account and allow them to delete and edit all of the media they enter. Written the controller code for static_pages to handle the logic when using the forms as custom forms were used, where the forms do a post request on that said controller. Revamped the model after creation in order to the application to work with the database and created the EER diagram for the project. Did System Testing.
