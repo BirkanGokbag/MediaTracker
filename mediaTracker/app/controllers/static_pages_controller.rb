@@ -22,9 +22,6 @@ class StaticPagesController < ApplicationController
     @historyLogs = @historyLog.select{|log| log.users_id == current_user.id || !Preference.find_by(users_id: log.users_id).privacy || @currUserFollowers.any?{|x| x.fTarget == log.users_id}}.take(10).to_a
   end
 
-  def faq
-  end
-
   #
   # Author: Birkan Gokbag
   # Add the entered information into the tables specified by the user
