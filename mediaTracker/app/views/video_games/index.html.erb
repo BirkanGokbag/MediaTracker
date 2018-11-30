@@ -2,30 +2,34 @@
 
 <h1>Video Games</h1>
 
+<% if @video_games.any? then %>
 <table>
   <thead>
     <tr>
-      <th>Studio</th>
+      <th colspan = "1"></th>
+      <th>Name</th>
       <th>System</th>
-      <th>General medias</th>
-      <th colspan="3"></th>
+      <th>Studio</th>
+      <%= render :partial => 'common_params' %>
+      <td>Replays</td>
+      <th colspan = "3"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @video_games.each do |video_game| %>
+    <% @video_games.each do |game_entry| %>
       <tr>
-        <td><%= video_game.studio %></td>
-        <td><%= video_game.system %></td>
-        <td><%= video_game.general_media_id %></td>
-        <td><%= link_to 'Show', video_game %></td>
-        <td><%= link_to 'Edit', edit_video_game_path(video_game) %></td>
-        <td><%= link_to 'Destroy', video_game, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', 'static_pages/addMedia' %></td>
+        <td><%= game_entry.name%></td>
+        <td><%= game_entry.video_game.system %></td>
+        <td><%= game_entry.video_game.studio %></td>
+        <%= render :partial => 'media_object', :object => game_entry %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
+<% else %>
+  <p> You don't have any video games! Add some here: <%= link_to 'Add Video Games', '../static_pages/addMedia' %><p>
+<% end %>
 <br>
-
-<%= link_to 'New Video Game', new_video_game_path %>
