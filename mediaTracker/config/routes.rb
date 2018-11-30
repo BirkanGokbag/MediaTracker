@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :history_logs, only: [:index]
   resources :general_media, except: [:show, :edit]
   resources :followers, only: [:create, :delete]
-  resources :custom_media
+  resources :custom_media, except: [:show, :edit]
   resources :custom_media_entries
   resources :books, except: [:show, :edit]
   resources :video_games, except: [:show, :edit]
