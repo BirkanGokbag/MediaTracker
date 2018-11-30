@@ -2,7 +2,6 @@
 Author: Berkay Kaplan
 -->
 <div id = "container">
-  
   <% if user_signed_in? %>
     <%= render "header.html" %>
   <% end %>
@@ -17,27 +16,15 @@ Author: Berkay Kaplan
         </ul>
       </div>
     </div>
-    <% if user_signed_in? %>
-    <div class="col-sm-4"> 
-      <div class = "well">
-        <h3 class = "jumbotron">Followers</h3>
-        <% for i in 1..@limitb do%>
-          <div class = "followers">
-            <p class = "follower"><%= @user.find(@follower[i].id).username %></p>
-          </div>
-        <% end %>
-      </div>
-    </div>
-    <% else %>
+     <div class="col-sm-4"> 
       <div class = "well">
         <h3 class = "jumbotron">Latest Updates</h3>
-
-        <% for i in 1..@limita do%>
-          <div class = "history">
-            <p><%= @historylog[@historylength - i].users.username + @historylog[@historylength - i].historyMessage %><%= @historylog[@historylength - i].created_at %></p>
-          </div>
-        <% end %>
+        <ul>
+          <% @historyLogs.each do |f| %>
+            <li><%= f.historyMessage %></li>
+          <% end %>
+        </ul>
       </div>
-    
+     </div>
   </div>
 </div>
