@@ -8,7 +8,6 @@ one:
   source: MyString
   replay: 1
   users: one
-  general_medias: one
 
 two:
   score: 1
@@ -18,4 +17,3 @@ two:
   source: MyString
   replay: 1
   users: two
-  general_medias: two
