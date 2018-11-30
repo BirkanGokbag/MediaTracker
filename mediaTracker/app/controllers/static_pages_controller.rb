@@ -97,6 +97,12 @@ class StaticPagesController < ApplicationController
           end
 
       end
+     
+      #This will call the controller to create a history log
+      history_logs_cont = HistoryLogsController.new
+      history_logs_cont.request = request
+      history_logs_cont.response = response
+      history_logs_cont.create(" created ")
 
       if customSpecific == 0
           # This is for the regular media, save the parameters and the special media
@@ -221,6 +227,12 @@ class StaticPagesController < ApplicationController
 
     end
 
+      #This will call the controller to create a history log
+    history_logs_cont = HistoryLogsController.new
+    history_logs_cont.request = request
+    history_logs_cont.response = response
+    history_logs_cont.create(" edited ")
+
       if @userParam.save && @generalMedia.save && @special.save
         flash[:success] = "Successfully updated the media!"
         redirect_to "/static_pages/home"
@@ -260,6 +272,12 @@ class StaticPagesController < ApplicationController
         # For custom submission
 
     end
+
+    #This will call the controller to create a history log
+    history_logs_cont = HistoryLogsController.new
+    history_logs_cont.request = request
+    history_logs_cont.response = response
+    history_logs_cont.create(" removed ")
 
     if @userParam.destroy && @generalMedia.destroy && @special.destroy
       flash[:success] = "Successfully deleted the media!"
