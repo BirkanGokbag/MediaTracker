@@ -17,7 +17,6 @@ class FollowersController < ApplicationController
     @thisUser = User.find_by(id: params['fTarget'].to_i)
     respond_to do |format|
       if @follower.save
-        puts "Saved"
         format.html { redirect_to(@thisUser, :notice=> 'User was successfully followed.') }
         format.json { head :no_content, status: :created, location: @follower }
       else

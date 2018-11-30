@@ -1,10 +1,7 @@
-/*
+<!--
 Updated By: Berkay Kaplan: CSS and render header
-*/
+-->
 <div id = "container">
-  <% if user_signed_in? %>
-    <%= render "header.html" %>
-  <% end %>
   <div class = "well">
     <h3 class = "jumbotron">Update Preferences</h3>
 		<%= form_tag("preference_form",:method => :post, :id => "preference_form", :name => "preference_form") do %>
