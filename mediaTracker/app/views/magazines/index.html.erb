@@ -15,11 +15,12 @@
   <tbody>
     <% @magazines.each do |magazine_entry| %>
       <tr>
-        <td><%= link_to 'Edit', 'static_pages/addMedia' %></td>
+        <td><%= link_to 'Edit', {:controller => "static_pages", :action => "editMedia",:chooseSelect => "magazine_form", :name => magazine_entry.name, :issue => magazine_entry.magazine.issue, :general => magazine_entry.personal_media_parameters.first.as_json, :mediaId => magazine_entry.id } %></td>
         <td><%= magazine_entry.name%></td>
         <td><%= magazine_entry.magazine.issue %></td>
         <%= render :partial => 'media_object', :object => magazine_entry %>
-        <th>re-reads</th>
+        <td><%= link_to :controller => "static_pages", :action => "deleteMedia", :deleteId => magazine_entry.id, :deleteWhich => "magazine_form" do%>
+          <button type = "button" class = "close" aria-label = "Close" style="color:red"%><span aria-hidden = "true">&times;</span> </button><% end %></td>
       </tr>
     <% end %>
   </tbody>

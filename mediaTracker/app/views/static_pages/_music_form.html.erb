@@ -4,13 +4,22 @@ Author: Birkan Gokbag
 Description: Partial form for adding music media
 -->
 
+<% if params[:mediaId].nil?%>
+  <% destination = "form" %>
+<% else %>
+  <% destination = "edit" %>
+<% end %>
 <!-- Get all the information relevant to music media -->
-<%= form_tag("form",:method => :post, :id => "music_form", :name => "music_form", :style => "display:none") do %>
+<%= form_tag(destination,:method => :post, :id => "music_form", :name => "music_form", :style => "display:none") do %>
+
+<!-- This input is hidden and carries the id of the media that is being sent to the edit form in order to find the media that will be edited. -->
+<input type="number" name="editId" id = "editId" value="" style = "display:none">
 
 <!-- General Stuff -->
 <div class="field">
   <label>Enter Name of the Music:</label>
-  <%= text_field_tag(:name) %>
+  <input type="text" name="name" id="name" required>
+  <!--  </%= text_field_tag(:name) %>-->
 </div>
 
 <div class="field">
@@ -46,11 +55,13 @@ Description: Partial form for adding music media
   <!-- Special Parameters for Music-->
   <div class="field">
     <label>Enter the Artist of This Particular Song:</label>
-    <%= text_field_tag(:artist) %>
+    <input type="text" name="artist" id="artist" required>
+    <!--  </%= text_field_tag(:artist) %>-->
   </div>
   <div class="field">
     <label>Enter the Album This Song Belongs To:</label>
-    <%= text_field_tag(:album) %>
+    <input type="text" name="album" id="album" required>
+    <!--  </%= text_field_tag(:album) %>-->
   </div>
 
   <div class="field">

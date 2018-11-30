@@ -17,7 +17,7 @@
         <td><%= custom_medium.typeOfMedia %></td>
         <td><%= custom_medium.general_media_id %></td>
         <td><%= link_to 'Show', custom_medium %></td>
-        <td><%= link_to 'Edit', edit_custom_medium_path(custom_medium) %></td>
+        <td><%= link_to 'Edit', 'static_pages/editMedia' %></td>
         <td><%= link_to 'Destroy', custom_medium, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
@@ -26,5 +26,4 @@
 
 <br>
 
-<%= link_to 'New Custom Medium', new_custom_medium_path %>
-</div>
+<%= link_to 'New Custom Media', "static_pages/addMedia" %>

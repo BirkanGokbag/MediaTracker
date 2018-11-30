@@ -15,10 +15,13 @@
   <tbody>
     <% @books.each do |book_entry| %>
       <tr>
-        <td><%= link_to 'Edit', 'static_pages/addMedia' %></td>
+        <td><%= link_to 'Edit', {:controller => "static_pages", :action => "editMedia",:chooseSelect => "book_form", :name => book_entry.name, :author => book_entry.book.author, :general => book_entry.personal_media_parameters.first.as_json, :mediaId => book_entry.id } %></td>
         <td><%= book_entry.name%></td>
         <td><%= book_entry.book.author %></td>
         <%= render :partial => 'media_object', :object => book_entry %>
+        <td><%= link_to :controller => "static_pages", :action => "deleteMedia", :deleteId => book_entry.id, :deleteWhich => "book_form" do%>
+          <button type = "button" class = "close" aria-label = "Close" style="color:red"%><span aria-hidden = "true">&times;</span> </button><% end %></td>
+
       </tr>
     <% end %>
   </tbody>

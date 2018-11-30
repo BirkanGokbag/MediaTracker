@@ -1,12 +1,19 @@
+<!--
+Date of Creation: 11/25/18
+Author: Birkan Gokbag
+Description: Form to Add All Sorts of Media
+-->
+
 <% if user_signed_in? %>
   <%= render "header.html" %>
 <% end %>
 <div id = "container">
   <div class = "well">
-      <h3 class = "jumbotron">Add Media</h1>
+      <h3 class = "jumbotron">Add Media</h3>
       <h3>What Media would you like to add?</h3>
       <form>
-        <select class="form-control" id = "select_form">
+        <!-- value = </%= params[:chooseSelect]%> -->
+        <select class="form-control" id = "select_form" >
           <option disabled selected>Select An Option</option>
           <option value="tv_form">TV Show</option>
           <option value="music_form">Music</option>
@@ -33,6 +40,7 @@
             if (prev != 0){
               $(prev).hide();
             }
+            console.log($(this).val());
             $("#" + $(this).val()).show();
             prev = "#" + $(this).val();
         });
