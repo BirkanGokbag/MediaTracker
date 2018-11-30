@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 	def show
 	    @thisUser = User.find(params[:id])
-	    @historylog = HistoryLog.all
+	    @historylog = HistoryLog.where(users_id: params[:id])
 	    @followers = Follower.where(users_id: params[:id])
 
 	    @currUserFollowers = nil
@@ -9,7 +9,6 @@ class UsersController < ApplicationController
 	    	@currUserFollowers = Follower.where(users_id: current_user.id)
 	    end 
 
-	    @user = User.all
 	    # There is a limit to how many updates or followers can be displayed in the landing page
 	    @limita = @historylog.length
 	    @limitb = @followers.length
