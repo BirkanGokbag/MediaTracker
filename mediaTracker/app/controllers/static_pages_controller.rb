@@ -22,8 +22,14 @@ class StaticPagesController < ApplicationController
 
     # Set up the title of the landing page and retrieve the tables
     @Title = "Media Tracker"
-    @historyLogs = HistoryLog.last(10).reverse - [nil]
+    #@historyLog = HistoryLog.last(10).reverse - [nil]
+    @historyLog = HistoryLog.all
+    @historyLog.order(created_at: :desc)
+    @currUserFollowers = Follower.where(users_id: current_user.id)
+    @historyLogs = @historyLog.select{|log| log.users_id == current_user.id || !Preference.find_by(users_id: log.users_id).privacy || @currUserFollowers.any?{|x| x.fTarget == log.users_id}}.take(10).to_a
 
+#SQL Statement to get the history of logs of users that have public accounts or private 
+#users that the current user follows.
 #sql = "select * from
 #(select * from history_logs h
 #where h.users_id=#{current_user.id}
@@ -33,11 +39,7 @@ class StaticPagesController < ApplicationController
 #where rownum<=10"
 
     #@hisSQL = HistoryLog.find_by_sql(sql)
-    # There is a limit to how many updates or followers can be displayed in the landing page
-    @limita = @historyLogs.length
-    if @limita > 10
-      @limita = 10
-    end
+
   end
 
   def faq
