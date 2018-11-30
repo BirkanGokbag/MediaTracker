@@ -13,27 +13,32 @@ Updated By: Alyssa Langhals: Added favorites display, updated layout
      <%= render "static_pages/header.html" %>
     <% end %>
       <div class = "well">
-        <h1 style:"display:inline;"><%= @thisUser.first_name.capitalize%> <%=  @thisUser.last_name.capitalize%></h1>
+	      <h1 style:"display:inline;"><%= @thisUser.username%> (<%= @thisUser.first_name.capitalize%>)</h1>
+              
       <% if current_user.id != @thisUser.id %>
         <% if @currUserFollowers.any?{|x| x.fTarget == @thisUser.id} %>
-          <div>
-            <p></p><%= render :partial => 'followers/unfollow_form', follower: @follower %>
-          </div>
-        <% else %>
-          <p></p><%= render :partial => 'followers/follow_form', follower: @follower %>
-        <% end %>
+      		<div>
+		        <%= render :partial => 'followers/unfollow_form', follower: @follower %>
+		      </div>
+      	<% else %>
+      	  <%= render :partial => 'followers/follow_form', follower: @follower %>
+      	<% end %>
+      <% else %>
+         <li><a href="/static_pages/preferences">Update Preferences</a></li>
+         <li><%= link_to "Update Info", edit_user_registration_path %></li>
       <% end %>
       </div>
 
       <div id = "main">
-        <div class = "well">
+        <div class = "row">
+        <div class = "well col-md-6" >
         <% if current_user.id != @thisUser.id && @privateAccount && !(@currUserFollowers.any?{|x| x.fTarget == @thisUser.id})%>
           <h3 class = "jumbotron">Private Account! Must Follow To View Content</h3>
         <% else %>
           <% if current_user.id == @thisUser.id %>
             <h3 class = "jumbotron">Your Media</h3>
           <% else %>
-            <h3 class = "jumbotron"><%= @thisUser.first_name.capitalize%>'s Media</h3>
+            <h3 class = "jumbotron"><%= @thisUser.username%>'s Media</h3>
           <% end %>
           <% if current_user.id == @thisUser.id %>
             <ul>
@@ -83,18 +88,24 @@ Updated By: Alyssa Langhals: Added favorites display, updated layout
               <% end %>
             <% end %>
            <% end %>
-        <% if current_user.id == @thisUser.id %>
-          <h3 class = "jumbotron">Options</h3>
-          <ul>
-            <li>Click <a href="/static_pages/addMedia">here</a> to add a media</li>
-            <li>Click <a href="/static_pages/preferences">here</a> to update preferences</li>
-            <li><a href="/static_pages/home">home</a></li>
-            <li><%= link_to "Update Info", edit_user_registration_path %></li>
-          <ul>
-        <% end %>
+           <% end %>
         </div>
-
-	    <div class = "well">
+        <div class = "well col-md-6">
+            <% if current_user.id == @thisUser.id %>
+            <h3 class = "jumbotron">Your Favorites</h3>
+          <% else %>
+            <h3 class = "jumbotron"><%= @thisUser.username%>'s Favorites</h3>
+          <% end %>
+            <% PersonalMediaParameter.where(favorite: true).each do |media| %>	
+              <% if media.users_id == current_user.id %>
+                <li><%= media.general_media.name %></li>
+              <% end %>
+            <% end %>
+          </div>
+          
+          </div>
+          <div class="row">
+	    <div class = "well col-md-4">
             <% if @followers != [] %>
               <% if current_user.id == @thisUser.id %>
                 <h3>People You Follow</h3>
@@ -108,11 +119,13 @@ Updated By: Alyssa Langhals: Added favorites display, updated layout
               <h3 class = "jumbotron">Does Not Follow Anyone</h3>
             <% end %>
           </div>
-          <div class = "well">
-            <% if current_user.id == @thisUser.id %>
-                <h3 class = "jumbotron">Your Last Actions</h3>
+
+          <div class = "well col-md-8">
+
+              <% if current_user.id == @thisUser.id %>
+                <h3 class = "jumbotron">Your Last Actions </h3>
               <% else %>
-                <h3 class = "jumbotron"><%= @thisUser.first_name.capitalize%>'s Last Actions </h3>
+                <h3 class = "jumbotron"><%= @thisUser.username%>'s Last Actions <%= @privateAccount%></h3>
               <% end %>
             <ul>
               <% @historyLogs.each do |f| %>
@@ -121,12 +134,5 @@ Updated By: Alyssa Langhals: Added favorites display, updated layout
             </ul>
              
           </div>
-          <div class = "well">
-            <h3 class= "jumbotron"> My Favorities </h3>
-            <% PersonalMediaParameter.where(favorite: true).each do |media| %>	
-              <% if media.users_id == current_user.id %>
-                <li><%= media.general_media.name %></li>
-              <% end %>
-            <% end %>
           </div>
       </div>
