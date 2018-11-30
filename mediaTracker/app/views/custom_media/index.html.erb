@@ -2,7 +2,8 @@
     <% if user_signed_in? %>
      <%= render "static_pages/header.html" %>
     <% end %>
-<h1>Custom Media </h1>
+<div class = "well">
+<h3 class = "jumbotron">Custom Media </h3>
 <% if @custom_media.any? then %>
 <% @custom_media.each do |custom_media_entry| %>
   <h3><%= custom_media_entry.custom_medium.typeOfMedia%></h3>
@@ -35,3 +36,4 @@
     <p> You don't have any custom media! Add some here: <%= link_to 'Add Custom Media', '../static_pages/addMedia' %><p>
 <% end %>
 <br>
+</div>
