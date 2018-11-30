@@ -21,7 +21,7 @@ Author: Berkay Kaplan
         <h3 class = "jumbotron">Latest Updates</h3>
         <ul>
           <% @historyLogs.each do |f| %>
-            <li><%= f.historyMessage %></li>
+            <li><%= f.historyMessage %> <%= f.updated_at %></li>
           <% end %>
         </ul>
       </div>

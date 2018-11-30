@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 	def show
 	    @thisUser = User.find(params[:id])
-	    @historylog = HistoryLog.where(users_id: params[:id])
+	    @historylog = HistoryLog.where(users_id: params[:id]).last(10)
 	    @followers = Follower.where(users_id: params[:id])
 
 	    @currUserFollowers = nil
