@@ -1,8 +1,10 @@
 require 'test_helper'
 
 class PreferencesControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
   setup do
     @preference = preferences(:one)
+    sign_in users(:one)
   end
 
   test "should get index" do

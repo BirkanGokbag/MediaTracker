@@ -48,6 +48,7 @@ class StaticPagesController < ApplicationController
     #customSpecific determines whether media is saved under a speicific media table or custom table
     if params[:commit] == "Submit Custom Media"
 
+      # All types of general media are unique, check whether the user is entering a unique type
       duplicateCustomTable = CustomMedium.where(typeOfMedia: params[:typeOfMedia])
       if duplicateCustomTable.any?
         flash[:error] = "You already have added a custom media entry with that name, either delete the previous one or enter a new one."

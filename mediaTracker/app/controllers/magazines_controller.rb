@@ -12,19 +12,11 @@ class MagazinesController < ApplicationController
     @magazines = (GeneralMedium.joins(:magazine)).joins(:personal_media_parameters).where('personal_media_parameters.users_id =?', current_user.id)
   end
 
-  # GET /magazines/1
-  # GET /magazines/1.json
-  def show
-  end
-
   # GET /magazines/new
   def new
     @magazine = Magazine.new
   end
 
-  # GET /magazines/1/edit
-  def edit
-  end
 
   # POST /magazines
   # POST /magazines.json

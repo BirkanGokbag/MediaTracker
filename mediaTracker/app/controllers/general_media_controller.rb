@@ -8,19 +8,12 @@ class GeneralMediaController < ApplicationController
     @general_media = GeneralMedium.all
   end
 
-  # GET /general_media/1
-  # GET /general_media/1.json
-  def show
-  end
 
   # GET /general_media/new
   def new
     @general_medium = GeneralMedium.new
   end
 
-  # GET /general_media/1/edit
-  def edit
-  end
 
   # POST /general_media
   # POST /general_media.json
