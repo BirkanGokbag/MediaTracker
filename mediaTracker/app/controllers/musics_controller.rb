@@ -7,19 +7,11 @@ class MusicsController < ApplicationController
     @musics = (GeneralMedium.joins(:music)).joins(:personal_media_parameters).where('personal_media_parameters.users_id =?', current_user.id)
   end
 
-  # GET /musics/1
-  # GET /musics/1.json
-  def show
-  end
-
   # GET /musics/new
   def new
     @music = Music.new
   end
 
-  # GET /musics/1/edit
-  def edit
-  end
 
   # POST /musics
   # POST /musics.json

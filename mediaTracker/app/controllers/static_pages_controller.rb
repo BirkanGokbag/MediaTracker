@@ -50,7 +50,6 @@ class StaticPagesController < ApplicationController
     @general = GeneralMedium.new(:name => params[:name])
     # Need to save the general media before creating the other ones as the id is required
     @general.save
-
     # Get the user parameters for the media
     @userParameters = PersonalMediaParameter.new(:score => params[:score][:temp], :currentStatus => params[:currentStatus], :favorite => params[:favorite], :comments => params[:comments], :source => params[:source], :replay => params[:replay][:temp], :users_id => current_user[:id], :general_media_id => @general[:id])
 

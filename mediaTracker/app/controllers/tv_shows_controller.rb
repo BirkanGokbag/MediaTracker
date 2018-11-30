@@ -7,19 +7,12 @@ class TvShowsController < ApplicationController
     @tv_shows = (GeneralMedium.joins(:tv_show)).joins(:personal_media_parameters).where('personal_media_parameters.users_id =?', current_user.id)
   end
 
-  # GET /tv_shows/1
-  # GET /tv_shows/1.json
-  def show
-  end
 
   # GET /tv_shows/new
   def new
     @tv_show = TvShow.new
   end
 
-  # GET /tv_shows/1/edit
-  def edit
-  end
 
   # POST /tv_shows
   # POST /tv_shows.json
