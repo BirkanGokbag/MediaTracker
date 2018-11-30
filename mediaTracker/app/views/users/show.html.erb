@@ -128,10 +128,10 @@ Updated By: Alyssa Langhals: Added favorites display, updated layout
                 <h3 class = "jumbotron">Your Last Actions </h3>
               <% else %>
                 <h3 class = "jumbotron"><%= @thisUser.username%>'s Last Actions </h3>
+              <% end %>
                 <% @historyLogs.each do |f| %>
                   <li><%= link_to User.find(f.users_id).username, "/users/#{f.users_id}"%> <%= f.historyMessage %> <%= f.updated_at %></li>
                 <% end %>
-              <% end %>
 
           </div>
           </div>
