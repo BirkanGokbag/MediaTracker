@@ -112,15 +112,8 @@ class StaticPagesController < ApplicationController
       redirect_to "/static_pages/home"
     else
       redirect_to "/users/#{@searched_user.id}"
-<<<<<<< HEAD
     end
   end
-  def follow
-    redirect_to "/users/1"
-=======
-    end
-  end
->>>>>>> ccc1a3e8cefba624bdafcb25ee478528b363c985
 
 
 
