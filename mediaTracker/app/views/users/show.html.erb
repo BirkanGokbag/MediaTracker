@@ -1,5 +1,11 @@
 <!--
+Created By: Michael Radey: Show the users media, followers and recent history
+  if account is public.  Otherwise only shows if the current_user is the user
+  or the current_user follows this user
+  
 Updated By: Berkay Kaplan: Bootstrapped the layout, and added header.html
+
+Updated By: Alyssa Langhals: Added favorites display, updated layout
 -->
 
 <div id = "container">
@@ -18,9 +24,17 @@ Updated By: Berkay Kaplan: Bootstrapped the layout, and added header.html
       	<% end %>
       <% end %>
       </div>
+
       <div id = "main">
         <div class = "well">
-          <h3 class = "jumbotron">Your Media</h3>
+        <% if current_user.id != @thisUser.id && @privateAccount && !(@currUserFollowers.any?{|x| x.fTarget == @thisUser.id})%>
+          <h3 class = "jumbotron">Private Account! Must Follow To View Content</h3>
+        <% else %>
+          <% if current_user.id == @thisUser.id %>
+            <h3 class = "jumbotron">Your Media</h3>
+          <% else %>
+            <h3 class = "jumbotron"><%= @thisUser.first_name.capitalize%>'s Media</h3>
+          <% end %>
             <ul>
               <li><%= link_to "Books", '/books' %></li>
               <li><%= link_to "Magazines", '/magazines' %></li>
@@ -30,6 +44,8 @@ Updated By: Berkay Kaplan: Bootstrapped the layout, and added header.html
               <li><%= link_to "Video Games", "/video_games" %></li>
               <li><%= link_to "Custom Media", "/custom_media" %></li>
             </ul>
+           <% end %>
+        <% if current_user.id == @thisUser.id %>
 	        <h3 class = "jumbotron">Options</h3>
 	        <ul>
             <li>Click <a href="/static_pages/addMedia">here</a> to add a media</li>
@@ -37,14 +53,17 @@ Updated By: Berkay Kaplan: Bootstrapped the layout, and added header.html
             <li><a href="/static_pages/home">home</a></li>
             <li><%= link_to "Update Info", edit_user_registration_path %></li>
 	        <ul>
-
+        <% end %>
         </div>
 
 	    <div class = "well">
             <% if @followers != [] %>
-              <h3>People <%= @thisUser.first_name.capitalize%> Follows</h3>
+              <% if current_user.id == @thisUser.id %>
+                <h3>People You Follow</h3>
+              <% else %>
+                <h3>People <%= @thisUser.first_name.capitalize%> Follows</h3>
+              <% end %>
               <% @followers.each do |f| %>
-                <%= link_to User.find(f.fTarget).username, "/users/#{f.fTarget}" %>
                 <p style = "margin:1% 2%; font-size:150%;"><%= link_to User.find(f.fTarget).username, "/users/#{f.fTarget}" %><p>
               <% end %>
             <% else %>
@@ -52,12 +71,26 @@ Updated By: Berkay Kaplan: Bootstrapped the layout, and added header.html
             <% end %>
           </div>
           <div class = "well">
-           
-            <% PersonalMediaParameter.where(favorite: true).each do |media| %>
+
+              <% if current_user.id == @thisUser.id %>
+                <h3 class = "jumbotron">Your Last Actions <%= @privateAccount%></h3>
+              <% else %>
+                <h3 class = "jumbotron"><%= @thisUser.first_name.capitalize%>'s Last Actions <%= @privateAccount%></h3>
+              <% end %>
+            <ul>
+              <% @historyLogs.each do |f| %>
+                <li><%= link_to User.find(f.users_id).username, "/users/#{f.users_id}"%> <%= f.historyMessage %> <%= f.updated_at %></li>
+              <% end %>
+            </ul>
+             
+          </div>
+          <div class = "well">
+            <h3 class= "jumbotron"> My Favorities </h3>
+            <% PersonalMediaParameter.where(favorite: true).each do |media| %>	
               <% if media.users_id == current_user.id %>
                 <li><%= media.general_media.name %></li>
               <% end %>
             <% end %>
-          </div>	
+          </div>
       </div>
     </div>
