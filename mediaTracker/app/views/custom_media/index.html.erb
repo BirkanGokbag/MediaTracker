@@ -1,29 +1,37 @@
 <p id="notice"><%= notice %></p>
-<div class = "well">
-<h1>Custom Media</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Type</th>
-      <th>General medias</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @custom_media.each do |custom_medium| %>
-      <tr>
-        <td><%= custom_medium.typeOfMedia %></td>
-        <td><%= custom_medium.general_media_id %></td>
-        <td><%= link_to 'Show', custom_medium %></td>
-        <td><%= link_to 'Edit', 'static_pages/editMedia' %></td>
-        <td><%= link_to 'Destroy', custom_medium, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <% if user_signed_in? %>
+     <%= render "static_pages/header.html" %>
     <% end %>
-  </tbody>
+<h1>Custom Media </h1>
+<% if @custom_media.any? then %>
+<% @custom_media.each do |custom_media_entry| %>
+  <h3><%= custom_media_entry.custom_medium.typeOfMedia%></h3>
+    <%= render :partial => 'table_setup' %>
+    <th>Name</th>
+    <% custom_media_entry.custom_medium.custom_media_entries.each do |custom_media_param| %>
+     <th> <%= custom_media_param.key %> </th>
+    <% end %>
+    <%= render :partial => 'common_params' %>
+    <th>Repeats</th>
+    <th colspan = "3"></th>
+  </tr>
+ </thead>
+
+<tbody>
+      <tr>
+        <td><%= link_to 'Edit', 'static_pages/addMedia' %></td>
+        <td><%=custom_media_entry.name%>
+          <% custom_media_entry.custom_medium.custom_media_entries.each do |custom_media_param| %>
+            <td><%=custom_media_param.value%></td>
+          <%end%>
+          <%= render :partial => 'media_object', :object => custom_media_entry %>
+      </tr>
+    </tbody>
 </table>
 
-<br>
+<% end %>
 
-<%= link_to 'New Custom Media', "static_pages/addMedia" %>
+<%else%>
+    <p> You don't have any custom media! Add some here: <%= link_to 'Add Custom Media', '../static_pages/addMedia' %><p>
+<% end %>
+<br>

@@ -19,7 +19,6 @@ class HistoryLogsController < ApplicationController
   # POST /history_logs
   # POST /history_logs.json
   def create(verb)
-    puts params
     if params['name']
       message = verb + params['name']
     else

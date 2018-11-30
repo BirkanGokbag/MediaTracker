@@ -1,5 +1,6 @@
 <!--
 Author: Berkay Kaplan
+Date created 11/29/2018
 -->
 <nav class="navbar navbar-default">
   <div class="container-fluid">
@@ -12,6 +13,6 @@ Author: Berkay Kaplan
       <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
     </ul>
     
-    <%= render :partial => 'static_pages/search1_form', follower: @follower %>
+    <%= render :partial => '/static_pages/search1_form', follower: @follower %>
   </div>
 </nav> 

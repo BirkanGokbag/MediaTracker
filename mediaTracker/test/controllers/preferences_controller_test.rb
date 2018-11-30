@@ -19,13 +19,6 @@ class PreferencesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should create preference" do
-    assert_difference('Preference.count') do
-      post preferences_url, params: { preference: { font: @preference.font, fontColor: @preference.fontColor, fontSize: @preference.fontSize, privacy: @preference.privacy, profilePicture: @preference.profilePicture, users_id: @preference.users_id, wallpaper: @preference.wallpaper } }
-    end
-
-    assert_redirected_to preference_url(Preference.last)
-  end
 
   test "should show preference" do
     get preference_url(@preference)
@@ -37,10 +30,6 @@ class PreferencesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should update preference" do
-    patch preference_url(@preference), params: { preference: { font: @preference.font, fontColor: @preference.fontColor, fontSize: @preference.fontSize, privacy: @preference.privacy, profilePicture: @preference.profilePicture, users_id: @preference.users_id, wallpaper: @preference.wallpaper } }
-    assert_redirected_to preference_url(@preference)
-  end
 
   test "should destroy preference" do
     assert_difference('Preference.count', -1) do

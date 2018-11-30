@@ -5,8 +5,13 @@ require 'test_helper'
 class FollowersControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
   setup do
-    @music = followers(:one)
+    @thisUser = users(:one)
     sign_in users(:one)
+  end
+
+  test 'should add follower' do
+    post followers_url, params: {fTarget: 1}
+    assert_response :redirect
   end
   
 end

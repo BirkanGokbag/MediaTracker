@@ -1,7 +1,11 @@
-<% if user_signed_in? %>
-  <%= render "static_pages/header.html" %>
-<% end %>
+<!--
+Updated By: Berkay Kaplan: Bootstrapped the layout, and added header.html
+-->
+
 <div id = "container">
+    <% if user_signed_in? %>
+     <%= render "static_pages/header.html" %>
+    <% end %>
       <div class = "well">
 	      <h1 style:"display:inline;"><%= @thisUser.first_name.capitalize%> <%=  @thisUser.last_name.capitalize%></h1>
       <% if current_user.id != @thisUser.id %>
@@ -39,6 +43,8 @@
 	        <ul>
             <li>Click <a href="/static_pages/addMedia">here</a> to add a media</li>
             <li>Click <a href="/static_pages/preferences">here</a> to update preferences</li>
+            <li><a href="/static_pages/home">home</a></li>
+            <li><%= link_to "Update Info", edit_user_registration_path %></li>
 	        <ul>
         <% end %>
         </div>

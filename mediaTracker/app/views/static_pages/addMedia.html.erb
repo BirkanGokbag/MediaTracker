@@ -4,10 +4,10 @@ Author: Birkan Gokbag
 Description: Form to Add All Sorts of Media
 -->
 
-<% if user_signed_in? %>
-  <%= render "header.html" %>
-<% end %>
 <div id = "container">
+  <% if user_signed_in? %>
+   <%= render "static_pages/header.html" %>
+  <% end %>
   <div class = "well">
       <h3 class = "jumbotron">Add Media</h3>
       <h3>What Media would you like to add?</h3>

@@ -12,6 +12,8 @@
 # as well to determine if this user is someone the current user follows.
 #
 class UsersController < ApplicationController
+
+    
 	def show
 	    @thisUser = User.find(params[:id])
 	    @historyLogs = HistoryLog.where(users_id: params[:id]).last(10)
