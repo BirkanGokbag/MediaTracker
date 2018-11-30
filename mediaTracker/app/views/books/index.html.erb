@@ -3,10 +3,7 @@
 <h1>Books</h1>
 
 <% if @books.any? then %>
-<table>
-  <thead>
-    <tr>
-      <th colspan = "1"></th>
+      <%= render :partial => 'table_setup' %>
       <th>Title</th>
       <th>Author</th>
       <%= render :partial => 'common_params' %>

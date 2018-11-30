@@ -3,10 +3,7 @@
 <h1>Music</h1>
 
 <% if @musics.any? then %>
-<table>
-  <thead>
-    <tr>
-      <th colspan = "1"></th>
+      <%= render :partial => 'table_setup' %>
       <th>Name</th>
       <th>Artist</th>
       <th>Album</th>

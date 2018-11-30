@@ -3,10 +3,7 @@
 <h1>Movies</h1>
 
 <% if @movies.any? then %>
-<table>
-  <thead>
-    <tr>
-      <th colspan = "1"></th>
+      <%= render :partial => 'table_setup' %>
       <th>Name</th>
       <th>Director</th>
       <%= render :partial => 'common_params' %>
