@@ -3,9 +3,7 @@
 one:
   studio: MyString
   system: MyString
-  general_medias: one
 
 two:
   studio: MyString
   system: MyString
-  general_medias: two
