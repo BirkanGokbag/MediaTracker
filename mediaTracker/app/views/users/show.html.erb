@@ -3,6 +3,9 @@ Updated By: Berkay Kaplan: Bootstrapped the layout, and added header.html
 -->
 
 <div id = "container">
+    <% if user_signed_in? %>
+     <%= render "static_pages/header.html" %>
+    <% end %>
       <div class = "well">
 	      <h1 style:"display:inline;"><%= @thisUser.first_name.capitalize%> <%=  @thisUser.last_name.capitalize%></h1>
       <% if current_user.id != @thisUser.id %>

@@ -4,6 +4,9 @@ Date created 11/24/2018
 Updated by: Michael Radey
 -->
 <div id = "container">
+ <% if user_signed_in? %>
+ <%= render "static_pages/header.html" %>
+ <% end %>
   <div id = "main">
     <div class="col-sm-8"> 
       <div class = "well">
