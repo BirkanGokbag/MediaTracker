@@ -155,16 +155,7 @@ class StaticPagesController < ApplicationController
     end
 
     if @preferences.save
-      uploaded_io = params[:wallpaper]
 
-      fileLocation = Rails.root.join('public', 'uploads', uploaded_io.original_filename)
-      cssLocation = Rails.root + "app/assets/stylesheets/application.css";
-      # File.open(location, 'wb') do |file|
-        # file.write(uploaded_io.read)
-      File.open(cssLocation,'w') do |cssFile|
-        cssFile.puts "body { background-image: url(\"" + fileLocation.basename.to_s + "\";}"
-      end
-      # end
       Logger.new("#{Rails.root}/log/cache_read.log").error(Rails.root + "app/assets/stylesheets/application.css")
       # File.open(Rails.root + "app/assets/stylesheets/application.css",'w') do |cssFile|
       #   cssFile.puts "body { " + params[:wallpaper] + "}"
@@ -297,11 +288,4 @@ class StaticPagesController < ApplicationController
     end
 
   end
-
-  def follow
-    redirect_to "/users/1"
-
-  end
-
-
 end
