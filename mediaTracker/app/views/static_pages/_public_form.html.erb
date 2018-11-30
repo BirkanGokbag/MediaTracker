@@ -1,0 +1,10 @@
+<%= form_tag("preference_form",:method => :post, :id => "preference_form", :name => "preference_form") do %>
+<div class="field">
+  	<label>Set To Public?</label>
+  	<%= check_box_tag(:privacy) %>
+</div>
+	<div class="field">
+	<%= submit_tag "Update Preferences" %>
+	</div>
+
+<% end %>

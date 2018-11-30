@@ -1,0 +1,13 @@
+<div id = "container">
+  <% if user_signed_in? %>
+    <%= render "header.html" %>
+  <% end %>
+  <div class = "well">
+    <h3 class = "jumbotron">Privacy Settings</h3>
+    <% if Preference.find_by(users_id: current_user.id).privacy %>
+	  <%= render :partial => 'static_pages/private_form' %>
+  	<% else %>
+  	  <%= render :partial => 'static_pages/public_form' %>
+  	<% end %>
+  </div>
+</div>
