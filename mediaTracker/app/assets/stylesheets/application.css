@@ -7,3 +7,15 @@ h3{
   border-radius: 0.5em;
   font-size:200%;
 }
+
+body{
+  background-color: #1a75ff !important;
+}
+
+.well{
+  background-color: #b3d1ff !important;
+}
+
+.jumbotron{
+  background-color: #e6f0ff !important;
+}

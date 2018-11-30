@@ -69,7 +69,7 @@ Updated By: Alyssa Langhals: Added favorites display, updated layout
 	    <div class = "well col-md-4">
             <% if @followers != [] %>
               <% if current_user.id == @thisUser.id %>
-                <h3>People You Follow</h3>
+                <h3 class= "jumbotron">People You Follow</h3>
               <% else %>
                 <h3>People <%= @thisUser.first_name.capitalize%> Follows</h3>
               <% end %>
