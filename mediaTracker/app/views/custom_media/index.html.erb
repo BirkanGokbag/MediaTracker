@@ -3,7 +3,7 @@
      <%= render "static_pages/header.html" %>
     <% end %>
 <h1>Custom Media </h1>
-<% if @custom_media.any? do %>
+<% if @custom_media.any? then %>
 <% @custom_media.each do |custom_media_entry| %>
   <h3><%= custom_media_entry.custom_medium.typeOfMedia%></h3>
     <%= render :partial => 'table_setup' %>
@@ -30,7 +30,8 @@
 </table>
 
 <% end %>
-<else>
+
+<%else%>
     <p> You don't have any custom media! Add some here: <%= link_to 'Add Custom Media', '../static_pages/addMedia' %><p>
 <% end %>
 <br>
