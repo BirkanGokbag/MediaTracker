@@ -8,11 +8,8 @@ Description: Form to Edit All Sorts of Media
   <%= render "header.html" %>
 <% end %>
 <div id = "container" class = "editMedia">
-  <div id = "header">
-    <h3 class = "jumbotron">Edit Media</h3>
-  </div>
-  <div id = "main">
-    <div id = "mainArea">
+  <div class = "well">
+      <h3 class = "jumbotron">Edit Media</h3>
       <h3>Enter The New Information For The Media</h3>
 
 <%= render "tv_form.html" %>
@@ -76,6 +73,5 @@ Description: Form to Edit All Sorts of Media
         $("#main #editId").val("<%= params[:mediaId]%>");
 
       </script>
-    </div>
   </div>
 </div>
