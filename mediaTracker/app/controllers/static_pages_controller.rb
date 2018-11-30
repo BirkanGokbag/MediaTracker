@@ -126,12 +126,9 @@ class StaticPagesController < ApplicationController
     if @preferences == nil
       @preferences = Preference.new(:wallpaper => params[:wallpaper], :fontSize => params[:fontSize], :font => params[:font], :profilePicture => params[:profilePicture], :privacy => params[:privacy], :fontColor => params[:fontColor], :users_id => current_user[:id])
     else
-      @preferences.wallpaper = params[:wallpaper];
-      @preferences.fontSize = params[:fontSize];
-      @preferences.font = params[:font];
-      @preferences.profilePicture = params[:profilePicture];
+
       @preferences.privacy = params[:privacy];
-      @preferences.fontColor = params[:fontColor];
+
     end
 
     if @preferences.save

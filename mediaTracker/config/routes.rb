@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   post 'static_pages/form'
   post 'static_pages/edit'
   post 'static_pages/follow_form'
+  post 'static_pages/preference_form'
   post 'static_pages/privacy_form'
   post 'static_pages/public_form'
   post 'static_pages/private_form'

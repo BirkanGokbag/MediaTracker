@@ -24,8 +24,8 @@ Updated By: Alyssa Langhals: Added favorites display, updated layout
       	  <%= render :partial => 'followers/follow_form', follower: @follower %>
       	<% end %>
       <% else %>
-         <li><a href="/static_pages/preferences">Update Preferences</a></li>
-         <li><%= link_to "Update Info", edit_user_registration_path %></li>
+         <a href="/preferences">Update Preferences</a></li>
+         <%= link_to "Update Info", edit_user_registration_path %></li>
       <% end %>
       </div>
 

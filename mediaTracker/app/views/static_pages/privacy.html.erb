@@ -8,10 +8,15 @@ Created By: Michael Radey: Page that lets user toggle their privacy settings
   <% end %>
   <div class = "well">
     <h3 class = "jumbotron">Privacy Settings</h3>
-    <% if Preference.find_by(users_id: current_user.id).privacy %>
-	  <%= render :partial => 'static_pages/private_form' %>
-  	<% else %>
-  	  <%= render :partial => 'static_pages/public_form' %>
-  	<% end %>
+<%= form_tag("preference_form",:method => :post, :id => "preference_form", :name => "preference_form") do %>
+<div class="field">
+  	<label>Check for a private profile</label>
+  	<%= check_box_tag(:privacy) %>
+</div>
+	<div class="field">
+	<%= submit_tag "Update Preferences" %>
+	</div>
+
+<% end %>
   </div>
 </div>
