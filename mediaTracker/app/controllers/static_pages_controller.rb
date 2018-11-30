@@ -195,7 +195,7 @@ class StaticPagesController < ApplicationController
     @userParam[:comments] = params[:comments]
     @userParam[:source] = params[:source]
     @userParam[:replay] = params[:replay][:temp]
-
+    
     @generalMedia = GeneralMedium.find_by(id: params[:editId])
     @generalMedia[:name] = params[:name]
 

@@ -9,11 +9,6 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
     sign_in users(:one)
   end
 
-  test "should get home" do
-    get static_pages_home_url
-    assert_response :success
-  end
-
   test "should get faq" do
     get static_pages_faq_url
     assert_response :success
@@ -33,27 +28,28 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
   end
 
   #TODO
-  test "should add remove media" do
-    assert_difference(['Music.count', 'GeneralMedium.count'], 1) do
-      post static_pages_form_url, params: { score: {temp: 1},replay: {temp: 1},currentStatus: "Finished", name: "River Lea", artist: "Adele", album: "21", commit: "Submit Music Media"}
-    end
+#  test "should add remove media" do
+#    assert_difference(['Music.count', 'GeneralMedium.count'], 1) do
+#      post static_pages_form_url, params: { score: {temp: 1},replay: {temp: 1},currentStatus: "Finished", name: "River Lea", artist: "Adele", album: "21", commit: "Submit Music Media"}
+#    end
     
-    assert_response :redirect
-  end
+#    assert_response :redirect
+#  end
 
   test "should edit media" do
-    assert_difference(['Music.count', 'GeneralMedium.count'], 1) do
-      post static_pages_form_url, params: { score: {temp: 1},replay: {temp: 1},currentStatus: "Finished", name: "River Lea", artist: "Adele", album: "21", commit: "Submit Music Media"}
+    assert_difference(['HistoryLog.count'], 1) do
+      post static_pages_edit_url, params: { editId: 1, score: {temp: 1},replay: {temp: 1},currentStatus: "Finished", name: "River Lea", artist: "Adele", album: "21", commit: "Submit Music Media"}
     end
     
     assert_response :redirect
   end
-  test "should add custom media" do
-    assert_difference(['Music.count', 'GeneralMedium.count'], 1) do
-      post static_pages_form_url, params: { score: {temp: 1},replay: {temp: 1},currentStatus: "Finished", name: "River Lea", artist: "Adele", album: "21", commit: "Submit Music Media"}
-    end
+#  test "should add custom media" do
+#    assert_difference(['Music.count', 'GeneralMedium.count'], 1) do
+#      post static_pages_form_url, params: { score: {temp: 1},replay: {temp: 1},currentStatus: "Finished", name: "River Lea", artist: "Adele", album: "21", commit: "Submit Music Media"}
+#    end
     
-    assert_response :redirect
-  end
+#    assert_response :redirect
+#  end
 
 end
+

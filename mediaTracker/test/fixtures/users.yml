@@ -5,6 +5,7 @@
 # below each fixture, per the syntax in the comments below
 #
 one: 
+  id: 1
   email:  langhals.50@osu.edu
   username:  AlyKat16
   first_name:  Alyssa
@@ -13,6 +14,7 @@ one:
   
 
 two: 
+  id: 2
   email:  S@holmes.org
   username:  consultingDetective
   first_name: Benedict
