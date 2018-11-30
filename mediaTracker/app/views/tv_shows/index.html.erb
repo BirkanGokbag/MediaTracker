@@ -1,13 +1,9 @@
-<-!-- Written by: Rajeev Ravi 11/29 --> 
 <p id="notice"><%= notice %></p>
 
 <h1>TV Shows</h1>
 
 <% if @tv_shows.any? then %>
-<table>
-  <thead>
-    <tr>
-      <th colspan = "1"></th>
+      <%= render :partial => 'table_setup' %>
       <th>Name</th>
       <th>Number of Seasons</th>
       <th>Total Episodes</th>
