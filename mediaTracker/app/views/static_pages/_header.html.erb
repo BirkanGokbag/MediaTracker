@@ -1,11 +1,11 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="home.html">Media Tracker</a>
+      <a class="navbar-brand" href="/static_pages/home.html">Media Tracker</a>
     </div>
     <ul class="nav navbar-nav">
       <li><%= link_to "Profile", current_user %></li>
-      <li><%= link_to "Preferences", "/preferences.html" %></li>
+      <li><%= link_to "Preferences", "/static_pages/preferences.html" %></li>
       <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
     </ul>
     <form class="navbar-form navbar-left" action="search_form" method="get">
