@@ -39,16 +39,11 @@
             <% if @followers != [] %>
               <h3>People <%= @thisUser.first_name.capitalize%> Follows</h3>
               <% @followers.each do |f| %>
-                <%= User.find(f.fTarget).username %>
+                <p style = "margin:1% 2%; font-size:150%;"><%= User.find(f.fTarget).username %><p>
               <% end %>
             <% else %>
               <h3 class = "jumbotron">Does Not Follow Anyone</h3>
             <% end %>
-	      <% for i in 1..@limitb do%>
-	        <div class = "followers">
-	          <p class = "follower"><%# @user.find(@follower[i].id).username %></p>
-	        </div>
-	      <% end %>
           </div>	
       </div>
     </div>
