@@ -21,9 +21,7 @@
         <%= render :partial => 'media_object', :object => movie_entry %>
         <td><%= link_to :controller => "static_pages", :action => "deleteMedia", :deleteId => movie_entry.id, :deleteWhich => "movie_form" do%>
           <button type = "button" class = "close" aria-label = "Close" style="color:red"%><span aria-hidden = "true">&times;</span> </button><% end %></td>
-          <tr>
-            reread
-          </tr>
+      </tr>
     <% end %>
   </tbody>
 </table>
