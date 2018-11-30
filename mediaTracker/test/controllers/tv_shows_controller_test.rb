@@ -1,8 +1,10 @@
 require 'test_helper'
 
 class TvShowsControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
   setup do
     @tv_show = tv_shows(:one)
+    sign_in users(:one)
   end
 
   test "should get index" do
@@ -15,27 +17,10 @@ class TvShowsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should create tv_show" do
-    assert_difference('TvShow.count') do
-      post tv_shows_url, params: { tv_show: { general_medias_id: @tv_show.general_medias_id, numberOfSeasons: @tv_show.numberOfSeasons, totalEpisodes: @tv_show.totalEpisodes } }
-    end
-
-    assert_redirected_to tv_show_url(TvShow.last)
-  end
-
-  test "should show tv_show" do
-    get tv_show_url(@tv_show)
-    assert_response :success
-  end
-
-  test "should get edit" do
-    get edit_tv_show_url(@tv_show)
-    assert_response :success
-  end
 
   test "should update tv_show" do
-    patch tv_show_url(@tv_show), params: { tv_show: { general_medias_id: @tv_show.general_medias_id, numberOfSeasons: @tv_show.numberOfSeasons, totalEpisodes: @tv_show.totalEpisodes } }
-    assert_redirected_to tv_show_url(@tv_show)
+    patch tv_show_url(@tv_show), params: { tv_show: { general_media_id: @tv_show.general_media_id, numberOfSeasons: @tv_show.numberOfSeasons, totalEpisodes: @tv_show.totalEpisodes } }
+    assert_response :success
   end
 
   test "should destroy tv_show" do

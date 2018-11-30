@@ -1,12 +1,10 @@
 <p id="notice"><%= notice %></p>
 
+<div class = "well">
 <h1>Magazines</h1>
 
 <% if @magazines.any? then %>
-<table>
-  <thead>
-    <tr>
-      <th colspan = "1"></th>
+      <%= render :partial => 'table_setup' %>
       <th>Name</th>
       <th>Issue #</th>
       <%= render :partial => 'common_params' %>
@@ -31,3 +29,4 @@
   <p> You don't have any magazines! Add some here: <%= link_to 'Add Magazines', '../static_pages/addMedia' %><p>
 <% end %>
 <br>
+</div>

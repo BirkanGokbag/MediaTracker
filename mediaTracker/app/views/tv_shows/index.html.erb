@@ -1,12 +1,9 @@
 <p id="notice"><%= notice %></p>
-
+<div class = "well">
 <h1>TV Shows</h1>
 
 <% if @tv_shows.any? then %>
-<table>
-  <thead>
-    <tr>
-      <th colspan = "1"></th>
+      <%= render :partial => 'table_setup' %>
       <th>Name</th>
       <th>Number of Seasons</th>
       <th>Total Episodes</th>
@@ -33,3 +30,4 @@
   <p> You don't have any TV shows! Add some here: <%= link_to 'Add TV Shows', '../static_pages/addMedia' %><p>
 <% end %>
 <br>
+</div>

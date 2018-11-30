@@ -3,6 +3,8 @@
 # Author: Alyssa Langhals (updating methods)
 # Created on: 11/25
 
+#Summary: This controller handles the history functioanlity.
+#This includes providing the history for the home page and the user's history.
 class HistoryLogsController < ApplicationController
   before_action :set_history_log, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
@@ -17,15 +19,15 @@ class HistoryLogsController < ApplicationController
   # POST /history_logs
   # POST /history_logs.json
   def create
-   
+
     message = " created " + history_log_params
     message += " at "
     @history_log = HistoryLog.new(historyMessage: message, users_id: current_user.id)
-    
+
     respond_to do |format|
       if @history_log.save
-        format.html {head :ok}
-        format.json {head :ok}
+        format.html {head :no_content}
+        format.json {head :no_content}
       else
         format.html {head :internal_server_error}
         format.json {head :internal_server_error}
@@ -44,6 +46,6 @@ class HistoryLogsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def history_log_params
-      params.require(:name)#.permit(:name)
+      params.require(:name)
     end
 end

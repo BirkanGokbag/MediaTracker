@@ -3,8 +3,7 @@
 <% end %>
 <div id = "container">
       <div class = "well">
-	      <h1><%= @thisUser.first_name.capitalize%> <%=  @thisUser.last_name.capitalize%></h1>
-      </div>
+	      <h1 style:"display:inline;"><%= @thisUser.first_name.capitalize%> <%=  @thisUser.last_name.capitalize%></h1>
       <% if current_user.id != @thisUser.id %>
         <% if @currUserFollowers.any?{|x| x.fTarget == @thisUser.id} %>
       		<div>
@@ -14,7 +13,7 @@
       	  <p></p><%= render :partial => 'followers/follow_form', follower: @follower %>
       	<% end %>
       <% end %>
-
+      </div>
       <div id = "main">
         <div class = "well">
           <h3 class = "jumbotron">Your Media</h3>
@@ -41,6 +40,7 @@
               <h3>People <%= @thisUser.first_name.capitalize%> Follows</h3>
               <% @followers.each do |f| %>
                 <%= link_to User.find(f.fTarget).username, "/users/#{f.fTarget}" %>
+                <p style = "margin:1% 2%; font-size:150%;"><%= link_to User.find(f.fTarget).username, "/users/#{f.fTarget}" %><p>
               <% end %>
             <% else %>
               <h3 class = "jumbotron">Does Not Follow Anyone</h3>

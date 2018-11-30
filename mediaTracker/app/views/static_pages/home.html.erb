@@ -24,7 +24,7 @@ Updated by: Michael Radey
         <h3 class = "jumbotron">Latest Updates</h3>
         <ul>
           <% @historyLogs.each do |f| %>
-            <li><%= f.historyMessage %> <%= f.updated_at %></li>
+            <li><%= link_to User.find(f.users_id).username, "/users/#{f.users_id}"%> <%= f.historyMessage %> <%= f.updated_at %></li>
           <% end %>
         </ul>
       </div>

@@ -1,12 +1,9 @@
 <p id="notice"><%= notice %></p>
-
+<div class = "well">
 <h1>Music</h1>
 
 <% if @musics.any? then %>
-<table>
-  <thead>
-    <tr>
-      <th colspan = "1"></th>
+      <%= render :partial => 'table_setup' %>
       <th>Name</th>
       <th>Artist</th>
       <th>Album</th>
@@ -33,3 +30,5 @@
   <p> You don't have any music! Add some here: <%= link_to 'Add Music', '../static_pages/addMedia' %><p>
 <% end %>
 <br>
+
+</div>
