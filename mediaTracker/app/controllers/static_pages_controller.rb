@@ -17,7 +17,7 @@ class StaticPagesController < ApplicationController
   def home
     # Get the history logs of all users that you follow or have public privacy
     @historyLog = HistoryLog.all
-    @historyLog.order(created_at: :desc)
+    @historyLog = @historyLog.order(created_at: :desc)
     @currUserFollowers = Follower.where(users_id: current_user.id)
     @historyLogs = @historyLog.select{|log| log.users_id == current_user.id || Preference.find_by(users_id: log.users_id) == nil || !Preference.find_by(users_id: log.users_id).privacy || @currUserFollowers.any?{|x| x.fTarget == log.users_id}}.take(10).to_a
   end
