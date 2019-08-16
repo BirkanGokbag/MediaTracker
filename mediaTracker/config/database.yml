@@ -23,7 +23,7 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: mediaTrackerPG
+  database: d58aoitv83p8i9
   pool: 5
-  username: media
-  password: TrackerPG
+  username: qiovcsagutbjzn
+  password: cbc187f009585d1e77fef732fed99483199b71fb9f559108a7eee8339927c8a2
